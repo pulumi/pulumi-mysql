@@ -16,12 +16,6 @@ import (
 )
 
 func TestExamples(t *testing.T) {
-	// Ensure we have any required configuration points
-	// region := os.Getenv("AWS_REGION")
-	// if region == "" {
-	// 	t.Skipf("Skipping test due to missing AWS_REGION environment variable")
-	// }
-
 	cwd, err := os.Getwd()
 	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
 		return
@@ -45,17 +39,13 @@ func TestExamples(t *testing.T) {
 		// List each test
 		baseJS.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "database"),
-			ExtraRuntimeValidation: validateAPITest(func(body string) {
-				assert.Equal(t, "pulumi-db", body)
-			}),
-			//EditDirs: []integration.EditDir{{
-			//	Dir:      "./api/step2",
-			//	Additive: true,
-			//	ExtraRuntimeValidation: validateAPITest(func(body string) {
-			//		assert.Equal(t, "<h1>Hello world!</h1>", body)
-			//	}),
-			//}},
-			ExpectRefreshChanges: true,
+			Config: map[string]string{
+				"mysql:endpoint": "127.0.0.1:3306",
+				"mysql:username": "root",
+			},
+			Dependencies: []string{
+				"@pulumi/mysql",
+			},
 		}),
 	}
 
