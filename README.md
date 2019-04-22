@@ -1,54 +1,9 @@
-# Terraform Bridge Provider Boilerplate
+[![Build Status](https://travis-ci.com/pulumi/pulumi-mysql.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-gcp)
 
-This repository contains boilerplate code for building a new Pulumi provider which wraps an existing
-Terraform provider, if the existing provider uses _Go Modules_ (common now) or _govendor_ (common
-in the past and still found in the wild).
+# MySQL Resource Provider
 
-Modify this README to describe:
-
-- The type of resources the provider manages
-- Add a build status image from Travis at the top of the README
-- Update package names in the information below
-- Add any important documentation of concepts (e.g. the "serverless" components in the AWS provider).
-
-## Creating a Pulumi Terraform Bridge Provider
-
-First, clone this repo with the name of the desired provider in place of `xyz`:
-
-```
-git clone https://github.com/pulumi/pulumi-tf-provider-boilerplate pulumi-xyz
-```
-
-Next, replace references to `xyz` with the name of your provider:
-- Search/replace the string `xyz` with the name of your provider throughout this repo
-- Rename the `cmd/pulumi-{resource,tfgen}-xyz` directories to match the provider name
-
-> Note: If the name of the desired Pulumi provider differs from the name of the Terraform provider, you will need to carefully distinguish between the references - see https://github.com/pulumi/pulumi-azure for an example.
-
-### If the provider uses Go Modules
-
-Lock in dependency versions:
-
-- `go get github.com/pulumi/scripts/gomod-override`
-- Update the version number of the Terraform provider in `Gopkg.template.toml` to match the latest available version.
-- `gomod-override < Gopkg.template.toml > Gopkg.toml`
-- `make ensure`
-
-### If the provider uses Go Modules
-
-Lock in dependency versions:
-
-- `go get github.com/pulumi/scripts/govendor-override`
-- Update the version number of the Terraform provider in `Gopkg.template.toml` to match the latest available version. Change the
-  metadata attributes prefixed with `gomod` to be prefixed with `govendor`, leaving the values the same.
-- `govendor-override < Gopkg.template.toml > Gopkg.toml`
-- `make ensure`
-
-### Build the provider:
-
-- Edit `resources.go` to map each resource, and specify provider information
-- Enumerate any examples in `examples/examples_test.go`
-- `make`
+The MySQL resource provider for Pulumi lets you manage MySQL resources in your cloud programs.  To use
+this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
 ## Installing
 
@@ -58,27 +13,24 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/xyx
+    $ npm install @pulumi/mysql
 
 or `yarn`:
 
-    $ yarn add @pulumi/xyx
+    $ yarn add @pulumi/mysql
 
 ### Python
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_xyx
+    $ pip install pulumi_mysql
 
 ### Go
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-xyz/sdk/go/...
+    $ go get github.com/pulumi/pulumi-mysql/sdk/go/...
 
 ## Reference
 
-For detailed reference documentation, please visit [the API docs][1].
-
-
-[1]: https://pulumi.io/reference/pkg/nodejs/@pulumi/x/index.html
+For detailed reference documentation, please visit [the API docs](https://pulumi.io/reference/pkg/nodejs/@pulumi/mysql/index.html).
