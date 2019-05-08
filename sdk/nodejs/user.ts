@@ -12,6 +12,32 @@ import * as utilities from "./utilities";
  * obscured by an unsalted hash in the state
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  * Care is required when using this resource, to avoid disclosing the password.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ * 
+ * const jdoe = new mysql.User("jdoe", {
+ *     host: "example.com",
+ *     plaintextPassword: "password",
+ *     user: "jdoe",
+ * });
+ * ```
+ * 
+ * ## Example Usage with an Authentication Plugin
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ * 
+ * const nologin = new mysql.User("nologin", {
+ *     authPlugin: "mysql_no_login",
+ *     host: "example.com",
+ *     user: "nologin",
+ * });
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**

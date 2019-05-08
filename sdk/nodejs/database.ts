@@ -13,6 +13,15 @@ import * as utilities from "./utilities";
  * consider setting
  * [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
  * on your database resources as an extra safety measure.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ * 
+ * const app = new mysql.Database("app", {});
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**
