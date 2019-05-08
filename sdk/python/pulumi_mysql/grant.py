@@ -97,6 +97,10 @@ class Grant(pulumi.CustomResource):
 
         __props__['user'] = user
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Grant, __self__).__init__(
             'mysql:index/grant:Grant',
             resource_name,

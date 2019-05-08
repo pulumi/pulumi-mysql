@@ -55,27 +55,27 @@ export class User extends pulumi.CustomResource {
     /**
      * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.  
      */
-    public readonly authPlugin: pulumi.Output<string | undefined>;
+    public readonly authPlugin!: pulumi.Output<string | undefined>;
     /**
      * The source host of the user. Defaults to "localhost".
      */
-    public readonly host: pulumi.Output<string | undefined>;
+    public readonly host!: pulumi.Output<string | undefined>;
     /**
      * Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
      */
-    public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
      */
-    public readonly plaintextPassword: pulumi.Output<string | undefined>;
+    public readonly plaintextPassword!: pulumi.Output<string | undefined>;
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
      */
-    public readonly tlsOption: pulumi.Output<string | undefined>;
+    public readonly tlsOption!: pulumi.Output<string | undefined>;
     /**
      * The name of the user.
      */
-    public readonly user: pulumi.Output<string>;
+    public readonly user!: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -88,7 +88,7 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UserState = argsOrState as UserState | undefined;
+            const state = argsOrState as UserState | undefined;
             inputs["authPlugin"] = state ? state.authPlugin : undefined;
             inputs["host"] = state ? state.host : undefined;
             inputs["password"] = state ? state.password : undefined;
@@ -106,6 +106,13 @@ export class User extends pulumi.CustomResource {
             inputs["plaintextPassword"] = args ? args.plaintextPassword : undefined;
             inputs["tlsOption"] = args ? args.tlsOption : undefined;
             inputs["user"] = args ? args.user : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("mysql:index/user:User", name, inputs, opts);
     }
