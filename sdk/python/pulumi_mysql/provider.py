@@ -46,6 +46,10 @@ class Provider(pulumi.ProviderResource):
             raise TypeError("Missing required property 'username'")
         __props__['username'] = username
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Provider, __self__).__init__(
             'mysql',
             resource_name,

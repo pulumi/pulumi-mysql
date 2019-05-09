@@ -7,6 +7,65 @@ import * as utilities from "./utilities";
 /**
  * The ``mysql_grant`` resource creates and manages privileges given to
  * a user on a MySQL server.
+ * 
+ * ## Granting Privileges to a User
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ * 
+ * const jdoeUser = new mysql.User("jdoe", {
+ *     host: "example.com",
+ *     password: "password",
+ *     user: "jdoe",
+ * });
+ * const jdoeGrant = new mysql.Grant("jdoe", {
+ *     database: "app",
+ *     host: jdoeUser.host,
+ *     privileges: [
+ *         "SELECT",
+ *         "UPDATE",
+ *     ],
+ *     user: jdoeUser.user,
+ * });
+ * ```
+ * 
+ * ## Granting Privileges to a Role
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ * 
+ * const developerRole = new mysql.Role("developer", {});
+ * const developerGrant = new mysql.Grant("developer", {
+ *     database: "app",
+ *     privileges: [
+ *         "SELECT",
+ *         "UPDATE",
+ *     ],
+ *     role: developerRole.name,
+ * });
+ * ```
+ * 
+ * ## Adding a Role to a User
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ * 
+ * const developerRole = new mysql.Role("developer", {});
+ * const jdoe = new mysql.User("jdoe", {
+ *     host: "example.com",
+ *     password: "password",
+ *     user: "jdoe",
+ * });
+ * const developerGrant = new mysql.Grant("developer", {
+ *     database: "app",
+ *     host: jdoe.host,
+ *     roles: [developerRole.name],
+ *     user: jdoe.user,
+ * });
+ * ```
  */
 export class Grant extends pulumi.CustomResource {
     /**
@@ -24,39 +83,39 @@ export class Grant extends pulumi.CustomResource {
     /**
      * The database to grant privileges on.
      */
-    public readonly database: pulumi.Output<string>;
+    public readonly database!: pulumi.Output<string>;
     /**
      * Whether to also give the user privileges to grant the same privileges to other users.
      */
-    public readonly grant: pulumi.Output<boolean | undefined>;
+    public readonly grant!: pulumi.Output<boolean | undefined>;
     /**
      * The source host of the user. Defaults to "localhost". Conflicts with `role`.
      */
-    public readonly host: pulumi.Output<string | undefined>;
+    public readonly host!: pulumi.Output<string | undefined>;
     /**
      * A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
      */
-    public readonly privileges: pulumi.Output<string[] | undefined>;
+    public readonly privileges!: pulumi.Output<string[] | undefined>;
     /**
      * The role to grant `privileges` to. Conflicts with `user` and `host`.
      */
-    public readonly role: pulumi.Output<string | undefined>;
+    public readonly role!: pulumi.Output<string | undefined>;
     /**
      * A list of rols to grant to the user. Conflicts with `privileges`.
      */
-    public readonly roles: pulumi.Output<string[] | undefined>;
+    public readonly roles!: pulumi.Output<string[] | undefined>;
     /**
      * Which table to grant `privileges` on. Defaults to `*`, which is all tables.
      */
-    public readonly table: pulumi.Output<string | undefined>;
+    public readonly table!: pulumi.Output<string | undefined>;
     /**
      * An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
      */
-    public readonly tlsOption: pulumi.Output<string | undefined>;
+    public readonly tlsOption!: pulumi.Output<string | undefined>;
     /**
      * The name of the user. Conflicts with `role`.
      */
-    public readonly user: pulumi.Output<string | undefined>;
+    public readonly user!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Grant resource with the given unique name, arguments, and options.
@@ -69,7 +128,7 @@ export class Grant extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: GrantArgs | GrantState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: GrantState = argsOrState as GrantState | undefined;
+            const state = argsOrState as GrantState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["grant"] = state ? state.grant : undefined;
             inputs["host"] = state ? state.host : undefined;
@@ -93,6 +152,13 @@ export class Grant extends pulumi.CustomResource {
             inputs["table"] = args ? args.table : undefined;
             inputs["tlsOption"] = args ? args.tlsOption : undefined;
             inputs["user"] = args ? args.user : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("mysql:index/grant:Grant", name, inputs, opts);
     }

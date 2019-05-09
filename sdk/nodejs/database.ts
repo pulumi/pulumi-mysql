@@ -13,6 +13,15 @@ import * as utilities from "./utilities";
  * consider setting
  * [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
  * on your database resources as an extra safety measure.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ * 
+ * const app = new mysql.Database("app", {});
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**
@@ -32,20 +41,20 @@ export class Database extends pulumi.CustomResource {
      * a table is created without specifying an explicit character set. Defaults
      * to "utf8".
      */
-    public readonly defaultCharacterSet: pulumi.Output<string | undefined>;
+    public readonly defaultCharacterSet!: pulumi.Output<string | undefined>;
     /**
      * The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
      * ``utf8_general_ci``. Each character set has its own set of collations, so
      * changing the character set requires also changing the collation.
      */
-    public readonly defaultCollation: pulumi.Output<string | undefined>;
+    public readonly defaultCollation!: pulumi.Output<string | undefined>;
     /**
      * The name of the database. This must be unique within
      * a given MySQL server and may or may not be case-sensitive depending on
      * the operating system on which the MySQL server is running.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -58,7 +67,7 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: DatabaseState = argsOrState as DatabaseState | undefined;
+            const state = argsOrState as DatabaseState | undefined;
             inputs["defaultCharacterSet"] = state ? state.defaultCharacterSet : undefined;
             inputs["defaultCollation"] = state ? state.defaultCollation : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -67,6 +76,13 @@ export class Database extends pulumi.CustomResource {
             inputs["defaultCharacterSet"] = args ? args.defaultCharacterSet : undefined;
             inputs["defaultCollation"] = args ? args.defaultCollation : undefined;
             inputs["name"] = args ? args.name : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("mysql:index/database:Database", name, inputs, opts);
     }

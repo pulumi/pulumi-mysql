@@ -3,12 +3,9 @@
 package examples
 
 import (
-	"io/ioutil"
-	"net/http"
 	"os"
 	"path"
 	"testing"
-	"time"
 
 	"github.com/stretchr/testify/assert"
 
@@ -16,12 +13,6 @@ import (
 )
 
 func TestExamples(t *testing.T) {
-	// Ensure we have any required configuration points
-	// region := os.Getenv("AWS_REGION")
-	// if region == "" {
-	// 	t.Skipf("Skipping test due to missing AWS_REGION environment variable")
-	// }
-
 	cwd, err := os.Getwd()
 	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
 		return
@@ -45,17 +36,13 @@ func TestExamples(t *testing.T) {
 		// List each test
 		baseJS.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "database"),
-			ExtraRuntimeValidation: validateAPITest(func(body string) {
-				assert.Equal(t, "pulumi-db", body)
-			}),
-			//EditDirs: []integration.EditDir{{
-			//	Dir:      "./api/step2",
-			//	Additive: true,
-			//	ExtraRuntimeValidation: validateAPITest(func(body string) {
-			//		assert.Equal(t, "<h1>Hello world!</h1>", body)
-			//	}),
-			//}},
-			ExpectRefreshChanges: true,
+			Config: map[string]string{
+				"mysql:endpoint": "127.0.0.1:3306",
+				"mysql:username": "root",
+			},
+			Dependencies: []string{
+				"@pulumi/mysql",
+			},
 		}),
 	}
 
@@ -68,32 +55,5 @@ func TestExamples(t *testing.T) {
 		t.Run(example.Dir, func(t *testing.T) {
 			integration.ProgramTest(t, &example)
 		})
-	}
-}
-
-func createEditDir(dir string) integration.EditDir {
-	return integration.EditDir{Dir: dir, ExtraRuntimeValidation: nil}
-}
-
-func validateAPITest(isValid func(body string)) func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
-	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
-		var resp *http.Response
-		var err error
-		url := stack.Outputs["url"].(string)
-		// Retry a couple times on 5xx
-		for i := 0; i < 2; i++ {
-			resp, err = http.Get(url + "/b")
-			if !assert.NoError(t, err) {
-				return
-			}
-			if resp.StatusCode < 500 {
-				break
-			}
-			time.Sleep(10 * time.Second)
-		}
-		defer resp.Body.Close()
-		body, err := ioutil.ReadAll(resp.Body)
-		assert.NoError(t, err)
-		isValid(string(body))
 	}
 }

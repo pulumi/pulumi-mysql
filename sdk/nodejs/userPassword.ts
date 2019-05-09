@@ -31,23 +31,23 @@ export class UserPassword extends pulumi.CustomResource {
     /**
      * The encrypted password, base64 encoded.
      */
-    public /*out*/ readonly encryptedPassword: pulumi.Output<string>;
+    public /*out*/ readonly encryptedPassword!: pulumi.Output<string>;
     /**
      * The source host of the user. Defaults to `localhost`.
      */
-    public readonly host: pulumi.Output<string | undefined>;
+    public readonly host!: pulumi.Output<string | undefined>;
     /**
      * The fingerprint of the PGP key used to encrypt the password 
      */
-    public /*out*/ readonly keyFingerprint: pulumi.Output<string>;
+    public /*out*/ readonly keyFingerprint!: pulumi.Output<string>;
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
      */
-    public readonly pgpKey: pulumi.Output<string>;
+    public readonly pgpKey!: pulumi.Output<string>;
     /**
      * The IAM user to associate with this access key.
      */
-    public readonly user: pulumi.Output<string>;
+    public readonly user!: pulumi.Output<string>;
 
     /**
      * Create a UserPassword resource with the given unique name, arguments, and options.
@@ -60,7 +60,7 @@ export class UserPassword extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: UserPasswordArgs | UserPasswordState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: UserPasswordState = argsOrState as UserPasswordState | undefined;
+            const state = argsOrState as UserPasswordState | undefined;
             inputs["encryptedPassword"] = state ? state.encryptedPassword : undefined;
             inputs["host"] = state ? state.host : undefined;
             inputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
@@ -79,6 +79,13 @@ export class UserPassword extends pulumi.CustomResource {
             inputs["user"] = args ? args.user : undefined;
             inputs["encryptedPassword"] = undefined /*out*/;
             inputs["keyFingerprint"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("mysql:index/userPassword:UserPassword", name, inputs, opts);
     }

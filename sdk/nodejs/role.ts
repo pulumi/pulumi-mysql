@@ -9,6 +9,15 @@ import * as utilities from "./utilities";
  * server.
  * 
  * > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ * 
+ * const developer = new mysql.Role("developer", {});
+ * ```
  */
 export class Role extends pulumi.CustomResource {
     /**
@@ -26,7 +35,7 @@ export class Role extends pulumi.CustomResource {
     /**
      * The name of the role.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -39,11 +48,18 @@ export class Role extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RoleArgs | RoleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RoleState = argsOrState as RoleState | undefined;
+            const state = argsOrState as RoleState | undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("mysql:index/role:Role", name, inputs, opts);
     }
