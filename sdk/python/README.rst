@@ -54,4 +54,4 @@ For detailed reference documentation, please visit `the API
 docs <https://pulumi.io/reference/pkg/nodejs/@pulumi/mysql/index.html>`__.
 
 .. |Build Status| image:: https://travis-ci.com/pulumi/pulumi-mysql.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master
-   :target: https://travis-ci.com/pulumi/pulumi-gcp
+   :target: https://travis-ci.com/pulumi/pulumi-mysql
