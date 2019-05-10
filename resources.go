@@ -30,7 +30,7 @@ const (
 	// packages:
 	mainPkg = "mysql"
 	// modules:
-	mainMod = "index" // the y module
+	mainMod = "index"
 )
 
 // makeMember manufactures a type token for the package and the given module and type.
@@ -43,14 +43,6 @@ func makeType(mod string, typ string) tokens.Type {
 	return tokens.Type(makeMember(mod, typ))
 }
 
-// makeDataSource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the data source's
-// first character.
-//func makeDataSource(mod string, res string) tokens.ModuleMember {
-//	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-//	return makeMember(mod+"/"+fn, res)
-//}
-
 // makeResource manufactures a standard resource token given a module and resource name.  It
 // automatically uses the main package and names the file by simply lower casing the resource's
 // first character.
@@ -59,20 +51,6 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// boolRef returns a reference to the bool argument.
-//func boolRef(b bool) *bool {
-//	return &b
-//}
-
-// stringValue gets a string value from a property map if present, else ""
-//func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
-//	val, ok := vars[prop]
-//	if ok && val.IsString() {
-//		return val.StringValue()
-//	}
-//	return ""
-//}
-
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
@@ -80,9 +58,6 @@ func makeResource(mod string, res string) tokens.Type {
 func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
 	return nil
 }
-
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-//var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -115,10 +90,6 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
