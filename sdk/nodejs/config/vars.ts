@@ -6,7 +6,7 @@ import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("mysql");
 
-export let endpoint: string = __config.require("endpoint");
+export let endpoint: string | undefined = __config.get("endpoint");
 export let password: string | undefined = __config.get("password");
 export let tls: string | undefined = __config.get("tls");
-export let username: string = __config.require("username");
+export let username: string | undefined = __config.get("username");

@@ -10,11 +10,11 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('mysql')
 
-endpoint = __config__.require('endpoint')
+endpoint = __config__.get('endpoint')
 
 password = __config__.get('password')
 
 tls = __config__.get('tls')
 
-username = __config__.require('username')
+username = __config__.get('username')
 
