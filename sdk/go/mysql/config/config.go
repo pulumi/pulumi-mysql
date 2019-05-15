@@ -9,7 +9,7 @@ import (
 )
 
 func GetEndpoint(ctx *pulumi.Context) string {
-	return config.Require(ctx, "mysql:endpoint")
+	return config.Get(ctx, "mysql:endpoint")
 }
 
 func GetPassword(ctx *pulumi.Context) string {
@@ -21,5 +21,5 @@ func GetTls(ctx *pulumi.Context) string {
 }
 
 func GetUsername(ctx *pulumi.Context) string {
-	return config.Require(ctx, "mysql:username")
+	return config.Get(ctx, "mysql:username")
 }
