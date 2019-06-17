@@ -75,10 +75,6 @@ class UserPassword(pulumi.CustomResource):
         __props__['encrypted_password'] = None
         __props__['key_fingerprint'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(UserPassword, __self__).__init__(
             'mysql:index/userPassword:UserPassword',
             resource_name,
