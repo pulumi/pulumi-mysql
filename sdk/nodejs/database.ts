@@ -36,6 +36,20 @@ export class Database extends pulumi.CustomResource {
         return new Database(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'mysql:index/database:Database';
+
+    /**
+     * Returns true if the given object is an instance of Database.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Database {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Database.__pulumiType;
+    }
+
     /**
      * The default character set to use when
      * a table is created without specifying an explicit character set. Defaults
@@ -77,14 +91,7 @@ export class Database extends pulumi.CustomResource {
             inputs["defaultCollation"] = args ? args.defaultCollation : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("mysql:index/database:Database", name, inputs, opts);
+        super(Database.__pulumiType, name, inputs, opts);
     }
 }
 

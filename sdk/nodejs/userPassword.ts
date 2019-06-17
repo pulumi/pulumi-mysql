@@ -28,6 +28,20 @@ export class UserPassword extends pulumi.CustomResource {
         return new UserPassword(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'mysql:index/userPassword:UserPassword';
+
+    /**
+     * Returns true if the given object is an instance of UserPassword.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is UserPassword {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === UserPassword.__pulumiType;
+    }
+
     /**
      * The encrypted password, base64 encoded.
      */
@@ -80,14 +94,7 @@ export class UserPassword extends pulumi.CustomResource {
             inputs["encryptedPassword"] = undefined /*out*/;
             inputs["keyFingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("mysql:index/userPassword:UserPassword", name, inputs, opts);
+        super(UserPassword.__pulumiType, name, inputs, opts);
     }
 }
 

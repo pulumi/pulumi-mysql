@@ -80,6 +80,20 @@ export class Grant extends pulumi.CustomResource {
         return new Grant(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'mysql:index/grant:Grant';
+
+    /**
+     * Returns true if the given object is an instance of Grant.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Grant {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Grant.__pulumiType;
+    }
+
     /**
      * The database to grant privileges on.
      */
@@ -153,14 +167,7 @@ export class Grant extends pulumi.CustomResource {
             inputs["tlsOption"] = args ? args.tlsOption : undefined;
             inputs["user"] = args ? args.user : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
-        super("mysql:index/grant:Grant", name, inputs, opts);
+        super(Grant.__pulumiType, name, inputs, opts);
     }
 }
 
