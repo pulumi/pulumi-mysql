@@ -1,6 +1,10 @@
 ## HEAD (Unreleased)
 ___NULL___
 
+
+## 0.18.3 (2019-06-21)
+* Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.
+
 ## 0.18.2 (2019-06-17)
 * Upgrade to v1.5.2 of the MySQL Terraform provider
 * Add TypeScript type guards for each resource class
