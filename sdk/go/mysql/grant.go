@@ -10,6 +10,8 @@ import (
 
 // The ``mysql_grant`` resource creates and manages privileges given to
 // a user on a MySQL server.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.
 type Grant struct {
 	s *pulumi.ResourceState
 }
