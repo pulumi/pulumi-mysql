@@ -18,6 +18,8 @@ import * as utilities from "./utilities";
  * 
  * const developer = new mysql.Role("developer", {});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/role.html.markdown.
  */
 export class Role extends pulumi.CustomResource {
     /**

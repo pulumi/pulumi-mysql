@@ -66,6 +66,8 @@ import * as utilities from "./utilities";
  *     user: jdoe.user,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.
  */
 export class Grant extends pulumi.CustomResource {
     /**

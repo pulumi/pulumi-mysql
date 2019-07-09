@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  * 
  * const app = new mysql.Database("app", {});
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
  */
 export class Database extends pulumi.CustomResource {
     /**

@@ -31,21 +31,15 @@ class UserPassword(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, host=None, pgp_key=None, user=None, __name__=None, __opts__=None):
         """
-        The `mysql_user_password` resource sets and manages a passwordd for a given 
-        user on a MySQL server.
-        
-        > **NOTE on MySQL Passwords:** This resource conflicts with the `password` 
-           argument for `mysql_user`. This resource uses PGP encryption to avoid 
-           storing unencrypted passwords in Terraform state.
-           
-        > **NOTE on How Passwords are Created:** This resource **automatically**
-           generates a **random** password. The password will be a random UUID.
+        Create a UserPassword resource with the given unique name, props, and options.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host: The source host of the user. Defaults to `localhost`.
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
         :param pulumi.Input[str] user: The IAM user to associate with this access key.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/user_password.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  *     user: "nologin",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/user.html.markdown.
  */
 export class User extends pulumi.CustomResource {
     /**

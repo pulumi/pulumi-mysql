@@ -51,6 +51,8 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
