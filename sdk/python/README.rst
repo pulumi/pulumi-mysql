@@ -21,13 +21,13 @@ To use from JavaScript or TypeScript in Node.js, install using either
 
 ::
 
-    $ npm install @pulumi/mysql
+   $ npm install @pulumi/mysql
 
 or ``yarn``:
 
 ::
 
-    $ yarn add @pulumi/mysql
+   $ yarn add @pulumi/mysql
 
 Python
 ~~~~~~
@@ -36,7 +36,7 @@ To use from Python, install using ``pip``:
 
 ::
 
-    $ pip install pulumi_mysql
+   $ pip install pulumi_mysql
 
 Go
 ~~
@@ -45,7 +45,7 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
 ::
 
-    $ go get github.com/pulumi/pulumi-mysql/sdk/go/...
+   $ go get github.com/pulumi/pulumi-mysql/sdk/go/...
 
 Configuration
 -------------
