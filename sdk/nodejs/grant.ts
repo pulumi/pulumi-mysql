@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * 
  * const jdoeUser = new mysql.User("jdoe", {
  *     host: "example.com",
- *     password: "password",
+ *     plaintextPassword: "password",
  *     user: "jdoe",
  * });
  * const jdoeGrant = new mysql.Grant("jdoe", {
@@ -56,7 +56,7 @@ import * as utilities from "./utilities";
  * const developerRole = new mysql.Role("developer", {});
  * const jdoe = new mysql.User("jdoe", {
  *     host: "example.com",
- *     password: "password",
+ *     plaintextPassword: "password",
  *     user: "jdoe",
  * });
  * const developerGrant = new mysql.Grant("developer", {
