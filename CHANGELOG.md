@@ -1,5 +1,6 @@
 ## HEAD (Unreleased)
-___NULL___
+* Update to v1.7.0 of the MySQL Terraform Provider
+
 
 ## 0.18.5 (2019-07-09)
 * Fix detailed diffs with nested computed values.
