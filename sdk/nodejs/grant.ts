@@ -169,6 +169,13 @@ export class Grant extends pulumi.CustomResource {
             inputs["tlsOption"] = args ? args.tlsOption : undefined;
             inputs["user"] = args ? args.user : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Grant.__pulumiType, name, inputs, opts);
     }
 }

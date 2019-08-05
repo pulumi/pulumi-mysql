@@ -93,6 +93,13 @@ export class Database extends pulumi.CustomResource {
             inputs["defaultCollation"] = args ? args.defaultCollation : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Database.__pulumiType, name, inputs, opts);
     }
 }
