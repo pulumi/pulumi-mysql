@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Update to pulumi-terraform@013b95b1c8
+___NULL___
 
 ---
+
+## 0.18.7 (2019-08-08)
+* Update to pulumi-terraform@013b95b1c8
 
 ## 0.18.6 (2019-07-24)
 * Update to v1.7.0 of the MySQL Terraform Provider
