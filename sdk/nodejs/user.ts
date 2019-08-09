@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``mysql_user`` resource creates and manages a user on a MySQL
+ * The ``mysql..User`` resource creates and manages a user on a MySQL
  * server.
  * 
  * > **Note:** The password for the user is provided in plain text, and is
@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  * import * as mysql from "@pulumi/mysql";
  * 
  * const nologin = new mysql.User("nologin", {
- *     authPlugin: "mysql_no_login",
+ *     authPlugin: "mysqlNoLogin",
  *     host: "example.com",
  *     user: "nologin",
  * });
@@ -69,7 +69,7 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.  
+     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
      */
     public readonly authPlugin!: pulumi.Output<string | undefined>;
     /**
@@ -77,11 +77,11 @@ export class User extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string | undefined>;
     /**
-     * Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+     * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
      */
     public readonly plaintextPassword!: pulumi.Output<string | undefined>;
     /**
@@ -139,7 +139,7 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.  
+     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
      */
     readonly authPlugin?: pulumi.Input<string>;
     /**
@@ -147,11 +147,11 @@ export interface UserState {
      */
     readonly host?: pulumi.Input<string>;
     /**
-     * Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+     * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
      */
     readonly plaintextPassword?: pulumi.Input<string>;
     /**
@@ -169,7 +169,7 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.  
+     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
      */
     readonly authPlugin?: pulumi.Input<string>;
     /**
@@ -177,11 +177,11 @@ export interface UserArgs {
      */
     readonly host?: pulumi.Input<string>;
     /**
-     * Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+     * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
      */
     readonly plaintextPassword?: pulumi.Input<string>;
     /**

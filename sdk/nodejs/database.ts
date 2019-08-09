@@ -5,13 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``mysql_database`` resource creates and manages a database on a MySQL
+ * The ``mysql..Database`` resource creates and manages a database on a MySQL
  * server.
  * 
- * > **Caution:** The ``mysql_database`` resource can completely delete your
+ * > **Caution:** The ``mysql..Database`` resource can completely delete your
  * database just as easily as it can create it. To avoid costly accidents,
  * consider setting
- * [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
+ * [``preventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
  * on your database resources as an extra safety measure.
  * 
  * ## Example Usage
@@ -61,7 +61,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
-     * ``utf8_general_ci``. Each character set has its own set of collations, so
+     * ``utf8GeneralCi``. Each character set has its own set of collations, so
      * changing the character set requires also changing the collation.
      */
     public readonly defaultCollation!: pulumi.Output<string | undefined>;
@@ -117,7 +117,7 @@ export interface DatabaseState {
     /**
      * The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
-     * ``utf8_general_ci``. Each character set has its own set of collations, so
+     * ``utf8GeneralCi``. Each character set has its own set of collations, so
      * changing the character set requires also changing the collation.
      */
     readonly defaultCollation?: pulumi.Input<string>;
@@ -142,7 +142,7 @@ export interface DatabaseArgs {
     /**
      * The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
-     * ``utf8_general_ci``. Each character set has its own set of collations, so
+     * ``utf8GeneralCi``. Each character set has its own set of collations, so
      * changing the character set requires also changing the collation.
      */
     readonly defaultCollation?: pulumi.Input<string>;
