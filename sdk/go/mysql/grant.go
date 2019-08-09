@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The ``mysql_grant`` resource creates and manages privileges given to
+// The ``.Grant`` resource creates and manages privileges given to
 // a user on a MySQL server.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.

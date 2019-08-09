@@ -7,13 +7,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// The ``mysql_database`` resource creates and manages a database on a MySQL
+// The ``.Database`` resource creates and manages a database on a MySQL
 // server.
 // 
-// > **Caution:** The ``mysql_database`` resource can completely delete your
+// > **Caution:** The ``.Database`` resource can completely delete your
 // database just as easily as it can create it. To avoid costly accidents,
 // consider setting
-// [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
+// [``preventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
 // on your database resources as an extra safety measure.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
@@ -77,7 +77,7 @@ func (r *Database) DefaultCharacterSet() *pulumi.StringOutput {
 
 // The default collation to use when a table
 // is created without specifying an explicit collation. Defaults to
-// ``utf8_general_ci``. Each character set has its own set of collations, so
+// ``utf8GeneralCi``. Each character set has its own set of collations, so
 // changing the character set requires also changing the collation.
 func (r *Database) DefaultCollation() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["defaultCollation"])
@@ -98,7 +98,7 @@ type DatabaseState struct {
 	DefaultCharacterSet interface{}
 	// The default collation to use when a table
 	// is created without specifying an explicit collation. Defaults to
-	// ``utf8_general_ci``. Each character set has its own set of collations, so
+	// ``utf8GeneralCi``. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
 	DefaultCollation interface{}
 	// The name of the database. This must be unique within
@@ -115,7 +115,7 @@ type DatabaseArgs struct {
 	DefaultCharacterSet interface{}
 	// The default collation to use when a table
 	// is created without specifying an explicit collation. Defaults to
-	// ``utf8_general_ci``. Each character set has its own set of collations, so
+	// ``utf8GeneralCi``. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
 	DefaultCollation interface{}
 	// The name of the database. This must be unique within

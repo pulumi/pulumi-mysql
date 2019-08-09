@@ -29,7 +29,7 @@ class UserPassword(pulumi.CustomResource):
     """
     The IAM user to associate with this access key.
     """
-    def __init__(__self__, resource_name, opts=None, host=None, pgp_key=None, user=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, host=None, pgp_key=None, user=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a UserPassword resource with the given unique name, props, and options.
         
@@ -47,39 +47,57 @@ class UserPassword(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['host'] = host
-
-        if pgp_key is None:
-            raise TypeError("Missing required property 'pgp_key'")
-        __props__['pgp_key'] = pgp_key
-
-        if user is None:
-            raise TypeError("Missing required property 'user'")
-        __props__['user'] = user
-
-        __props__['encrypted_password'] = None
-        __props__['key_fingerprint'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['host'] = host
+            if pgp_key is None:
+                raise TypeError("Missing required property 'pgp_key'")
+            __props__['pgp_key'] = pgp_key
+            if user is None:
+                raise TypeError("Missing required property 'user'")
+            __props__['user'] = user
+            __props__['encrypted_password'] = None
+            __props__['key_fingerprint'] = None
         super(UserPassword, __self__).__init__(
             'mysql:index/userPassword:UserPassword',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, encrypted_password=None, host=None, key_fingerprint=None, pgp_key=None, user=None):
+        """
+        Get an existing UserPassword resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] encrypted_password: The encrypted password, base64 encoded.
+        :param pulumi.Input[str] host: The source host of the user. Defaults to `localhost`.
+        :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the password 
+        :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
+        :param pulumi.Input[str] user: The IAM user to associate with this access key.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/user_password.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["encrypted_password"] = encrypted_password
+        __props__["host"] = host
+        __props__["key_fingerprint"] = key_fingerprint
+        __props__["pgp_key"] = pgp_key
+        __props__["user"] = user
+        return UserPassword(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

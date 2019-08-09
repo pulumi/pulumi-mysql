@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``mysql_grant`` resource creates and manages privileges given to
+ * The ``mysql..Grant`` resource creates and manages privileges given to
  * a user on a MySQL server.
  * 
  * ## Granting Privileges to a User

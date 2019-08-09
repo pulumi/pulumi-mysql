@@ -45,9 +45,9 @@ class Grant(pulumi.CustomResource):
     """
     The name of the user. Conflicts with `role`.
     """
-    def __init__(__self__, resource_name, opts=None, database=None, grant=None, host=None, privileges=None, role=None, roles=None, table=None, tls_option=None, user=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, database=None, grant=None, host=None, privileges=None, role=None, roles=None, table=None, tls_option=None, user=None, __props__=None, __name__=None, __opts__=None):
         """
-        The ``mysql_grant`` resource creates and manages privileges given to
+        The ``.Grant`` resource creates and manages privileges given to
         a user on a MySQL server.
         
         :param str resource_name: The name of the resource.
@@ -70,46 +70,67 @@ class Grant(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if database is None:
-            raise TypeError("Missing required property 'database'")
-        __props__['database'] = database
-
-        __props__['grant'] = grant
-
-        __props__['host'] = host
-
-        __props__['privileges'] = privileges
-
-        __props__['role'] = role
-
-        __props__['roles'] = roles
-
-        __props__['table'] = table
-
-        __props__['tls_option'] = tls_option
-
-        __props__['user'] = user
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if database is None:
+                raise TypeError("Missing required property 'database'")
+            __props__['database'] = database
+            __props__['grant'] = grant
+            __props__['host'] = host
+            __props__['privileges'] = privileges
+            __props__['role'] = role
+            __props__['roles'] = roles
+            __props__['table'] = table
+            __props__['tls_option'] = tls_option
+            __props__['user'] = user
         super(Grant, __self__).__init__(
             'mysql:index/grant:Grant',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, database=None, grant=None, host=None, privileges=None, role=None, roles=None, table=None, tls_option=None, user=None):
+        """
+        Get an existing Grant resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database: The database to grant privileges on.
+        :param pulumi.Input[bool] grant: Whether to also give the user privileges to grant the same privileges to other users.
+        :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost". Conflicts with `role`.
+        :param pulumi.Input[list] privileges: A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+        :param pulumi.Input[str] role: The role to grant `privileges` to. Conflicts with `user` and `host`.
+        :param pulumi.Input[list] roles: A list of rols to grant to the user. Conflicts with `privileges`.
+        :param pulumi.Input[str] table: Which table to grant `privileges` on. Defaults to `*`, which is all tables.
+        :param pulumi.Input[str] tls_option: An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
+        :param pulumi.Input[str] user: The name of the user. Conflicts with `role`.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["database"] = database
+        __props__["grant"] = grant
+        __props__["host"] = host
+        __props__["privileges"] = privileges
+        __props__["role"] = role
+        __props__["roles"] = roles
+        __props__["table"] = table
+        __props__["tls_option"] = tls_option
+        __props__["user"] = user
+        return Grant(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

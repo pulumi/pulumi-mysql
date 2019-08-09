@@ -33,9 +33,9 @@ class User(pulumi.CustomResource):
     """
     The name of the user.
     """
-    def __init__(__self__, resource_name, opts=None, auth_plugin=None, host=None, password=None, plaintext_password=None, tls_option=None, user=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, auth_plugin=None, host=None, password=None, plaintext_password=None, tls_option=None, user=None, __props__=None, __name__=None, __opts__=None):
         """
-        The ``mysql_user`` resource creates and manages a user on a MySQL
+        The ``.User`` resource creates and manages a user on a MySQL
         server.
         
         > **Note:** The password for the user is provided in plain text, and is
@@ -60,40 +60,58 @@ class User(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['auth_plugin'] = auth_plugin
-
-        __props__['host'] = host
-
-        __props__['password'] = password
-
-        __props__['plaintext_password'] = plaintext_password
-
-        __props__['tls_option'] = tls_option
-
-        if user is None:
-            raise TypeError("Missing required property 'user'")
-        __props__['user'] = user
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['auth_plugin'] = auth_plugin
+            __props__['host'] = host
+            __props__['password'] = password
+            __props__['plaintext_password'] = plaintext_password
+            __props__['tls_option'] = tls_option
+            if user is None:
+                raise TypeError("Missing required property 'user'")
+            __props__['user'] = user
         super(User, __self__).__init__(
             'mysql:index/user:User',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, auth_plugin=None, host=None, password=None, plaintext_password=None, tls_option=None, user=None):
+        """
+        Get an existing User resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.  
+        :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost".
+        :param pulumi.Input[str] password: Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        :param pulumi.Input[str] tls_option: An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+        :param pulumi.Input[str] user: The name of the user.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/user.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["auth_plugin"] = auth_plugin
+        __props__["host"] = host
+        __props__["password"] = password
+        __props__["plaintext_password"] = plaintext_password
+        __props__["tls_option"] = tls_option
+        __props__["user"] = user
+        return User(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
