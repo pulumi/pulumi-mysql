@@ -1,5 +1,6 @@
 ## HEAD (Unreleased)
 * Regenerate SDK based on tf2pulumi 0.6.0
+* Update to v1.8.0 of the MySQL Terraform Provider
 
 ---
 
