@@ -1,8 +1,11 @@
 ## HEAD (Unreleased)
-* Regenerate SDK based on tf2pulumi 0.6.0
-* Update to v1.8.0 of the MySQL Terraform Provider
+_(none)_
 
 ---
+
+## 1.0.0 (2019-10-02)
+* Regenerate SDK based on tf2pulumi 0.6.0
+* Update to v1.8.0 of the MySQL Terraform Provider
 
 ## 0.18.11 (2019-09-05)
 * Upgrade to Pulumi v1.0.0
