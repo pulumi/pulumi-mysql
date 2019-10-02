@@ -12,6 +12,14 @@ func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "mysql:endpoint")
 }
 
+func GetMaxConnLifetimeSec(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "mysql:maxConnLifetimeSec")
+}
+
+func GetMaxOpenConns(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "mysql:maxOpenConns")
+}
+
 func GetPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "mysql:password")
 }

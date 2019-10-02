@@ -45,6 +45,8 @@ export class Provider extends pulumi.ProviderResource {
                 throw new Error("Missing required property 'username'");
             }
             inputs["endpoint"] = args ? args.endpoint : undefined;
+            inputs["maxConnLifetimeSec"] = pulumi.output(args ? args.maxConnLifetimeSec : undefined).apply(JSON.stringify);
+            inputs["maxOpenConns"] = pulumi.output(args ? args.maxOpenConns : undefined).apply(JSON.stringify);
             inputs["password"] = args ? args.password : undefined;
             inputs["tls"] = args ? args.tls : undefined;
             inputs["username"] = args ? args.username : undefined;
@@ -65,6 +67,8 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     readonly endpoint: pulumi.Input<string>;
+    readonly maxConnLifetimeSec?: pulumi.Input<number>;
+    readonly maxOpenConns?: pulumi.Input<number>;
     readonly password?: pulumi.Input<string>;
     readonly tls?: pulumi.Input<string>;
     readonly username: pulumi.Input<string>;

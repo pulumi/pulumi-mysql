@@ -15,7 +15,7 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
 
 	mysql "github.com/pulumi/pulumi-mysql"
 	"github.com/pulumi/pulumi-mysql/pkg/version"
