@@ -7,53 +7,44 @@ import (
 	"path"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
 	"github.com/pulumi/pulumi/pkg/testing/integration"
 )
 
-func TestExamples(t *testing.T) {
+func TestAccDatabase(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: path.Join(getCwd(t), "database"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func getCwd(t *testing.T) string {
 	cwd, err := os.Getwd()
-	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
-		return
+	if err != nil {
+		t.FailNow()
 	}
 
-	// base options shared amongst all tests.
-	base := integration.ProgramTestOptions{
-		Config: map[string]string{
-			// Configuration map
-		},
+	return cwd
+}
+
+func getBaseOptions() integration.ProgramTestOptions {
+	return integration.ProgramTestOptions{
 		Tracing: "https://tracing.pulumi-engineering.com/collector/api/v1/spans",
+		Config: map[string]string{
+			"mysql:endpoint": "127.0.0.1:3306",
+			"mysql:username": "root",
+		},
 	}
+}
 
+func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	base := getBaseOptions()
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			// JavaScript dependencies
+			"@pulumi/mysql",
 		},
 	})
 
-	examples := []integration.ProgramTestOptions{
-		// List each test
-		baseJS.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "database"),
-			Config: map[string]string{
-				"mysql:endpoint": "127.0.0.1:3306",
-				"mysql:username": "root",
-			},
-			Dependencies: []string{
-				"@pulumi/mysql",
-			},
-		}),
-	}
-
-	if !testing.Short() {
-		// Append any longer running tests
-	}
-
-	for _, ex := range examples {
-		example := ex
-		t.Run(example.Dir, func(t *testing.T) {
-			integration.ProgramTest(t, &example)
-		})
-	}
+	return baseJS
 }
