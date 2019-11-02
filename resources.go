@@ -74,10 +74,24 @@ func Provider() tfbridge.ProviderInfo {
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"mysql_database":      {Tok: makeResource(mainMod, "Database")},
-			"mysql_grant":         {Tok: makeResource(mainMod, "Grant")},
-			"mysql_role":          {Tok: makeResource(mainMod, "Role")},
-			"mysql_user":          {Tok: makeResource(mainMod, "User")},
+			"mysql_database": {Tok: makeResource(mainMod, "Database")},
+			"mysql_grant": {
+				Tok: makeResource(mainMod, "Grant"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"grant": {
+						CSharpName: "GrantName",
+					},
+				},
+			},
+			"mysql_role": {Tok: makeResource(mainMod, "Role")},
+			"mysql_user": {
+				Tok: makeResource(mainMod, "User"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"user": {
+						CSharpName: "UserName",
+					},
+				},
+			},
 			"mysql_user_password": {Tok: makeResource(mainMod, "UserPassword")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
