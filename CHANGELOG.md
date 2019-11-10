@@ -1,5 +1,6 @@
 ## HEAD (Unreleased)
 * Add support for DotNet SDK Generation
+* Update to v1.9.0 of the MySQL Terraform Provider
 
 ---
 
