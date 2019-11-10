@@ -44,6 +44,9 @@ namespace Pulumi.Mysql
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
+        [Input("authenticationPlugin")]
+        public Input<string>? AuthenticationPlugin { get; set; }
+
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
@@ -55,6 +58,9 @@ namespace Pulumi.Mysql
 
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        [Input("proxy")]
+        public Input<string>? Proxy { get; set; }
 
         [Input("tls")]
         public Input<string>? Tls { get; set; }

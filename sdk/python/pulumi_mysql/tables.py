@@ -4,6 +4,7 @@
 
 _SNAKE_TO_CAMEL_CASE_TABLE = {
     "auth_plugin": "authPlugin",
+    "authentication_plugin": "authenticationPlugin",
     "default_character_set": "defaultCharacterSet",
     "default_collation": "defaultCollation",
     "encrypted_password": "encryptedPassword",
@@ -17,6 +18,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
     "authPlugin": "auth_plugin",
+    "authenticationPlugin": "authentication_plugin",
     "defaultCharacterSet": "default_character_set",
     "defaultCollation": "default_collation",
     "encryptedPassword": "encrypted_password",
