@@ -8,6 +8,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
 )
 
+func GetAuthenticationPlugin(ctx *pulumi.Context) string {
+	return config.Get(ctx, "mysql:authenticationPlugin")
+}
+
 func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "mysql:endpoint")
 }
@@ -22,6 +26,10 @@ func GetMaxOpenConns(ctx *pulumi.Context) int {
 
 func GetPassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "mysql:password")
+}
+
+func GetProxy(ctx *pulumi.Context) string {
+	return config.Get(ctx, "mysql:proxy")
 }
 
 func GetTls(ctx *pulumi.Context) string {

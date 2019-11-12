@@ -9,6 +9,8 @@ namespace Pulumi.Mysql.Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("mysql");
 
+        public static string? AuthenticationPlugin { get; set; } = __config.Get("authenticationPlugin");
+
         public static string? Endpoint { get; set; } = __config.Get("endpoint");
 
         public static int? MaxConnLifetimeSec { get; set; } = __config.GetInt32("maxConnLifetimeSec");
@@ -16,6 +18,8 @@ namespace Pulumi.Mysql.Config
         public static int? MaxOpenConns { get; set; } = __config.GetInt32("maxOpenConns");
 
         public static string? Password { get; set; } = __config.Get("password");
+
+        public static string? Proxy { get; set; } = __config.Get("proxy");
 
         public static string? Tls { get; set; } = __config.Get("tls");
 

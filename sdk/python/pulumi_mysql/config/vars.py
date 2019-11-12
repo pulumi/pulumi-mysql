@@ -11,6 +11,8 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('mysql')
 
+authentication_plugin = __config__.get('authenticationPlugin')
+
 endpoint = __config__.get('endpoint')
 
 max_conn_lifetime_sec = __config__.get('maxConnLifetimeSec')
@@ -18,6 +20,8 @@ max_conn_lifetime_sec = __config__.get('maxConnLifetimeSec')
 max_open_conns = __config__.get('maxOpenConns')
 
 password = __config__.get('password')
+
+proxy = __config__.get('proxy')
 
 tls = __config__.get('tls')
 

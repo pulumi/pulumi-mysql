@@ -381,6 +381,8 @@ github.com/stretchr/testify v1.4.0 h1:2E4SXV/wtOkTonXsotYi4li6zVWxYlZuYNCXe9XRJy
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/terraform-providers/terraform-provider-mysql v1.8.0 h1:7J6rDPsW+uB5/2cbajJ66/pefalKAZOKUja5aQeo4nI=
 github.com/terraform-providers/terraform-provider-mysql v1.8.0/go.mod h1:ZFV/STKvfybExXGoQ57x46l4iZiiuiDNMmvQWMIz5h8=
+github.com/terraform-providers/terraform-provider-mysql v1.9.0 h1:ueOU3DZB+friHb0dGsw6IvmPOT4V23yg6oB5D87zmBw=
+github.com/terraform-providers/terraform-provider-mysql v1.9.0/go.mod h1:ZFV/STKvfybExXGoQ57x46l4iZiiuiDNMmvQWMIz5h8=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e h1:T5PdfK/M1xyrHwynxMIVMWLS7f/qHwfslZphxtGnw7s=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tidwall/pretty v0.0.0-20190325153808-1166b9ac2b65/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=

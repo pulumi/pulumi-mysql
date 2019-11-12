@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, endpoint=None, max_conn_lifetime_sec=None, max_open_conns=None, password=None, tls=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, authentication_plugin=None, endpoint=None, max_conn_lifetime_sec=None, max_open_conns=None, password=None, proxy=None, tls=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the mysql package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -39,12 +39,14 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['authentication_plugin'] = authentication_plugin
             if endpoint is None:
                 raise TypeError("Missing required property 'endpoint'")
             __props__['endpoint'] = endpoint
             __props__['max_conn_lifetime_sec'] = pulumi.Output.from_input(max_conn_lifetime_sec).apply(json.dumps) if max_conn_lifetime_sec is not None else None
             __props__['max_open_conns'] = pulumi.Output.from_input(max_open_conns).apply(json.dumps) if max_open_conns is not None else None
             __props__['password'] = password
+            __props__['proxy'] = proxy
             __props__['tls'] = tls
             if username is None:
                 raise TypeError("Missing required property 'username'")
