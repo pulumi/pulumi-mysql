@@ -1,8 +1,11 @@
 ## HEAD (Unreleased)
-* Add support for DotNet SDK Generation
-* Update to v1.9.0 of the MySQL Terraform Provider
+_(none)_
 
 ---
+
+## 1.1.0 (2019-11-15)
+* Add support for DotNet SDK Generation
+* Update to v1.9.0 of the MySQL Terraform Provider
 
 ## 1.0.0 (2019-10-02)
 * Regenerate SDK based on tf2pulumi 0.6.0
