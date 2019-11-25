@@ -49,18 +49,18 @@ func GetRole(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Role) URN() *pulumi.URNOutput {
+func (r *Role) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Role) ID() *pulumi.IDOutput {
+func (r *Role) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of the role.
-func (r *Role) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Role) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Role resources.

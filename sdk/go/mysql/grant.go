@@ -75,58 +75,58 @@ func GetGrant(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Grant) URN() *pulumi.URNOutput {
+func (r *Grant) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Grant) ID() *pulumi.IDOutput {
+func (r *Grant) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The database to grant privileges on.
-func (r *Grant) Database() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["database"])
+func (r *Grant) Database() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["database"])
 }
 
 // Whether to also give the user privileges to grant the same privileges to other users.
-func (r *Grant) Grant() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["grant"])
+func (r *Grant) Grant() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["grant"])
 }
 
 // The source host of the user. Defaults to "localhost". Conflicts with `role`.
-func (r *Grant) Host() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["host"])
+func (r *Grant) Host() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["host"])
 }
 
 // A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
-func (r *Grant) Privileges() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["privileges"])
+func (r *Grant) Privileges() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["privileges"])
 }
 
 // The role to grant `privileges` to. Conflicts with `user` and `host`.
-func (r *Grant) Role() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["role"])
+func (r *Grant) Role() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["role"])
 }
 
 // A list of rols to grant to the user. Conflicts with `privileges`.
-func (r *Grant) Roles() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["roles"])
+func (r *Grant) Roles() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["roles"])
 }
 
 // Which table to grant `privileges` on. Defaults to `*`, which is all tables.
-func (r *Grant) Table() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["table"])
+func (r *Grant) Table() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["table"])
 }
 
 // An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
-func (r *Grant) TlsOption() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tlsOption"])
+func (r *Grant) TlsOption() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tlsOption"])
 }
 
 // The name of the user. Conflicts with `role`.
-func (r *Grant) User() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["user"])
+func (r *Grant) User() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["user"])
 }
 
 // Input properties used for looking up and filtering Grant resources.
