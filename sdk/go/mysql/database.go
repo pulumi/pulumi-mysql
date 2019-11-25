@@ -59,35 +59,35 @@ func GetDatabase(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Database) URN() *pulumi.URNOutput {
+func (r *Database) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Database) ID() *pulumi.IDOutput {
+func (r *Database) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The default character set to use when
 // a table is created without specifying an explicit character set. Defaults
 // to "utf8".
-func (r *Database) DefaultCharacterSet() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultCharacterSet"])
+func (r *Database) DefaultCharacterSet() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultCharacterSet"])
 }
 
 // The default collation to use when a table
 // is created without specifying an explicit collation. Defaults to
 // ``utf8GeneralCi``. Each character set has its own set of collations, so
 // changing the character set requires also changing the collation.
-func (r *Database) DefaultCollation() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["defaultCollation"])
+func (r *Database) DefaultCollation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["defaultCollation"])
 }
 
 // The name of the database. This must be unique within
 // a given MySQL server and may or may not be case-sensitive depending on
 // the operating system on which the MySQL server is running.
-func (r *Database) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Database) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering Database resources.

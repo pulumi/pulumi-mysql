@@ -32,7 +32,7 @@ namespace Pulumi.Mysql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Role(string name, RoleArgs? args = null, CustomResourceOptions? options = null)
-            : base("mysql:index/role:Role", name, args, MakeResourceOptions(options, ""))
+            : base("mysql:index/role:Role", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

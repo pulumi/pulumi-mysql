@@ -71,43 +71,43 @@ func GetUser(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *User) URN() *pulumi.URNOutput {
+func (r *User) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *User) ID() *pulumi.IDOutput {
+func (r *User) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
-func (r *User) AuthPlugin() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["authPlugin"])
+func (r *User) AuthPlugin() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["authPlugin"])
 }
 
 // The source host of the user. Defaults to "localhost".
-func (r *User) Host() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["host"])
+func (r *User) Host() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["host"])
 }
 
 // Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
-func (r *User) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *User) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
-func (r *User) PlaintextPassword() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["plaintextPassword"])
+func (r *User) PlaintextPassword() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["plaintextPassword"])
 }
 
 // An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-func (r *User) TlsOption() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tlsOption"])
+func (r *User) TlsOption() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tlsOption"])
 }
 
 // The name of the user.
-func (r *User) User() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["user"])
+func (r *User) User() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["user"])
 }
 
 // Input properties used for looking up and filtering User resources.

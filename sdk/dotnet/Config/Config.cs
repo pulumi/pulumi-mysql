@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Mysql.Config
+namespace Pulumi.Mysql
 {
     public static class Config
     {
