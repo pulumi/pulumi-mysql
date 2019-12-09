@@ -1,6 +1,6 @@
 ## HEAD (Unreleased)
 * Namespace names in .NET SDK are adjusted to PascalCase
-([#259](https://github.com/pulumi/pulumi-mysql/pull/33)).
+([#33](https://github.com/pulumi/pulumi-mysql/pull/33)).
 
 ---
 
