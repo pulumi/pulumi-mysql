@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Mysql
+namespace Pulumi.MySql
 {
     /// <summary>
     /// The provider type for the mysql package. By default, resources use package-wide configuration

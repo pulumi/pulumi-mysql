@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Mysql
+namespace Pulumi.MySql
 {
     /// <summary>
     /// The ``mysql..Database`` resource creates and manages a database on a MySQL

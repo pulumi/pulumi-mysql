@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using Pulumi;
 
-namespace Pulumi.Mysql
+namespace Pulumi.MySql
 {
     static class Utilities
     {
@@ -66,7 +66,7 @@ namespace Pulumi.Mysql
         static Utilities()
         {
             var assembly = typeof(Utilities).GetTypeInfo().Assembly;
-            using var stream = assembly.GetManifestResourceStream("Pulumi.Mysql.version.txt");
+            using var stream = assembly.GetManifestResourceStream("Pulumi.MySql.version.txt");
             using var reader = new StreamReader(stream ?? throw new NotSupportedException("Missing embedded version.txt file"));
             version = reader.ReadToEnd().Trim();
         }
