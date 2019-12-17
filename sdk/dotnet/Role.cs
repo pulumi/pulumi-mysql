@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Mysql
+namespace Pulumi.MySql
 {
     /// <summary>
     /// The ``mysql..Role`` resource creates and manages a user on a MySQL
