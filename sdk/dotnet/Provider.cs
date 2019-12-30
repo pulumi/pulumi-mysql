@@ -24,7 +24,7 @@ namespace Pulumi.MySql
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, ResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, ResourceOptions? options = null)
             : base("mysql", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
@@ -47,8 +47,8 @@ namespace Pulumi.MySql
         [Input("authenticationPlugin")]
         public Input<string>? AuthenticationPlugin { get; set; }
 
-        [Input("endpoint", required: true)]
-        public Input<string> Endpoint { get; set; } = null!;
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
 
         [Input("maxConnLifetimeSec", json: true)]
         public Input<int>? MaxConnLifetimeSec { get; set; }
@@ -65,11 +65,16 @@ namespace Pulumi.MySql
         [Input("tls")]
         public Input<string>? Tls { get; set; }
 
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public ProviderArgs()
         {
+            Endpoint = Utilities.GetEnv("MYSQL_ENDPOINT");
+            Password = Utilities.GetEnv("MYSQL_PASSWORD");
+            Proxy = Utilities.GetEnv("ALL_PROXY", "all_proxy");
+            Tls = Utilities.GetEnv("MYSQL_TLS_CONFIG") ?? "false";
+            Username = Utilities.GetEnv("MYSQL_USERNAME");
         }
     }
 }
