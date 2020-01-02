@@ -13,7 +13,14 @@ func GetAuthenticationPlugin(ctx *pulumi.Context) string {
 }
 
 func GetEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "mysql:endpoint")
+	v, err := config.Try(ctx, "mysql:endpoint")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "MYSQL_ENDPOINT").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetMaxConnLifetimeSec(ctx *pulumi.Context) int {
@@ -25,17 +32,45 @@ func GetMaxOpenConns(ctx *pulumi.Context) int {
 }
 
 func GetPassword(ctx *pulumi.Context) string {
-	return config.Get(ctx, "mysql:password")
+	v, err := config.Try(ctx, "mysql:password")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "MYSQL_PASSWORD").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetProxy(ctx *pulumi.Context) string {
-	return config.Get(ctx, "mysql:proxy")
+	v, err := config.Try(ctx, "mysql:proxy")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "ALL_PROXY", "all_proxy").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetTls(ctx *pulumi.Context) string {
-	return config.Get(ctx, "mysql:tls")
+	v, err := config.Try(ctx, "mysql:tls")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("false", nil, "MYSQL_TLS_CONFIG").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetUsername(ctx *pulumi.Context) string {
-	return config.Get(ctx, "mysql:username")
+	v, err := config.Try(ctx, "mysql:username")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "MYSQL_USERNAME").(string); ok {
+		return dv
+	}
+	return v
 }

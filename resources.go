@@ -64,14 +64,41 @@ func Provider() tfbridge.ProviderInfo {
 	p := mysql.Provider().(*schema.Provider)
 
 	prov := tfbridge.ProviderInfo{
-		P:                    p,
-		Name:                 "mysql",
-		Description:          "A Pulumi package for creating and managing mysql cloud resources.",
-		Keywords:             []string{"pulumi", "mysql"},
-		License:              "Apache-2.0",
-		Homepage:             "https://pulumi.io",
-		Repository:           "https://github.com/pulumi/pulumi-mysql",
-		Config:               map[string]*tfbridge.SchemaInfo{},
+		P:           p,
+		Name:        "mysql",
+		Description: "A Pulumi package for creating and managing mysql cloud resources.",
+		Keywords:    []string{"pulumi", "mysql"},
+		License:     "Apache-2.0",
+		Homepage:    "https://pulumi.io",
+		Repository:  "https://github.com/pulumi/pulumi-mysql",
+		Config: map[string]*tfbridge.SchemaInfo{
+			"endpoint": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"MYSQL_ENDPOINT"},
+				},
+			},
+			"username": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"MYSQL_USERNAME"},
+				},
+			},
+			"password": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"MYSQL_PASSWORD"},
+				},
+			},
+			"proxy": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ALL_PROXY", "all_proxy"},
+				},
+			},
+			"tls": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"MYSQL_TLS_CONFIG"},
+					Value:   "false",
+				},
+			},
+		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"mysql_database": {Tok: makeResource(mainMod, "Database")},
@@ -113,7 +140,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.5.0-*",
+				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

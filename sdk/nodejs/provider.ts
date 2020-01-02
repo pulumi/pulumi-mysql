@@ -35,23 +35,17 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            if (!args || args.endpoint === undefined) {
-                throw new Error("Missing required property 'endpoint'");
-            }
-            if (!args || args.username === undefined) {
-                throw new Error("Missing required property 'username'");
-            }
             inputs["authenticationPlugin"] = args ? args.authenticationPlugin : undefined;
-            inputs["endpoint"] = args ? args.endpoint : undefined;
+            inputs["endpoint"] = (args ? args.endpoint : undefined) || utilities.getEnv("MYSQL_ENDPOINT");
             inputs["maxConnLifetimeSec"] = pulumi.output(args ? args.maxConnLifetimeSec : undefined).apply(JSON.stringify);
             inputs["maxOpenConns"] = pulumi.output(args ? args.maxOpenConns : undefined).apply(JSON.stringify);
-            inputs["password"] = args ? args.password : undefined;
-            inputs["proxy"] = args ? args.proxy : undefined;
-            inputs["tls"] = args ? args.tls : undefined;
-            inputs["username"] = args ? args.username : undefined;
+            inputs["password"] = (args ? args.password : undefined) || utilities.getEnv("MYSQL_PASSWORD");
+            inputs["proxy"] = (args ? args.proxy : undefined) || utilities.getEnv("ALL_PROXY", "all_proxy");
+            inputs["tls"] = (args ? args.tls : undefined) || (utilities.getEnv("MYSQL_TLS_CONFIG") || "false");
+            inputs["username"] = (args ? args.username : undefined) || utilities.getEnv("MYSQL_USERNAME");
         }
         if (!opts) {
             opts = {}
@@ -69,11 +63,11 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     readonly authenticationPlugin?: pulumi.Input<string>;
-    readonly endpoint: pulumi.Input<string>;
+    readonly endpoint?: pulumi.Input<string>;
     readonly maxConnLifetimeSec?: pulumi.Input<number>;
     readonly maxOpenConns?: pulumi.Input<number>;
     readonly password?: pulumi.Input<string>;
     readonly proxy?: pulumi.Input<string>;
     readonly tls?: pulumi.Input<string>;
-    readonly username: pulumi.Input<string>;
+    readonly username?: pulumi.Input<string>;
 }

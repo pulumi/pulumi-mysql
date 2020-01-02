@@ -35,10 +35,13 @@ To use from Go, use `go get` to grab the latest version of the library
 
 The following configuration points are available:
 
-- `mysql:endpoint` (required) - The address of the MySQL server to use. Most often a "hostname:port" pair, but may also be an absolute path to a Unix socket when the host OS is Unix-compatible.
-- `mysql:username` (required) - Username to use to authenticate with the server.
-- `mysql:password` - Password for the given user, if that user has a password.
-- `mysql:tls` - The TLS configuration. One of false, true, or skip-verify. Defaults to false.
+- `mysql:endpoint` (required) - The address of the MySQL server to use. Most often a "hostname:port" pair, but may also
+  be an absolute path to a Unix socket when the host OS is Unix-compatible. Can be set via `MYSQL_ENDPOINT` environment variable.
+- `mysql:username` (required) - Username to use to authenticate with the server. Can be set via `MYSQL_USERNAME` environment variable.
+- `mysql:password` - (optional) Password for the given user, if that user has a password. Can be set via `MYSQL_PASSWORD` environment variable.
+- `mysql:tls` - (optional) The TLS configuration. One of false, true, or skip-verify. Defaults to `false`. Can be set via
+  `MYSQL_TLS_CONFIG` environment variable.
+- `mysql:proxy` - (Optional) Proxy socks url, can also be sourced from `ALL_PROXY` or `all_proxy` environment variables.
 
 ## Reference
 
