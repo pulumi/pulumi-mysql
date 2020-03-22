@@ -148,6 +148,8 @@ export interface UserState {
     readonly host?: pulumi.Input<string>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+     * 
+     * @deprecated Please use plaintext_password instead
      */
     readonly password?: pulumi.Input<string>;
     /**
@@ -178,6 +180,8 @@ export interface UserArgs {
     readonly host?: pulumi.Input<string>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+     * 
+     * @deprecated Please use plaintext_password instead
      */
     readonly password?: pulumi.Input<string>;
     /**

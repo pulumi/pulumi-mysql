@@ -33,14 +33,11 @@ class UserPassword(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, host=None, pgp_key=None, user=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a UserPassword resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host: The source host of the user. Defaults to `localhost`.
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
         :param pulumi.Input[str] user: The IAM user to associate with this access key.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/user_password.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -79,7 +76,7 @@ class UserPassword(pulumi.CustomResource):
         """
         Get an existing UserPassword resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,12 +85,11 @@ class UserPassword(pulumi.CustomResource):
         :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the password 
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
         :param pulumi.Input[str] user: The IAM user to associate with this access key.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/user_password.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["encrypted_password"] = encrypted_password
         __props__["host"] = host
         __props__["key_fingerprint"] = key_fingerprint

@@ -33,13 +33,15 @@ class Database(pulumi.CustomResource):
         """
         The ``.Database`` resource creates and manages a database on a MySQL
         server.
-        
+
         > **Caution:** The ``.Database`` resource can completely delete your
         database just as easily as it can create it. To avoid costly accidents,
         consider setting
         [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
         on your database resources as an extra safety measure.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_character_set: The default character set to use when
@@ -52,8 +54,6 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -86,7 +86,7 @@ class Database(pulumi.CustomResource):
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -100,12 +100,11 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["default_character_set"] = default_character_set
         __props__["default_collation"] = default_collation
         __props__["name"] = name

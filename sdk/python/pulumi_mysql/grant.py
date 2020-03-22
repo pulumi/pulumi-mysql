@@ -50,7 +50,9 @@ class Grant(pulumi.CustomResource):
         """
         The ``.Grant`` resource creates and manages privileges given to
         a user on a MySQL server.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on.
@@ -62,8 +64,6 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] table: Which table to grant `privileges` on. Defaults to `*`, which is all tables.
         :param pulumi.Input[str] tls_option: An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
         :param pulumi.Input[str] user: The name of the user. Conflicts with `role`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -104,7 +104,7 @@ class Grant(pulumi.CustomResource):
         """
         Get an existing Grant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -117,12 +117,11 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] table: Which table to grant `privileges` on. Defaults to `*`, which is all tables.
         :param pulumi.Input[str] tls_option: An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
         :param pulumi.Input[str] user: The name of the user. Conflicts with `role`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["database"] = database
         __props__["grant"] = grant
         __props__["host"] = host
