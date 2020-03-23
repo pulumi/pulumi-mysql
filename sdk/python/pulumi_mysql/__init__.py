@@ -12,7 +12,7 @@ for pkg in __all__:
 # Export this package's modules as members:
 from .database import *
 from .grant import *
+from .provider import *
 from .role import *
 from .user import *
 from .user_password import *
-from .provider import *
