@@ -23,7 +23,7 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
+	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin pulumi.StringPtrOutput `pulumi:"authPlugin"`
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrOutput `pulumi:"host"`
@@ -68,7 +68,7 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
+	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin *string `pulumi:"authPlugin"`
 	// The source host of the user. Defaults to "localhost".
 	Host *string `pulumi:"host"`
@@ -83,7 +83,7 @@ type userState struct {
 }
 
 type UserState struct {
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
+	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin pulumi.StringPtrInput
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrInput
@@ -102,7 +102,7 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
+	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin *string `pulumi:"authPlugin"`
 	// The source host of the user. Defaults to "localhost".
 	Host *string `pulumi:"host"`
@@ -118,7 +118,7 @@ type userArgs struct {
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
+	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin pulumi.StringPtrInput
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrInput
@@ -135,4 +135,3 @@ type UserArgs struct {
 func (UserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userArgs)(nil)).Elem()
 }
-

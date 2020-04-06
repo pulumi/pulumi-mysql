@@ -12,15 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//go:generate go run ./generate.go
+
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 
-	mysql "github.com/pulumi/pulumi-mysql"
-	"github.com/pulumi/pulumi-mysql/pkg/version"
+	mysql "github.com/pulumi/pulumi-mysql/provider"
+	"github.com/pulumi/pulumi-mysql/provider/pkg/version"
 )
 
 func main() {
-	tfgen.Main("mysql", version.Version, mysql.Provider())
+	// Modify the path to point to the new provider
+	tfbridge.Main("mysql", version.Version, mysql.Provider(), pulumiSchema)
 }
