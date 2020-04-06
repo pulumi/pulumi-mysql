@@ -18,7 +18,7 @@ type UserPassword struct {
 	EncryptedPassword pulumi.StringOutput `pulumi:"encryptedPassword"`
 	// The source host of the user. Defaults to `localhost`.
 	Host pulumi.StringPtrOutput `pulumi:"host"`
-	// The fingerprint of the PGP key used to encrypt the password 
+	// The fingerprint of the PGP key used to encrypt the password
 	KeyFingerprint pulumi.StringOutput `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
 	PgpKey pulumi.StringOutput `pulumi:"pgpKey"`
@@ -64,7 +64,7 @@ type userPasswordState struct {
 	EncryptedPassword *string `pulumi:"encryptedPassword"`
 	// The source host of the user. Defaults to `localhost`.
 	Host *string `pulumi:"host"`
-	// The fingerprint of the PGP key used to encrypt the password 
+	// The fingerprint of the PGP key used to encrypt the password
 	KeyFingerprint *string `pulumi:"keyFingerprint"`
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
 	PgpKey *string `pulumi:"pgpKey"`
@@ -77,7 +77,7 @@ type UserPasswordState struct {
 	EncryptedPassword pulumi.StringPtrInput
 	// The source host of the user. Defaults to `localhost`.
 	Host pulumi.StringPtrInput
-	// The fingerprint of the PGP key used to encrypt the password 
+	// The fingerprint of the PGP key used to encrypt the password
 	KeyFingerprint pulumi.StringPtrInput
 	// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
 	PgpKey pulumi.StringPtrInput
@@ -111,4 +111,3 @@ type UserPasswordArgs struct {
 func (UserPasswordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPasswordArgs)(nil)).Elem()
 }
-
