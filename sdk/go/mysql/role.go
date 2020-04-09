@@ -7,13 +7,15 @@ package mysql
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The ``.Role`` resource creates and manages a user on a MySQL
 // server.
 //
 // > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/role.html.markdown.
 type Role struct {

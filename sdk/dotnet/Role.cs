@@ -15,6 +15,8 @@ namespace Pulumi.MySql
     /// 
     /// &gt; **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/role.html.markdown.
     /// </summary>
     public partial class Role : Pulumi.CustomResource

@@ -21,6 +21,8 @@ class Role(pulumi.CustomResource):
 
         > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/role.html.markdown.
 
         :param str resource_name: The name of the resource.

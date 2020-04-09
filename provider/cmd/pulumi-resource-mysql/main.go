@@ -17,10 +17,9 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-
-	mysql "github.com/pulumi/pulumi-mysql/provider"
-	"github.com/pulumi/pulumi-mysql/provider/pkg/version"
+	mysql "github.com/pulumi/pulumi-mysql/provider/v2"
+	"github.com/pulumi/pulumi-mysql/provider/v2/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 )
 
 func main() {

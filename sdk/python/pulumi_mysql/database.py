@@ -40,6 +40,8 @@ class Database(pulumi.CustomResource):
         [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
         on your database resources as an extra safety measure.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
 
         :param str resource_name: The name of the resource.

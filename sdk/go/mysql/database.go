@@ -7,7 +7,7 @@ package mysql
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // The ``.Database`` resource creates and manages a database on a MySQL
@@ -18,6 +18,8 @@ import (
 // consider setting
 // [``preventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
 // on your database resources as an extra safety measure.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
 type Database struct {
