@@ -14,8 +14,6 @@ namespace Pulumi.MySql
     /// server.
     /// 
     /// &gt; **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/role.html.markdown.
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {
@@ -34,7 +32,7 @@ namespace Pulumi.MySql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Role(string name, RoleArgs? args = null, CustomResourceOptions? options = null)
-            : base("mysql:index/role:Role", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("mysql:index/role:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

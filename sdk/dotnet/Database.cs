@@ -18,8 +18,6 @@ namespace Pulumi.MySql
     /// consider setting
     /// [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
     /// on your database resources as an extra safety measure.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/database.html.markdown.
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
@@ -57,7 +55,7 @@ namespace Pulumi.MySql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Database(string name, DatabaseArgs? args = null, CustomResourceOptions? options = null)
-            : base("mysql:index/database:Database", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("mysql:index/database:Database", name, args ?? new DatabaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 

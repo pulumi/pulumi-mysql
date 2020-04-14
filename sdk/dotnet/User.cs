@@ -17,8 +17,6 @@ namespace Pulumi.MySql
     /// obscured by an unsalted hash in the state
     /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// Care is required when using this resource, to avoid disclosing the password.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/user.html.markdown.
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {
@@ -67,7 +65,7 @@ namespace Pulumi.MySql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public User(string name, UserArgs args, CustomResourceOptions? options = null)
-            : base("mysql:index/user:User", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("mysql:index/user:User", name, args ?? new UserArgs(), MakeResourceOptions(options, ""))
         {
         }
 

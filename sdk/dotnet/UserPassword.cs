@@ -50,7 +50,7 @@ namespace Pulumi.MySql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public UserPassword(string name, UserPasswordArgs args, CustomResourceOptions? options = null)
-            : base("mysql:index/userPassword:UserPassword", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("mysql:index/userPassword:UserPassword", name, args ?? new UserPasswordArgs(), MakeResourceOptions(options, ""))
         {
         }
 

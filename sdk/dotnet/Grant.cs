@@ -12,8 +12,6 @@ namespace Pulumi.MySql
     /// <summary>
     /// The ``mysql..Grant`` resource creates and manages privileges given to
     /// a user on a MySQL server.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.
     /// </summary>
     public partial class Grant : Pulumi.CustomResource
     {
@@ -80,7 +78,7 @@ namespace Pulumi.MySql
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Grant(string name, GrantArgs args, CustomResourceOptions? options = null)
-            : base("mysql:index/grant:Grant", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("mysql:index/grant:Grant", name, args ?? new GrantArgs(), MakeResourceOptions(options, ""))
         {
         }
 

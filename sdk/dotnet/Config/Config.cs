@@ -8,7 +8,6 @@ namespace Pulumi.MySql
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("mysql");
-
         public static string? AuthenticationPlugin { get; set; } = __config.Get("authenticationPlugin");
 
         public static string? Endpoint { get; set; } = __config.Get("endpoint") ?? Utilities.GetEnv("MYSQL_ENDPOINT");
@@ -25,8 +24,5 @@ namespace Pulumi.MySql
 
         public static string? Username { get; set; } = __config.Get("username") ?? Utilities.GetEnv("MYSQL_USERNAME");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }
