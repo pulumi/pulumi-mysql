@@ -4,13 +4,10 @@
 
 _SNAKE_TO_CAMEL_CASE_TABLE = {
     "auth_plugin": "authPlugin",
-    "authentication_plugin": "authenticationPlugin",
     "default_character_set": "defaultCharacterSet",
     "default_collation": "defaultCollation",
     "encrypted_password": "encryptedPassword",
     "key_fingerprint": "keyFingerprint",
-    "max_conn_lifetime_sec": "maxConnLifetimeSec",
-    "max_open_conns": "maxOpenConns",
     "pgp_key": "pgpKey",
     "plaintext_password": "plaintextPassword",
     "tls_option": "tlsOption",
@@ -18,13 +15,10 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
     "authPlugin": "auth_plugin",
-    "authenticationPlugin": "authentication_plugin",
     "defaultCharacterSet": "default_character_set",
     "defaultCollation": "default_collation",
     "encryptedPassword": "encrypted_password",
     "keyFingerprint": "key_fingerprint",
-    "maxConnLifetimeSec": "max_conn_lifetime_sec",
-    "maxOpenConns": "max_open_conns",
     "pgpKey": "pgp_key",
     "plaintextPassword": "plaintext_password",
     "tlsOption": "tls_option",

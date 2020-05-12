@@ -51,6 +51,60 @@ class Grant(pulumi.CustomResource):
         The ``.Grant`` resource creates and manages privileges given to
         a user on a MySQL server.
 
+        ## Granting Privileges to a User
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        jdoe_user = mysql.User("jdoeUser",
+            host="example.com",
+            plaintext_password="password",
+            user="jdoe")
+        jdoe_grant = mysql.Grant("jdoeGrant",
+            database="app",
+            host=jdoe_user.host,
+            privileges=[
+                "SELECT",
+                "UPDATE",
+            ],
+            user=jdoe_user.user)
+        ```
+
+        ## Granting Privileges to a Role
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        developer_role = mysql.Role("developerRole")
+        developer_grant = mysql.Grant("developerGrant",
+            database="app",
+            privileges=[
+                "SELECT",
+                "UPDATE",
+            ],
+            role=developer_role.name)
+        ```
+
+        ## Adding a Role to a User
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        jdoe = mysql.User("jdoe",
+            host="example.com",
+            plaintext_password="password",
+            user="jdoe")
+        developer_role = mysql.Role("developerRole")
+        developer_grant = mysql.Grant("developerGrant",
+            database="app",
+            host=jdoe.host,
+            roles=[developer_role.name],
+            user=jdoe.user)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on.

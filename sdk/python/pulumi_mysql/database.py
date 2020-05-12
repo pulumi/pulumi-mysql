@@ -40,6 +40,16 @@ class Database(pulumi.CustomResource):
         [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
         on your database resources as an extra safety measure.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        app = mysql.Database("app")
+        ```
 
 
         :param str resource_name: The name of the resource.
