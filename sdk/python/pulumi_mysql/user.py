@@ -44,7 +44,31 @@ class User(pulumi.CustomResource):
         [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
         Care is required when using this resource, to avoid disclosing the password.
 
+        ## Example Usage
 
+
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        jdoe = mysql.User("jdoe",
+            host="example.com",
+            plaintext_password="password",
+            user="jdoe")
+        ```
+
+        ## Example Usage with an Authentication Plugin
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        nologin = mysql.User("nologin",
+            auth_plugin="mysql_no_login",
+            host="example.com",
+            user="nologin")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

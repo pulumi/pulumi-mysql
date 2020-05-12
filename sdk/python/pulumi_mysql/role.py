@@ -21,6 +21,16 @@ class Role(pulumi.CustomResource):
 
         > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        developer = mysql.Role("developer")
+        ```
 
 
         :param str resource_name: The name of the resource.
