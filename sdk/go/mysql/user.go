@@ -25,6 +25,8 @@ type User struct {
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrOutput `pulumi:"host"`
 	// Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+	//
+	// Deprecated: Please use plaintext_password instead
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrOutput `pulumi:"plaintextPassword"`
@@ -70,6 +72,8 @@ type userState struct {
 	// The source host of the user. Defaults to "localhost".
 	Host *string `pulumi:"host"`
 	// Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+	//
+	// Deprecated: Please use plaintext_password instead
 	Password *string `pulumi:"password"`
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword *string `pulumi:"plaintextPassword"`
@@ -85,6 +89,8 @@ type UserState struct {
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrInput
 	// Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+	//
+	// Deprecated: Please use plaintext_password instead
 	Password pulumi.StringPtrInput
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrInput
@@ -104,6 +110,8 @@ type userArgs struct {
 	// The source host of the user. Defaults to "localhost".
 	Host *string `pulumi:"host"`
 	// Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+	//
+	// Deprecated: Please use plaintext_password instead
 	Password *string `pulumi:"password"`
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword *string `pulumi:"plaintextPassword"`
@@ -120,6 +128,8 @@ type UserArgs struct {
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrInput
 	// Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+	//
+	// Deprecated: Please use plaintext_password instead
 	Password pulumi.StringPtrInput
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrInput
