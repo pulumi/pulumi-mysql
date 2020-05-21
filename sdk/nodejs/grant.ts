@@ -7,13 +7,13 @@ import * as utilities from "./utilities";
 /**
  * The ``mysql..Grant`` resource creates and manages privileges given to
  * a user on a MySQL server.
- * 
+ *
  * ## Granting Privileges to a User
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
- * 
+ *
  * const jdoeUser = new mysql.User("jdoe", {
  *     host: "example.com",
  *     plaintextPassword: "password",
@@ -29,13 +29,13 @@ import * as utilities from "./utilities";
  *     user: jdoeUser.user,
  * });
  * ```
- * 
+ *
  * ## Granting Privileges to a Role
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
- * 
+ *
  * const developerRole = new mysql.Role("developer", {});
  * const developerGrant = new mysql.Grant("developer", {
  *     database: "app",
@@ -46,13 +46,13 @@ import * as utilities from "./utilities";
  *     role: developerRole.name,
  * });
  * ```
- * 
+ *
  * ## Adding a Role to a User
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
- * 
+ *
  * const jdoe = new mysql.User("jdoe", {
  *     host: "example.com",
  *     plaintextPassword: "password",
@@ -66,8 +66,6 @@ import * as utilities from "./utilities";
  *     user: jdoe.user,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/grant.html.markdown.
  */
 export class Grant extends pulumi.CustomResource {
     /**

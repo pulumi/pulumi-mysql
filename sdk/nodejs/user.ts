@@ -7,41 +7,39 @@ import * as utilities from "./utilities";
 /**
  * The ``mysql..User`` resource creates and manages a user on a MySQL
  * server.
- * 
+ *
  * > **Note:** The password for the user is provided in plain text, and is
  * obscured by an unsalted hash in the state
  * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  * Care is required when using this resource, to avoid disclosing the password.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
- * 
+ *
  * const jdoe = new mysql.User("jdoe", {
  *     host: "example.com",
  *     plaintextPassword: "password",
  *     user: "jdoe",
  * });
  * ```
- * 
+ *
  * ## Example Usage with an Authentication Plugin
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
- * 
+ *
  * const nologin = new mysql.User("nologin", {
  *     authPlugin: "mysqlNoLogin",
  *     host: "example.com",
  *     user: "nologin",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-mysql/blob/master/website/docs/r/user.html.markdown.
  */
 export class User extends pulumi.CustomResource {
     /**
@@ -150,7 +148,6 @@ export interface UserState {
     readonly host?: pulumi.Input<string>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
-     * 
      * @deprecated Please use plaintext_password instead
      */
     readonly password?: pulumi.Input<string>;
@@ -182,7 +179,6 @@ export interface UserArgs {
     readonly host?: pulumi.Input<string>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
-     * 
      * @deprecated Please use plaintext_password instead
      */
     readonly password?: pulumi.Input<string>;
