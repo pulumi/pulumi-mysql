@@ -12,6 +12,100 @@ namespace Pulumi.MySql
     /// <summary>
     /// The ``mysql..Grant`` resource creates and manages privileges given to
     /// a user on a MySQL server.
+    /// 
+    /// ## Granting Privileges to a User
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var jdoeUser = new MySql.User("jdoeUser", new MySql.UserArgs
+    ///         {
+    ///             Host = "example.com",
+    ///             PlaintextPassword = "password",
+    ///             User = "jdoe",
+    ///         });
+    ///         var jdoeGrant = new MySql.Grant("jdoeGrant", new MySql.GrantArgs
+    ///         {
+    ///             Database = "app",
+    ///             Host = jdoeUser.Host,
+    ///             Privileges = 
+    ///             {
+    ///                 "SELECT",
+    ///                 "UPDATE",
+    ///             },
+    ///             User = jdoeUser.UserName,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Granting Privileges to a Role
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var developerRole = new MySql.Role("developerRole", new MySql.RoleArgs
+    ///         {
+    ///         });
+    ///         var developerGrant = new MySql.Grant("developerGrant", new MySql.GrantArgs
+    ///         {
+    ///             Database = "app",
+    ///             Privileges = 
+    ///             {
+    ///                 "SELECT",
+    ///                 "UPDATE",
+    ///             },
+    ///             Role = developerRole.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Adding a Role to a User
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var jdoe = new MySql.User("jdoe", new MySql.UserArgs
+    ///         {
+    ///             Host = "example.com",
+    ///             PlaintextPassword = "password",
+    ///             User = "jdoe",
+    ///         });
+    ///         var developerRole = new MySql.Role("developerRole", new MySql.RoleArgs
+    ///         {
+    ///         });
+    ///         var developerGrant = new MySql.Grant("developerGrant", new MySql.GrantArgs
+    ///         {
+    ///             Database = "app",
+    ///             Host = jdoe.Host,
+    ///             Roles = 
+    ///             {
+    ///                 developerRole.Name,
+    ///             },
+    ///             User = jdoe.UserName,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Grant : Pulumi.CustomResource
     {

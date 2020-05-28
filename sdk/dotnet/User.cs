@@ -17,6 +17,50 @@ namespace Pulumi.MySql
     /// obscured by an unsalted hash in the state
     /// [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// Care is required when using this resource, to avoid disclosing the password.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var jdoe = new MySql.User("jdoe", new MySql.UserArgs
+    ///         {
+    ///             Host = "example.com",
+    ///             PlaintextPassword = "password",
+    ///             User = "jdoe",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Example Usage with an Authentication Plugin
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var nologin = new MySql.User("nologin", new MySql.UserArgs
+    ///         {
+    ///             AuthPlugin = "mysql_no_login",
+    ///             Host = "example.com",
+    ///             User = "nologin",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {

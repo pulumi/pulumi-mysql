@@ -18,6 +18,26 @@ namespace Pulumi.MySql
     /// consider setting
     /// [``prevent_destroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
     /// on your database resources as an extra safety measure.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var app = new MySql.Database("app", new MySql.DatabaseArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

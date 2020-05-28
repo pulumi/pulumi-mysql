@@ -14,6 +14,26 @@ namespace Pulumi.MySql
     /// server.
     /// 
     /// &gt; **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var developer = new MySql.Role("developer", new MySql.RoleArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Role : Pulumi.CustomResource
     {
