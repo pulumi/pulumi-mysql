@@ -9,14 +9,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ``.Database`` resource creates and manages a database on a MySQL
+// The ``Database`` resource creates and manages a database on a MySQL
 // server.
 //
-// > **Caution:** The ``.Database`` resource can completely delete your
+// > **Caution:** The ``Database`` resource can completely delete your
 // database just as easily as it can create it. To avoid costly accidents,
 // consider setting
 // [``preventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
 // on your database resources as an extra safety measure.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-mysql/sdk/v2/go/mysql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := mysql.NewDatabase(ctx, "app", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Database struct {
 	pulumi.CustomResourceState
 

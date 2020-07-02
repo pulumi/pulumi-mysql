@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``mysql..User`` resource creates and manages a user on a MySQL
+ * The ``mysql.User`` resource creates and manages a user on a MySQL
  * server.
  *
  * > **Note:** The password for the user is provided in plain text, and is
@@ -14,8 +14,6 @@ import * as utilities from "./utilities";
  * Care is required when using this resource, to avoid disclosing the password.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,15 +25,14 @@ import * as utilities from "./utilities";
  *     user: "jdoe",
  * });
  * ```
- *
- * ## Example Usage with an Authentication Plugin
+ * ### With An Authentication Plugin
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
  * const nologin = new mysql.User("nologin", {
- *     authPlugin: "mysqlNoLogin",
+ *     authPlugin: "mysql_no_login",
  *     host: "example.com",
  *     user: "nologin",
  * });
@@ -49,6 +46,7 @@ export class User extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: UserState, opts?: pulumi.CustomResourceOptions): User {
         return new User(name, <any>state, { ...opts, id: id });
@@ -69,7 +67,7 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
+     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
      */
     public readonly authPlugin!: pulumi.Output<string | undefined>;
     /**
@@ -78,6 +76,8 @@ export class User extends pulumi.CustomResource {
     public readonly host!: pulumi.Output<string | undefined>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+     *
+     * @deprecated Please use plaintext_password instead
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -139,7 +139,7 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
+     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
      */
     readonly authPlugin?: pulumi.Input<string>;
     /**
@@ -148,6 +148,7 @@ export interface UserState {
     readonly host?: pulumi.Input<string>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+     *
      * @deprecated Please use plaintext_password instead
      */
     readonly password?: pulumi.Input<string>;
@@ -170,7 +171,7 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.  
+     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
      */
     readonly authPlugin?: pulumi.Input<string>;
     /**
@@ -179,6 +180,7 @@ export interface UserArgs {
     readonly host?: pulumi.Input<string>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
+     *
      * @deprecated Please use plaintext_password instead
      */
     readonly password?: pulumi.Input<string>;

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``mysql..Grant`` resource creates and manages privileges given to
+ * The ``mysql.Grant`` resource creates and manages privileges given to
  * a user on a MySQL server.
  *
  * ## Granting Privileges to a User
@@ -75,6 +75,7 @@ export class Grant extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GrantState, opts?: pulumi.CustomResourceOptions): Grant {
         return new Grant(name, <any>state, { ...opts, id: id });

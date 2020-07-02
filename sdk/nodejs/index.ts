@@ -10,5 +10,5 @@ export * from "./user";
 export * from "./userPassword";
 
 // Export sub-modules:
-import * as config from "./config/index";
+import * as config from "./config";
 export {config};

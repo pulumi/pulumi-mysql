@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.MySql
 {
     /// <summary>
-    /// The ``mysql..User`` resource creates and manages a user on a MySQL
+    /// The ``mysql.User`` resource creates and manages a user on a MySQL
     /// server.
     /// 
     /// &gt; **Note:** The password for the user is provided in plain text, and is
@@ -19,8 +19,6 @@ namespace Pulumi.MySql
     /// Care is required when using this resource, to avoid disclosing the password.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -40,8 +38,7 @@ namespace Pulumi.MySql
     /// 
     /// }
     /// ```
-    /// 
-    /// ## Example Usage with an Authentication Plugin
+    /// ### With An Authentication Plugin
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -65,7 +62,7 @@ namespace Pulumi.MySql
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.  
+        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         /// </summary>
         [Output("authPlugin")]
         public Output<string?> AuthPlugin { get; private set; } = null!;
@@ -147,7 +144,7 @@ namespace Pulumi.MySql
     public sealed class UserArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.  
+        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         /// </summary>
         [Input("authPlugin")]
         public Input<string>? AuthPlugin { get; set; }
@@ -190,7 +187,7 @@ namespace Pulumi.MySql
     public sealed class UserState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.  
+        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         /// </summary>
         [Input("authPlugin")]
         public Input<string>? AuthPlugin { get; set; }

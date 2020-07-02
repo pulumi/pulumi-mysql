@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.MySql
 {
     /// <summary>
-    /// The ``mysql..Grant`` resource creates and manages privileges given to
+    /// The ``mysql.Grant`` resource creates and manages privileges given to
     /// a user on a MySQL server.
     /// 
     /// ## Granting Privileges to a User

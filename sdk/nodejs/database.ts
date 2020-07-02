@@ -5,18 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The ``mysql..Database`` resource creates and manages a database on a MySQL
+ * The ``mysql.Database`` resource creates and manages a database on a MySQL
  * server.
  *
- * > **Caution:** The ``mysql..Database`` resource can completely delete your
+ * > **Caution:** The ``mysql.Database`` resource can completely delete your
  * database just as easily as it can create it. To avoid costly accidents,
  * consider setting
  * [``preventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
  * on your database resources as an extra safety measure.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -33,6 +31,7 @@ export class Database extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseState, opts?: pulumi.CustomResourceOptions): Database {
         return new Database(name, <any>state, { ...opts, id: id });

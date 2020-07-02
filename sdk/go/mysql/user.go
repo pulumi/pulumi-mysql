@@ -10,13 +10,62 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// The ``.User`` resource creates and manages a user on a MySQL
+// The ``User`` resource creates and manages a user on a MySQL
 // server.
 //
 // > **Note:** The password for the user is provided in plain text, and is
 // obscured by an unsalted hash in the state
 // [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 // Care is required when using this resource, to avoid disclosing the password.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-mysql/sdk/v2/go/mysql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
+// 			Host:              pulumi.String("example.com"),
+// 			PlaintextPassword: pulumi.String("password"),
+// 			User:              pulumi.String("jdoe"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### With An Authentication Plugin
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-mysql/sdk/v2/go/mysql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := mysql.NewUser(ctx, "nologin", &mysql.UserArgs{
+// 			AuthPlugin: pulumi.String("mysql_no_login"),
+// 			Host:       pulumi.String("example.com"),
+// 			User:       pulumi.String("nologin"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
