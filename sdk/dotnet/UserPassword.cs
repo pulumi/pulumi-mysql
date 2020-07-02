@@ -24,7 +24,7 @@ namespace Pulumi.MySql
         public Output<string?> Host { get; private set; } = null!;
 
         /// <summary>
-        /// The fingerprint of the PGP key used to encrypt the password 
+        /// The fingerprint of the PGP key used to encrypt the password
         /// </summary>
         [Output("keyFingerprint")]
         public Output<string> KeyFingerprint { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.MySql
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The fingerprint of the PGP key used to encrypt the password 
+        /// The fingerprint of the PGP key used to encrypt the password
         /// </summary>
         [Input("keyFingerprint")]
         public Input<string>? KeyFingerprint { get; set; }
