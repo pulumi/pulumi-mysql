@@ -9,3 +9,8 @@ from .provider import *
 from .role import *
 from .user import *
 from .user_password import *
+
+# Make subpackages available:
+from . import (
+    config,
+)
