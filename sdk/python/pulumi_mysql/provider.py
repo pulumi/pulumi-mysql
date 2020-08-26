@@ -6,12 +6,27 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, authentication_plugin=None, endpoint=None, max_conn_lifetime_sec=None, max_open_conns=None, password=None, proxy=None, tls=None, username=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authentication_plugin: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 max_conn_lifetime_sec: Optional[pulumi.Input[float]] = None,
+                 max_open_conns: Optional[pulumi.Input[float]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 proxy: Optional[pulumi.Input[str]] = None,
+                 tls: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the mysql package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -32,7 +47,7 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -40,21 +55,21 @@ class Provider(pulumi.ProviderResource):
 
             __props__['authentication_plugin'] = authentication_plugin
             if endpoint is None:
-                endpoint = utilities.get_env('MYSQL_ENDPOINT')
+                endpoint = _utilities.get_env('MYSQL_ENDPOINT')
             __props__['endpoint'] = endpoint
             __props__['max_conn_lifetime_sec'] = pulumi.Output.from_input(max_conn_lifetime_sec).apply(json.dumps) if max_conn_lifetime_sec is not None else None
             __props__['max_open_conns'] = pulumi.Output.from_input(max_open_conns).apply(json.dumps) if max_open_conns is not None else None
             if password is None:
-                password = utilities.get_env('MYSQL_PASSWORD')
+                password = _utilities.get_env('MYSQL_PASSWORD')
             __props__['password'] = password
             if proxy is None:
-                proxy = utilities.get_env('ALL_PROXY', 'all_proxy')
+                proxy = _utilities.get_env('ALL_PROXY', 'all_proxy')
             __props__['proxy'] = proxy
             if tls is None:
-                tls = (utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
+                tls = (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
             __props__['tls'] = tls
             if username is None:
-                username = utilities.get_env('MYSQL_USERNAME')
+                username = _utilities.get_env('MYSQL_USERNAME')
             __props__['username'] = username
         super(Provider, __self__).__init__(
             'mysql',
@@ -63,7 +78,8 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
