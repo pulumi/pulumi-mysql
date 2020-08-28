@@ -13,7 +13,7 @@ __all__ = ['UserPassword']
 
 class UserPassword(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  pgp_key: Optional[pulumi.Input[str]] = None,
@@ -96,7 +96,7 @@ class UserPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="encryptedPassword")
-    def encrypted_password(self) -> str:
+    def encrypted_password(self) -> pulumi.Output[str]:
         """
         The encrypted password, base64 encoded.
         """
@@ -104,7 +104,7 @@ class UserPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[str]:
+    def host(self) -> pulumi.Output[Optional[str]]:
         """
         The source host of the user. Defaults to `localhost`.
         """
@@ -112,7 +112,7 @@ class UserPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyFingerprint")
-    def key_fingerprint(self) -> str:
+    def key_fingerprint(self) -> pulumi.Output[str]:
         """
         The fingerprint of the PGP key used to encrypt the password
         """
@@ -120,7 +120,7 @@ class UserPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pgpKey")
-    def pgp_key(self) -> str:
+    def pgp_key(self) -> pulumi.Output[str]:
         """
         Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
         """
@@ -128,7 +128,7 @@ class UserPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> str:
+    def user(self) -> pulumi.Output[str]:
         """
         The IAM user to associate with this access key.
         """

@@ -13,7 +13,7 @@ __all__ = ['Database']
 
 class Database(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_character_set: Optional[pulumi.Input[str]] = None,
                  default_collation: Optional[pulumi.Input[str]] = None,
@@ -115,7 +115,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultCharacterSet")
-    def default_character_set(self) -> Optional[str]:
+    def default_character_set(self) -> pulumi.Output[Optional[str]]:
         """
         The default character set to use when
         a table is created without specifying an explicit character set. Defaults
@@ -125,7 +125,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultCollation")
-    def default_collation(self) -> Optional[str]:
+    def default_collation(self) -> pulumi.Output[Optional[str]]:
         """
         The default collation to use when a table
         is created without specifying an explicit collation. Defaults to
@@ -136,7 +136,7 @@ class Database(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the database. This must be unique within
         a given MySQL server and may or may not be case-sensitive depending on

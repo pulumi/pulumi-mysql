@@ -13,7 +13,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auth_plugin: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authPlugin")
-    def auth_plugin(self) -> Optional[str]:
+    def auth_plugin(self) -> pulumi.Output[Optional[str]]:
         """
         Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         """
@@ -145,7 +145,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[str]:
+    def host(self) -> pulumi.Output[Optional[str]]:
         """
         The source host of the user. Defaults to "localhost".
         """
@@ -153,7 +153,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
         """
@@ -161,7 +161,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="plaintextPassword")
-    def plaintext_password(self) -> Optional[str]:
+    def plaintext_password(self) -> pulumi.Output[Optional[str]]:
         """
         The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         """
@@ -169,7 +169,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tlsOption")
-    def tls_option(self) -> Optional[str]:
+    def tls_option(self) -> pulumi.Output[Optional[str]]:
         """
         An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
         """
@@ -177,7 +177,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> str:
+    def user(self) -> pulumi.Output[str]:
         """
         The name of the user.
         """
