@@ -13,7 +13,7 @@ __all__ = ['Grant']
 
 class Grant(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  grant: Optional[pulumi.Input[bool]] = None,
@@ -178,7 +178,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
+    def database(self) -> pulumi.Output[str]:
         """
         The database to grant privileges on.
         """
@@ -186,7 +186,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def grant(self) -> Optional[bool]:
+    def grant(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to also give the user privileges to grant the same privileges to other users.
         """
@@ -194,7 +194,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[str]:
+    def host(self) -> pulumi.Output[Optional[str]]:
         """
         The source host of the user. Defaults to "localhost". Conflicts with `role`.
         """
@@ -202,7 +202,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def privileges(self) -> Optional[List[str]]:
+    def privileges(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
         """
@@ -210,7 +210,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def role(self) -> Optional[str]:
+    def role(self) -> pulumi.Output[Optional[str]]:
         """
         The role to grant `privileges` to. Conflicts with `user` and `host`.
         """
@@ -218,7 +218,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> Optional[List[str]]:
+    def roles(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of rols to grant to the user. Conflicts with `privileges`.
         """
@@ -226,7 +226,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def table(self) -> Optional[str]:
+    def table(self) -> pulumi.Output[Optional[str]]:
         """
         Which table to grant `privileges` on. Defaults to `*`, which is all tables.
         """
@@ -234,7 +234,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tlsOption")
-    def tls_option(self) -> Optional[str]:
+    def tls_option(self) -> pulumi.Output[Optional[str]]:
         """
         An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
         """
@@ -242,7 +242,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def user(self) -> Optional[str]:
+    def user(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the user. Conflicts with `role`.
         """
