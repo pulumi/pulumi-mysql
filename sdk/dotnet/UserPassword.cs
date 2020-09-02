@@ -9,6 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.MySql
 {
+    /// <summary>
+    /// The `mysql.UserPassword` resource sets and manages a password for a given
+    /// user on a MySQL server.
+    /// 
+    /// &gt; **NOTE on MySQL Passwords:** This resource conflicts with the `password`
+    ///    argument for `mysql.User`. This resource uses PGP encryption to avoid
+    ///    storing unencrypted passwords in the provider state.
+    /// 
+    /// &gt; **NOTE on How Passwords are Created:** This resource **automatically**
+    ///    generates a **random** password. The password will be a random UUID.
+    /// </summary>
     public partial class UserPassword : Pulumi.CustomResource
     {
         /// <summary>

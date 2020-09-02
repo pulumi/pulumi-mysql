@@ -8,12 +8,6 @@ import * as utilities from "./utilities";
  * The ``mysql.Database`` resource creates and manages a database on a MySQL
  * server.
  *
- * > **Caution:** The ``mysql.Database`` resource can completely delete your
- * database just as easily as it can create it. To avoid costly accidents,
- * consider setting
- * [``preventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
- * on your database resources as an extra safety measure.
- *
  * ## Example Usage
  *
  * ```typescript
