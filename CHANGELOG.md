@@ -3,6 +3,9 @@ _(none)_
 
 ---
 
+## 2.2.1 (2020-09-04)
+* Update pulumi-mysql documentation
+
 ## 2.2.0 (2020-08-31)
 * Upgrade to pulumi-terraform-bridge v2.7.3
 * Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
