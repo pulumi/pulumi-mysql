@@ -28,12 +28,9 @@ class User(pulumi.CustomResource):
         The ``User`` resource creates and manages a user on a MySQL
         server.
 
-        > **Note:** The password for the user is provided in plain text, and is
-        obscured by an unsalted hash in the state
-        [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
-        Care is required when using this resource, to avoid disclosing the password.
+        ## Examples
 
-        ## Example Usage
+        ### Basic Usage
 
         ```python
         import pulumi
@@ -44,7 +41,8 @@ class User(pulumi.CustomResource):
             plaintext_password="password",
             user="jdoe")
         ```
-        ### With An Authentication Plugin
+
+        ### Example Usage with an Authentication Plugin
 
         ```python
         import pulumi

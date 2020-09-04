@@ -9,4 +9,7 @@ require (
 	github.com/terraform-providers/terraform-provider-mysql v1.9.0
 )
 
-replace github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
+replace (
+	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
+	github.com/terraform-providers/terraform-provider-mysql => github.com/pulumi/terraform-provider-mysql v1.9.1-0.20200902192533-20f24655e960
+)

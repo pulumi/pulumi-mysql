@@ -31,7 +31,9 @@ class Grant(pulumi.CustomResource):
         The ``Grant`` resource creates and manages privileges given to
         a user on a MySQL server.
 
-        ## Granting Privileges to a User
+        ## Examples
+
+        ### Granting Privileges to a User
 
         ```python
         import pulumi
@@ -51,7 +53,7 @@ class Grant(pulumi.CustomResource):
             user=jdoe_user.user)
         ```
 
-        ## Granting Privileges to a Role
+        ### Granting Privileges to a Role
 
         ```python
         import pulumi
@@ -67,7 +69,7 @@ class Grant(pulumi.CustomResource):
             role=developer_role.name)
         ```
 
-        ## Adding a Role to a User
+        ### Adding a Role to a User
 
         ```python
         import pulumi

@@ -22,7 +22,16 @@ class UserPassword(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a UserPassword resource with the given unique name, props, and options.
+        The `UserPassword` resource sets and manages a password for a given
+        user on a MySQL server.
+
+        > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
+           argument for `User`. This resource uses PGP encryption to avoid
+           storing unencrypted passwords in the provider state.
+
+        > **NOTE on How Passwords are Created:** This resource **automatically**
+           generates a **random** password. The password will be a random UUID.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host: The source host of the user. Defaults to `localhost`.
