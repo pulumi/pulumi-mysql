@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Grant']
@@ -18,9 +18,9 @@ class Grant(pulumi.CustomResource):
                  database: Optional[pulumi.Input[str]] = None,
                  grant: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
-                 privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
-                 roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  table: Optional[pulumi.Input[str]] = None,
                  tls_option: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
@@ -92,9 +92,9 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] database: The database to grant privileges on.
         :param pulumi.Input[bool] grant: Whether to also give the user privileges to grant the same privileges to other users.
         :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost". Conflicts with `role`.
-        :param pulumi.Input[List[pulumi.Input[str]]] privileges: A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
         :param pulumi.Input[str] role: The role to grant `privileges` to. Conflicts with `user` and `host`.
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: A list of rols to grant to the user. Conflicts with `privileges`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of rols to grant to the user. Conflicts with `privileges`.
         :param pulumi.Input[str] table: Which table to grant `privileges` on. Defaults to `*`, which is all tables.
         :param pulumi.Input[str] tls_option: An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
         :param pulumi.Input[str] user: The name of the user. Conflicts with `role`.
@@ -140,9 +140,9 @@ class Grant(pulumi.CustomResource):
             database: Optional[pulumi.Input[str]] = None,
             grant: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
-            privileges: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role: Optional[pulumi.Input[str]] = None,
-            roles: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             table: Optional[pulumi.Input[str]] = None,
             tls_option: Optional[pulumi.Input[str]] = None,
             user: Optional[pulumi.Input[str]] = None) -> 'Grant':
@@ -156,9 +156,9 @@ class Grant(pulumi.CustomResource):
         :param pulumi.Input[str] database: The database to grant privileges on.
         :param pulumi.Input[bool] grant: Whether to also give the user privileges to grant the same privileges to other users.
         :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost". Conflicts with `role`.
-        :param pulumi.Input[List[pulumi.Input[str]]] privileges: A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
         :param pulumi.Input[str] role: The role to grant `privileges` to. Conflicts with `user` and `host`.
-        :param pulumi.Input[List[pulumi.Input[str]]] roles: A list of rols to grant to the user. Conflicts with `privileges`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of rols to grant to the user. Conflicts with `privileges`.
         :param pulumi.Input[str] table: Which table to grant `privileges` on. Defaults to `*`, which is all tables.
         :param pulumi.Input[str] tls_option: An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
         :param pulumi.Input[str] user: The name of the user. Conflicts with `role`.
@@ -204,7 +204,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def privileges(self) -> pulumi.Output[Optional[List[str]]]:
+    def privileges(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
         """
@@ -220,7 +220,7 @@ class Grant(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def roles(self) -> pulumi.Output[Optional[List[str]]]:
+    def roles(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of rols to grant to the user. Conflicts with `privileges`.
         """
