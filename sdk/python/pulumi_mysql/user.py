@@ -83,7 +83,7 @@ class User(pulumi.CustomResource):
             __props__['auth_plugin'] = auth_plugin
             __props__['host'] = host
             if password is not None:
-                warnings.warn("Please use plaintext_password instead", DeprecationWarning)
+                warnings.warn("""Please use plaintext_password instead""", DeprecationWarning)
                 pulumi.log.warn("password is deprecated: Please use plaintext_password instead")
             __props__['password'] = password
             __props__['plaintext_password'] = plaintext_password
