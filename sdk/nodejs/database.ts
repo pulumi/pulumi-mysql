@@ -16,6 +16,14 @@ import * as utilities from "./utilities";
  *
  * const app = new mysql.Database("app", {});
  * ```
+ *
+ * ## Import
+ *
+ * Databases can be imported using their name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import mysql:index/database:Database example my-example-database
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**

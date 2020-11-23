@@ -4,6 +4,7 @@
 package mysql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -118,4 +119,43 @@ type UserPasswordArgs struct {
 
 func (UserPasswordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPasswordArgs)(nil)).Elem()
+}
+
+type UserPasswordInput interface {
+	pulumi.Input
+
+	ToUserPasswordOutput() UserPasswordOutput
+	ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput
+}
+
+func (UserPassword) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPassword)(nil)).Elem()
+}
+
+func (i UserPassword) ToUserPasswordOutput() UserPasswordOutput {
+	return i.ToUserPasswordOutputWithContext(context.Background())
+}
+
+func (i UserPassword) ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordOutput)
+}
+
+type UserPasswordOutput struct {
+	*pulumi.OutputState
+}
+
+func (UserPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordOutput)(nil)).Elem()
+}
+
+func (o UserPasswordOutput) ToUserPasswordOutput() UserPasswordOutput {
+	return o
+}
+
+func (o UserPasswordOutput) ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(UserPasswordOutput{})
 }

@@ -30,6 +30,14 @@ namespace Pulumi.MySql
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Databases can be imported using their name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import mysql:index/database:Database example my-example-database
+    /// ```
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {
