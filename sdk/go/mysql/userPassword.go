@@ -38,14 +38,15 @@ type UserPassword struct {
 // NewUserPassword registers a new resource with the given unique name, arguments, and options.
 func NewUserPassword(ctx *pulumi.Context,
 	name string, args *UserPasswordArgs, opts ...pulumi.ResourceOption) (*UserPassword, error) {
-	if args == nil || args.PgpKey == nil {
-		return nil, errors.New("missing required argument 'PgpKey'")
-	}
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &UserPasswordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PgpKey == nil {
+		return nil, errors.New("invalid value for required argument 'PgpKey'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource UserPassword
 	err := ctx.RegisterResource("mysql:index/userPassword:UserPassword", name, args, &resource, opts...)

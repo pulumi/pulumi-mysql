@@ -83,10 +83,10 @@ export class UserPassword extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as UserPasswordArgs | undefined;
-            if (!args || args.pgpKey === undefined) {
+            if ((!args || args.pgpKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'pgpKey'");
             }
-            if (!args || args.user === undefined) {
+            if ((!args || args.user === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'user'");
             }
             inputs["host"] = args ? args.host : undefined;

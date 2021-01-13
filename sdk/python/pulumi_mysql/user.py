@@ -82,13 +82,13 @@ class User(pulumi.CustomResource):
 
             __props__['auth_plugin'] = auth_plugin
             __props__['host'] = host
-            if password is not None:
+            if password is not None and not opts.urn:
                 warnings.warn("""Please use plaintext_password instead""", DeprecationWarning)
                 pulumi.log.warn("password is deprecated: Please use plaintext_password instead")
             __props__['password'] = password
             __props__['plaintext_password'] = plaintext_password
             __props__['tls_option'] = tls_option
-            if user is None:
+            if user is None and not opts.urn:
                 raise TypeError("Missing required property 'user'")
             __props__['user'] = user
         super(User, __self__).__init__(

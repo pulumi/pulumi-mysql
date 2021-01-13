@@ -56,10 +56,10 @@ class UserPassword(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['host'] = host
-            if pgp_key is None:
+            if pgp_key is None and not opts.urn:
                 raise TypeError("Missing required property 'pgp_key'")
             __props__['pgp_key'] = pgp_key
-            if user is None:
+            if user is None and not opts.urn:
                 raise TypeError("Missing required property 'user'")
             __props__['user'] = user
             __props__['encrypted_password'] = None

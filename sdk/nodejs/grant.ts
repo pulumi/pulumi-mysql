@@ -157,7 +157,7 @@ export class Grant extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as GrantArgs | undefined;
-            if (!args || args.database === undefined) {
+            if ((!args || args.database === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'database'");
             }
             inputs["database"] = args ? args.database : undefined;

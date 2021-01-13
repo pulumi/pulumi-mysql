@@ -65,6 +65,7 @@ func NewDatabase(ctx *pulumi.Context,
 	if args == nil {
 		args = &DatabaseArgs{}
 	}
+
 	var resource Database
 	err := ctx.RegisterResource("mysql:index/database:Database", name, args, &resource, opts...)
 	if err != nil {
