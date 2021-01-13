@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.Endpoint == nil {
 		args.Endpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "MYSQL_ENDPOINT").(string))
 	}

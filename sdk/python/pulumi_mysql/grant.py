@@ -116,7 +116,7 @@ class Grant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if database is None:
+            if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
             __props__['database'] = database
             __props__['grant'] = grant
