@@ -20,6 +20,7 @@ namespace Pulumi.MySql
     /// &gt; **NOTE on How Passwords are Created:** This resource **automatically**
     ///    generates a **random** password. The password will be a random UUID.
     /// </summary>
+    [MySqlResourceType("mysql:index/userPassword:UserPassword")]
     public partial class UserPassword : Pulumi.CustomResource
     {
         /// <summary>

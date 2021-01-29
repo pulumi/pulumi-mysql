@@ -39,6 +39,7 @@ namespace Pulumi.MySql
     ///  $ pulumi import mysql:index/database:Database example my-example-database
     /// ```
     /// </summary>
+    [MySqlResourceType("mysql:index/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

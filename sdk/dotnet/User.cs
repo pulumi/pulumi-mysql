@@ -57,6 +57,7 @@ namespace Pulumi.MySql
     /// }
     /// ```
     /// </summary>
+    [MySqlResourceType("mysql:index/user:User")]
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>

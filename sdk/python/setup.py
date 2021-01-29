@@ -48,7 +48,7 @@ setup(name='pulumi_mysql',
       packages=find_packages(),
       package_data={
           'pulumi_mysql': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

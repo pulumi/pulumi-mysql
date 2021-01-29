@@ -33,6 +33,7 @@ namespace Pulumi.MySql
     /// }
     /// ```
     /// </summary>
+    [MySqlResourceType("mysql:index/role:Role")]
     public partial class Role : Pulumi.CustomResource
     {
         /// <summary>

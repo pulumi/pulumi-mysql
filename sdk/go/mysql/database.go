@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-mysql/sdk/v2/go/mysql"
+// 	"github.com/pulumi/pulumi-mysql/sdk/v2/go/mysql/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -167,15 +167,15 @@ type DatabaseInput interface {
 	ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput
 }
 
-func (Database) ElementType() reflect.Type {
-	return reflect.TypeOf((*Database)(nil)).Elem()
+func (*Database) ElementType() reflect.Type {
+	return reflect.TypeOf((*Database)(nil))
 }
 
-func (i Database) ToDatabaseOutput() DatabaseOutput {
+func (i *Database) ToDatabaseOutput() DatabaseOutput {
 	return i.ToDatabaseOutputWithContext(context.Background())
 }
 
-func (i Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
+func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
 }
 
@@ -184,7 +184,7 @@ type DatabaseOutput struct {
 }
 
 func (DatabaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseOutput)(nil)).Elem()
+	return reflect.TypeOf((*Database)(nil))
 }
 
 func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
