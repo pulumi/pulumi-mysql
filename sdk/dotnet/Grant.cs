@@ -109,6 +109,7 @@ namespace Pulumi.MySql
     /// }
     /// ```
     /// </summary>
+    [MySqlResourceType("mysql:index/grant:Grant")]
     public partial class Grant : Pulumi.CustomResource
     {
         /// <summary>

@@ -129,15 +129,15 @@ type UserPasswordInput interface {
 	ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput
 }
 
-func (UserPassword) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPassword)(nil)).Elem()
+func (*UserPassword) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPassword)(nil))
 }
 
-func (i UserPassword) ToUserPasswordOutput() UserPasswordOutput {
+func (i *UserPassword) ToUserPasswordOutput() UserPasswordOutput {
 	return i.ToUserPasswordOutputWithContext(context.Background())
 }
 
-func (i UserPassword) ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput {
+func (i *UserPassword) ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordOutput)
 }
 
@@ -146,7 +146,7 @@ type UserPasswordOutput struct {
 }
 
 func (UserPasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserPasswordOutput)(nil)).Elem()
+	return reflect.TypeOf((*UserPassword)(nil))
 }
 
 func (o UserPasswordOutput) ToUserPasswordOutput() UserPasswordOutput {

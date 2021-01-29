@@ -77,4 +77,11 @@ namespace Pulumi.MySql
             }
         }
     }
+
+    internal sealed class MySqlResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public MySqlResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }
