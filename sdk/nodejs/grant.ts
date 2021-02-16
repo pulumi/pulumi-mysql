@@ -144,7 +144,8 @@ export class Grant extends pulumi.CustomResource {
     constructor(name: string, args: GrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GrantArgs | GrantState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GrantState | undefined;
             inputs["database"] = state ? state.database : undefined;
             inputs["grant"] = state ? state.grant : undefined;
@@ -157,7 +158,7 @@ export class Grant extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as GrantArgs | undefined;
-            if ((!args || args.database === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.database === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
             inputs["database"] = args ? args.database : undefined;
@@ -170,12 +171,8 @@ export class Grant extends pulumi.CustomResource {
             inputs["tlsOption"] = args ? args.tlsOption : undefined;
             inputs["user"] = args ? args.user : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Grant.__pulumiType, name, inputs, opts);
     }

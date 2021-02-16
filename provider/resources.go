@@ -76,21 +76,6 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-mysql",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"endpoint": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"MYSQL_ENDPOINT"},
-				},
-			},
-			"username": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"MYSQL_USERNAME"},
-				},
-			},
-			"password": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"MYSQL_PASSWORD"},
-				},
-			},
 			"proxy": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"ALL_PROXY", "all_proxy"},

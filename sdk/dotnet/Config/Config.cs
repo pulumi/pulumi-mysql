@@ -10,19 +10,19 @@ namespace Pulumi.MySql
         private static readonly Pulumi.Config __config = new Pulumi.Config("mysql");
         public static string? AuthenticationPlugin { get; set; } = __config.Get("authenticationPlugin");
 
-        public static string? Endpoint { get; set; } = __config.Get("endpoint") ?? Utilities.GetEnv("MYSQL_ENDPOINT");
+        public static string? Endpoint { get; set; } = __config.Get("endpoint");
 
         public static int? MaxConnLifetimeSec { get; set; } = __config.GetInt32("maxConnLifetimeSec");
 
         public static int? MaxOpenConns { get; set; } = __config.GetInt32("maxOpenConns");
 
-        public static string? Password { get; set; } = __config.Get("password") ?? Utilities.GetEnv("MYSQL_PASSWORD");
+        public static string? Password { get; set; } = __config.Get("password");
 
         public static string? Proxy { get; set; } = __config.Get("proxy") ?? Utilities.GetEnv("ALL_PROXY", "all_proxy");
 
         public static string? Tls { get; set; } = __config.Get("tls") ?? Utilities.GetEnv("MYSQL_TLS_CONFIG") ?? "false";
 
-        public static string? Username { get; set; } = __config.Get("username") ?? Utilities.GetEnv("MYSQL_USERNAME");
+        public static string? Username { get; set; } = __config.Get("username");
 
     }
 }

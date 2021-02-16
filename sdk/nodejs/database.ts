@@ -83,7 +83,8 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, args?: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             inputs["defaultCharacterSet"] = state ? state.defaultCharacterSet : undefined;
             inputs["defaultCollation"] = state ? state.defaultCollation : undefined;
@@ -94,12 +95,8 @@ export class Database extends pulumi.CustomResource {
             inputs["defaultCollation"] = args ? args.defaultCollation : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Database.__pulumiType, name, inputs, opts);
     }

@@ -53,13 +53,11 @@ class Provider(pulumi.ProviderResource):
             __props__ = dict()
 
             __props__['authentication_plugin'] = authentication_plugin
-            if endpoint is None:
-                endpoint = _utilities.get_env('MYSQL_ENDPOINT')
+            if endpoint is None and not opts.urn:
+                raise TypeError("Missing required property 'endpoint'")
             __props__['endpoint'] = endpoint
             __props__['max_conn_lifetime_sec'] = pulumi.Output.from_input(max_conn_lifetime_sec).apply(pulumi.runtime.to_json) if max_conn_lifetime_sec is not None else None
             __props__['max_open_conns'] = pulumi.Output.from_input(max_open_conns).apply(pulumi.runtime.to_json) if max_open_conns is not None else None
-            if password is None:
-                password = _utilities.get_env('MYSQL_PASSWORD')
             __props__['password'] = password
             if proxy is None:
                 proxy = _utilities.get_env('ALL_PROXY', 'all_proxy')
@@ -67,8 +65,8 @@ class Provider(pulumi.ProviderResource):
             if tls is None:
                 tls = (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
             __props__['tls'] = tls
-            if username is None:
-                username = _utilities.get_env('MYSQL_USERNAME')
+            if username is None and not opts.urn:
+                raise TypeError("Missing required property 'username'")
             __props__['username'] = username
         super(Provider, __self__).__init__(
             'mysql',
