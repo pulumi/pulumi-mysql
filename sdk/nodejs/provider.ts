@@ -48,8 +48,8 @@ export class Provider extends pulumi.ProviderResource {
             inputs["maxConnLifetimeSec"] = pulumi.output(args ? args.maxConnLifetimeSec : undefined).apply(JSON.stringify);
             inputs["maxOpenConns"] = pulumi.output(args ? args.maxOpenConns : undefined).apply(JSON.stringify);
             inputs["password"] = args ? args.password : undefined;
-            inputs["proxy"] = (args ? args.proxy : undefined) || utilities.getEnv("ALL_PROXY", "all_proxy");
-            inputs["tls"] = (args ? args.tls : undefined) || (utilities.getEnv("MYSQL_TLS_CONFIG") || "false");
+            inputs["proxy"] = (args ? args.proxy : undefined) ?? utilities.getEnv("ALL_PROXY", "all_proxy");
+            inputs["tls"] = (args ? args.tls : undefined) ?? (utilities.getEnv("MYSQL_TLS_CONFIG") || "false");
             inputs["username"] = args ? args.username : undefined;
         }
         if (!opts.version) {
