@@ -5,13 +5,119 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Provider']
+__all__ = ['ProviderArgs', 'Provider']
+
+@pulumi.input_type
+class ProviderArgs:
+    def __init__(__self__, *,
+                 endpoint: pulumi.Input[str],
+                 username: pulumi.Input[str],
+                 authentication_plugin: Optional[pulumi.Input[str]] = None,
+                 max_conn_lifetime_sec: Optional[pulumi.Input[int]] = None,
+                 max_open_conns: Optional[pulumi.Input[int]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 proxy: Optional[pulumi.Input[str]] = None,
+                 tls: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Provider resource.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "username", username)
+        if authentication_plugin is not None:
+            pulumi.set(__self__, "authentication_plugin", authentication_plugin)
+        if max_conn_lifetime_sec is not None:
+            pulumi.set(__self__, "max_conn_lifetime_sec", max_conn_lifetime_sec)
+        if max_open_conns is not None:
+            pulumi.set(__self__, "max_open_conns", max_open_conns)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if proxy is None:
+            proxy = _utilities.get_env('ALL_PROXY', 'all_proxy')
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
+        if tls is None:
+            tls = (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter(name="authenticationPlugin")
+    def authentication_plugin(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "authentication_plugin")
+
+    @authentication_plugin.setter
+    def authentication_plugin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authentication_plugin", value)
+
+    @property
+    @pulumi.getter(name="maxConnLifetimeSec")
+    def max_conn_lifetime_sec(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_conn_lifetime_sec")
+
+    @max_conn_lifetime_sec.setter
+    def max_conn_lifetime_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_conn_lifetime_sec", value)
+
+    @property
+    @pulumi.getter(name="maxOpenConns")
+    def max_open_conns(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_open_conns")
+
+    @max_open_conns.setter
+    def max_open_conns(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_open_conns", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def proxy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy", value)
+
+    @property
+    @pulumi.getter
+    def tls(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tls")
+
+    @tls.setter
+    def tls(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls", value)
 
 
 class Provider(pulumi.ProviderResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +141,44 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ProviderArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The provider type for the mysql package. By default, resources use package-wide configuration
+        settings, however an explicit `Provider` instance may be created and passed during resource
+        construction to achieve fine-grained programmatic control over provider settings. See the
+        [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+
+        :param str resource_name: The name of the resource.
+        :param ProviderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ProviderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authentication_plugin: Optional[pulumi.Input[str]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 max_conn_lifetime_sec: Optional[pulumi.Input[int]] = None,
+                 max_open_conns: Optional[pulumi.Input[int]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 proxy: Optional[pulumi.Input[str]] = None,
+                 tls: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

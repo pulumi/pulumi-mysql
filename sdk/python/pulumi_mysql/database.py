@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Database']
+__all__ = ['DatabaseArgs', 'Database']
+
+@pulumi.input_type
+class DatabaseArgs:
+    def __init__(__self__, *,
+                 default_character_set: Optional[pulumi.Input[str]] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Database resource.
+        :param pulumi.Input[str] default_character_set: The default character set to use when
+               a table is created without specifying an explicit character set. Defaults
+               to "utf8".
+        :param pulumi.Input[str] default_collation: The default collation to use when a table
+               is created without specifying an explicit collation. Defaults to
+               ``utf8_general_ci``. Each character set has its own set of collations, so
+               changing the character set requires also changing the collation.
+        :param pulumi.Input[str] name: The name of the database. This must be unique within
+               a given MySQL server and may or may not be case-sensitive depending on
+               the operating system on which the MySQL server is running.
+        """
+        if default_character_set is not None:
+            pulumi.set(__self__, "default_character_set", default_character_set)
+        if default_collation is not None:
+            pulumi.set(__self__, "default_collation", default_collation)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="defaultCharacterSet")
+    def default_character_set(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default character set to use when
+        a table is created without specifying an explicit character set. Defaults
+        to "utf8".
+        """
+        return pulumi.get(self, "default_character_set")
+
+    @default_character_set.setter
+    def default_character_set(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_character_set", value)
+
+    @property
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default collation to use when a table
+        is created without specifying an explicit collation. Defaults to
+        ``utf8_general_ci``. Each character set has its own set of collations, so
+        changing the character set requires also changing the collation.
+        """
+        return pulumi.get(self, "default_collation")
+
+    @default_collation.setter
+    def default_collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_collation", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the database. This must be unique within
+        a given MySQL server and may or may not be case-sensitive depending on
+        the operating system on which the MySQL server is running.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Database(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +125,54 @@ class Database(pulumi.CustomResource):
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[DatabaseArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The ``Database`` resource creates and manages a database on a MySQL
+        server.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        app = mysql.Database("app")
+        ```
+
+        ## Import
+
+        Databases can be imported using their name, e.g.
+
+        ```sh
+         $ pulumi import mysql:index/database:Database example my-example-database
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_character_set: Optional[pulumi.Input[str]] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

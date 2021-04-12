@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['UserPassword']
+__all__ = ['UserPasswordArgs', 'UserPassword']
+
+@pulumi.input_type
+class UserPasswordArgs:
+    def __init__(__self__, *,
+                 pgp_key: pulumi.Input[str],
+                 user: pulumi.Input[str],
+                 host: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a UserPassword resource.
+        :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
+        :param pulumi.Input[str] user: The IAM user to associate with this access key.
+        :param pulumi.Input[str] host: The source host of the user. Defaults to `localhost`.
+        """
+        pulumi.set(__self__, "pgp_key", pgp_key)
+        pulumi.set(__self__, "user", user)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @property
+    @pulumi.getter(name="pgpKey")
+    def pgp_key(self) -> pulumi.Input[str]:
+        """
+        Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
+        """
+        return pulumi.get(self, "pgp_key")
+
+    @pgp_key.setter
+    def pgp_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pgp_key", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> pulumi.Input[str]:
+        """
+        The IAM user to associate with this access key.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source host of the user. Defaults to `localhost`.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
 
 
 class UserPassword(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -38,6 +92,44 @@ class UserPassword(pulumi.CustomResource):
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
         :param pulumi.Input[str] user: The IAM user to associate with this access key.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: UserPasswordArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        The `UserPassword` resource sets and manages a password for a given
+        user on a MySQL server.
+
+        > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
+           argument for `User`. This resource uses PGP encryption to avoid
+           storing unencrypted passwords in the provider state.
+
+        > **NOTE on How Passwords are Created:** This resource **automatically**
+           generates a **random** password. The password will be a random UUID.
+
+        :param str resource_name: The name of the resource.
+        :param UserPasswordArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(UserPasswordArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 pgp_key: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
