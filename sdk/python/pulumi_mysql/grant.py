@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['GrantArgs', 'Grant']
 
@@ -62,6 +62,158 @@ class GrantArgs:
 
     @database.setter
     def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def grant(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to also give the user privileges to grant the same privileges to other users.
+        """
+        return pulumi.get(self, "grant")
+
+    @grant.setter
+    def grant(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "grant", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source host of the user. Defaults to "localhost". Conflicts with `role`.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def privileges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+        """
+        return pulumi.get(self, "privileges")
+
+    @privileges.setter
+    def privileges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "privileges", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to grant `privileges` to. Conflicts with `user` and `host`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of rols to grant to the user. Conflicts with `privileges`.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which table to grant `privileges` on. Defaults to `*`, which is all tables.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table", value)
+
+    @property
+    @pulumi.getter(name="tlsOption")
+    def tls_option(self) -> Optional[pulumi.Input[str]]:
+        """
+        An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
+        """
+        return pulumi.get(self, "tls_option")
+
+    @tls_option.setter
+    def tls_option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_option", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the user. Conflicts with `role`.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
+
+@pulumi.input_type
+class _GrantState:
+    def __init__(__self__, *,
+                 database: Optional[pulumi.Input[str]] = None,
+                 grant: Optional[pulumi.Input[bool]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 table: Optional[pulumi.Input[str]] = None,
+                 tls_option: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Grant resources.
+        :param pulumi.Input[str] database: The database to grant privileges on.
+        :param pulumi.Input[bool] grant: Whether to also give the user privileges to grant the same privileges to other users.
+        :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost". Conflicts with `role`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] privileges: A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+        :param pulumi.Input[str] role: The role to grant `privileges` to. Conflicts with `user` and `host`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] roles: A list of rols to grant to the user. Conflicts with `privileges`.
+        :param pulumi.Input[str] table: Which table to grant `privileges` on. Defaults to `*`, which is all tables.
+        :param pulumi.Input[str] tls_option: An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
+        :param pulumi.Input[str] user: The name of the user. Conflicts with `role`.
+        """
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if grant is not None:
+            pulumi.set(__self__, "grant", grant)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if privileges is not None:
+            pulumi.set(__self__, "privileges", privileges)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+        if tls_option is not None:
+            pulumi.set(__self__, "tls_option", tls_option)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database to grant privileges on.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database", value)
 
     @property
@@ -358,19 +510,19 @@ class Grant(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GrantArgs.__new__(GrantArgs)
 
             if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
-            __props__['database'] = database
-            __props__['grant'] = grant
-            __props__['host'] = host
-            __props__['privileges'] = privileges
-            __props__['role'] = role
-            __props__['roles'] = roles
-            __props__['table'] = table
-            __props__['tls_option'] = tls_option
-            __props__['user'] = user
+            __props__.__dict__["database"] = database
+            __props__.__dict__["grant"] = grant
+            __props__.__dict__["host"] = host
+            __props__.__dict__["privileges"] = privileges
+            __props__.__dict__["role"] = role
+            __props__.__dict__["roles"] = roles
+            __props__.__dict__["table"] = table
+            __props__.__dict__["tls_option"] = tls_option
+            __props__.__dict__["user"] = user
         super(Grant, __self__).__init__(
             'mysql:index/grant:Grant',
             resource_name,
@@ -409,17 +561,17 @@ class Grant(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GrantState.__new__(_GrantState)
 
-        __props__["database"] = database
-        __props__["grant"] = grant
-        __props__["host"] = host
-        __props__["privileges"] = privileges
-        __props__["role"] = role
-        __props__["roles"] = roles
-        __props__["table"] = table
-        __props__["tls_option"] = tls_option
-        __props__["user"] = user
+        __props__.__dict__["database"] = database
+        __props__.__dict__["grant"] = grant
+        __props__.__dict__["host"] = host
+        __props__.__dict__["privileges"] = privileges
+        __props__.__dict__["role"] = role
+        __props__.__dict__["roles"] = roles
+        __props__.__dict__["table"] = table
+        __props__.__dict__["tls_option"] = tls_option
+        __props__.__dict__["user"] = user
         return Grant(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -493,10 +645,4 @@ class Grant(pulumi.CustomResource):
         The name of the user. Conflicts with `role`.
         """
         return pulumi.get(self, "user")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

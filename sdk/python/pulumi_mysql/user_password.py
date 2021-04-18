@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['UserPasswordArgs', 'UserPassword']
 
@@ -62,6 +62,94 @@ class UserPasswordArgs:
     @host.setter
     def host(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host", value)
+
+
+@pulumi.input_type
+class _UserPasswordState:
+    def __init__(__self__, *,
+                 encrypted_password: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None,
+                 key_fingerprint: Optional[pulumi.Input[str]] = None,
+                 pgp_key: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering UserPassword resources.
+        :param pulumi.Input[str] encrypted_password: The encrypted password, base64 encoded.
+        :param pulumi.Input[str] host: The source host of the user. Defaults to `localhost`.
+        :param pulumi.Input[str] key_fingerprint: The fingerprint of the PGP key used to encrypt the password
+        :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
+        :param pulumi.Input[str] user: The IAM user to associate with this access key.
+        """
+        if encrypted_password is not None:
+            pulumi.set(__self__, "encrypted_password", encrypted_password)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if key_fingerprint is not None:
+            pulumi.set(__self__, "key_fingerprint", key_fingerprint)
+        if pgp_key is not None:
+            pulumi.set(__self__, "pgp_key", pgp_key)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="encryptedPassword")
+    def encrypted_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encrypted password, base64 encoded.
+        """
+        return pulumi.get(self, "encrypted_password")
+
+    @encrypted_password.setter
+    def encrypted_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encrypted_password", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source host of the user. Defaults to `localhost`.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="keyFingerprint")
+    def key_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fingerprint of the PGP key used to encrypt the password
+        """
+        return pulumi.get(self, "key_fingerprint")
+
+    @key_fingerprint.setter
+    def key_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_fingerprint", value)
+
+    @property
+    @pulumi.getter(name="pgpKey")
+    def pgp_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
+        """
+        return pulumi.get(self, "pgp_key")
+
+    @pgp_key.setter
+    def pgp_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pgp_key", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IAM user to associate with this access key.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
 
 class UserPassword(pulumi.CustomResource):
@@ -145,17 +233,17 @@ class UserPassword(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = UserPasswordArgs.__new__(UserPasswordArgs)
 
-            __props__['host'] = host
+            __props__.__dict__["host"] = host
             if pgp_key is None and not opts.urn:
                 raise TypeError("Missing required property 'pgp_key'")
-            __props__['pgp_key'] = pgp_key
+            __props__.__dict__["pgp_key"] = pgp_key
             if user is None and not opts.urn:
                 raise TypeError("Missing required property 'user'")
-            __props__['user'] = user
-            __props__['encrypted_password'] = None
-            __props__['key_fingerprint'] = None
+            __props__.__dict__["user"] = user
+            __props__.__dict__["encrypted_password"] = None
+            __props__.__dict__["key_fingerprint"] = None
         super(UserPassword, __self__).__init__(
             'mysql:index/userPassword:UserPassword',
             resource_name,
@@ -186,13 +274,13 @@ class UserPassword(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _UserPasswordState.__new__(_UserPasswordState)
 
-        __props__["encrypted_password"] = encrypted_password
-        __props__["host"] = host
-        __props__["key_fingerprint"] = key_fingerprint
-        __props__["pgp_key"] = pgp_key
-        __props__["user"] = user
+        __props__.__dict__["encrypted_password"] = encrypted_password
+        __props__.__dict__["host"] = host
+        __props__.__dict__["key_fingerprint"] = key_fingerprint
+        __props__.__dict__["pgp_key"] = pgp_key
+        __props__.__dict__["user"] = user
         return UserPassword(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -234,10 +322,4 @@ class UserPassword(pulumi.CustomResource):
         The IAM user to associate with this access key.
         """
         return pulumi.get(self, "user")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
