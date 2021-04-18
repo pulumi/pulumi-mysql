@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The ``Grant`` resource creates and manages privileges given to
@@ -22,8 +22,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-mysql/sdk/v2/go/mysql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -59,8 +59,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-mysql/sdk/v2/go/mysql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -91,8 +91,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-mysql/sdk/v2/go/mysql"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -194,33 +194,27 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__['authentication_plugin'] = authentication_plugin
+            __props__.__dict__["authentication_plugin"] = authentication_plugin
             if endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint'")
-            __props__['endpoint'] = endpoint
-            __props__['max_conn_lifetime_sec'] = pulumi.Output.from_input(max_conn_lifetime_sec).apply(pulumi.runtime.to_json) if max_conn_lifetime_sec is not None else None
-            __props__['max_open_conns'] = pulumi.Output.from_input(max_open_conns).apply(pulumi.runtime.to_json) if max_open_conns is not None else None
-            __props__['password'] = password
+            __props__.__dict__["endpoint"] = endpoint
+            __props__.__dict__["max_conn_lifetime_sec"] = pulumi.Output.from_input(max_conn_lifetime_sec).apply(pulumi.runtime.to_json) if max_conn_lifetime_sec is not None else None
+            __props__.__dict__["max_open_conns"] = pulumi.Output.from_input(max_open_conns).apply(pulumi.runtime.to_json) if max_open_conns is not None else None
+            __props__.__dict__["password"] = password
             if proxy is None:
                 proxy = _utilities.get_env('ALL_PROXY', 'all_proxy')
-            __props__['proxy'] = proxy
+            __props__.__dict__["proxy"] = proxy
             if tls is None:
                 tls = (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
-            __props__['tls'] = tls
+            __props__.__dict__["tls"] = tls
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
-            __props__['username'] = username
+            __props__.__dict__["username"] = username
         super(Provider, __self__).__init__(
             'mysql',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
