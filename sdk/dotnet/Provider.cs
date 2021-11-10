@@ -18,6 +18,25 @@ namespace Pulumi.MySql
     [MySqlResourceType("pulumi:providers:mysql")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("authenticationPlugin")]
+        public Output<string?> AuthenticationPlugin { get; private set; } = null!;
+
+        [Output("endpoint")]
+        public Output<string> Endpoint { get; private set; } = null!;
+
+        [Output("password")]
+        public Output<string?> Password { get; private set; } = null!;
+
+        [Output("proxy")]
+        public Output<string?> Proxy { get; private set; } = null!;
+
+        [Output("tls")]
+        public Output<string?> Tls { get; private set; } = null!;
+
+        [Output("username")]
+        public Output<string> Username { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>

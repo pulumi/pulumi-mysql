@@ -110,23 +110,23 @@ export interface UserPasswordState {
     /**
      * The encrypted password, base64 encoded.
      */
-    readonly encryptedPassword?: pulumi.Input<string>;
+    encryptedPassword?: pulumi.Input<string>;
     /**
      * The source host of the user. Defaults to `localhost`.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * The fingerprint of the PGP key used to encrypt the password
      */
-    readonly keyFingerprint?: pulumi.Input<string>;
+    keyFingerprint?: pulumi.Input<string>;
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
      */
-    readonly pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string>;
     /**
      * The IAM user to associate with this access key.
      */
-    readonly user?: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
 }
 
 /**
@@ -136,13 +136,13 @@ export interface UserPasswordArgs {
     /**
      * The source host of the user. Defaults to `localhost`.
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
      */
-    readonly pgpKey: pulumi.Input<string>;
+    pgpKey: pulumi.Input<string>;
     /**
      * The IAM user to associate with this access key.
      */
-    readonly user: pulumi.Input<string>;
+    user: pulumi.Input<string>;
 }

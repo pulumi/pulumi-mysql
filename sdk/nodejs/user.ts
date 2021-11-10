@@ -136,29 +136,29 @@ export interface UserState {
     /**
      * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
      */
-    readonly authPlugin?: pulumi.Input<string>;
+    authPlugin?: pulumi.Input<string>;
     /**
      * The source host of the user. Defaults to "localhost".
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      *
      * @deprecated Please use plaintext_password instead
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
      */
-    readonly plaintextPassword?: pulumi.Input<string>;
+    plaintextPassword?: pulumi.Input<string>;
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
      */
-    readonly tlsOption?: pulumi.Input<string>;
+    tlsOption?: pulumi.Input<string>;
     /**
      * The name of the user.
      */
-    readonly user?: pulumi.Input<string>;
+    user?: pulumi.Input<string>;
 }
 
 /**
@@ -168,27 +168,27 @@ export interface UserArgs {
     /**
      * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
      */
-    readonly authPlugin?: pulumi.Input<string>;
+    authPlugin?: pulumi.Input<string>;
     /**
      * The source host of the user. Defaults to "localhost".
      */
-    readonly host?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      *
      * @deprecated Please use plaintext_password instead
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
      */
-    readonly plaintextPassword?: pulumi.Input<string>;
+    plaintextPassword?: pulumi.Input<string>;
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
      */
-    readonly tlsOption?: pulumi.Input<string>;
+    tlsOption?: pulumi.Input<string>;
     /**
      * The name of the user.
      */
-    readonly user: pulumi.Input<string>;
+    user: pulumi.Input<string>;
 }
