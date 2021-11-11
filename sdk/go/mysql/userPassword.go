@@ -184,7 +184,7 @@ type UserPasswordArrayInput interface {
 type UserPasswordArray []UserPasswordInput
 
 func (UserPasswordArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*UserPassword)(nil))
+	return reflect.TypeOf((*[]*UserPassword)(nil)).Elem()
 }
 
 func (i UserPasswordArray) ToUserPasswordArrayOutput() UserPasswordArrayOutput {
@@ -209,7 +209,7 @@ type UserPasswordMapInput interface {
 type UserPasswordMap map[string]UserPasswordInput
 
 func (UserPasswordMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*UserPassword)(nil))
+	return reflect.TypeOf((*map[string]*UserPassword)(nil)).Elem()
 }
 
 func (i UserPasswordMap) ToUserPasswordMapOutput() UserPasswordMapOutput {
@@ -220,9 +220,7 @@ func (i UserPasswordMap) ToUserPasswordMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordMapOutput)
 }
 
-type UserPasswordOutput struct {
-	*pulumi.OutputState
-}
+type UserPasswordOutput struct{ *pulumi.OutputState }
 
 func (UserPasswordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*UserPassword)(nil))
@@ -241,14 +239,12 @@ func (o UserPasswordOutput) ToUserPasswordPtrOutput() UserPasswordPtrOutput {
 }
 
 func (o UserPasswordOutput) ToUserPasswordPtrOutputWithContext(ctx context.Context) UserPasswordPtrOutput {
-	return o.ApplyT(func(v UserPassword) *UserPassword {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserPassword) *UserPassword {
 		return &v
 	}).(UserPasswordPtrOutput)
 }
 
-type UserPasswordPtrOutput struct {
-	*pulumi.OutputState
-}
+type UserPasswordPtrOutput struct{ *pulumi.OutputState }
 
 func (UserPasswordPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**UserPassword)(nil))
@@ -260,6 +256,16 @@ func (o UserPasswordPtrOutput) ToUserPasswordPtrOutput() UserPasswordPtrOutput {
 
 func (o UserPasswordPtrOutput) ToUserPasswordPtrOutputWithContext(ctx context.Context) UserPasswordPtrOutput {
 	return o
+}
+
+func (o UserPasswordPtrOutput) Elem() UserPasswordOutput {
+	return o.ApplyT(func(v *UserPassword) UserPassword {
+		if v != nil {
+			return *v
+		}
+		var ret UserPassword
+		return ret
+	}).(UserPasswordOutput)
 }
 
 type UserPasswordArrayOutput struct{ *pulumi.OutputState }
@@ -303,6 +309,10 @@ func (o UserPasswordMapOutput) MapIndex(k pulumi.StringInput) UserPasswordOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordInput)(nil)).Elem(), &UserPassword{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPtrInput)(nil)).Elem(), &UserPassword{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordArrayInput)(nil)).Elem(), UserPasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordMapInput)(nil)).Elem(), UserPasswordMap{})
 	pulumi.RegisterOutputType(UserPasswordOutput{})
 	pulumi.RegisterOutputType(UserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(UserPasswordArrayOutput{})

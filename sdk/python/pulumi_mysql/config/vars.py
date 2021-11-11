@@ -8,32 +8,41 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'authentication_plugin',
-    'endpoint',
-    'max_conn_lifetime_sec',
-    'max_open_conns',
-    'password',
-    'proxy',
-    'tls',
-    'username',
-]
+import types
 
 __config__ = pulumi.Config('mysql')
 
-authentication_plugin = __config__.get('authenticationPlugin')
 
-endpoint = __config__.get('endpoint')
+class _ExportableConfig(types.ModuleType):
+    @property
+    def authentication_plugin(self) -> Optional[str]:
+        return __config__.get('authenticationPlugin')
 
-max_conn_lifetime_sec = __config__.get('maxConnLifetimeSec')
+    @property
+    def endpoint(self) -> Optional[str]:
+        return __config__.get('endpoint')
 
-max_open_conns = __config__.get('maxOpenConns')
+    @property
+    def max_conn_lifetime_sec(self) -> Optional[int]:
+        return __config__.get_int('maxConnLifetimeSec')
 
-password = __config__.get('password')
+    @property
+    def max_open_conns(self) -> Optional[int]:
+        return __config__.get_int('maxOpenConns')
 
-proxy = __config__.get('proxy') or _utilities.get_env('ALL_PROXY', 'all_proxy')
+    @property
+    def password(self) -> Optional[str]:
+        return __config__.get('password')
 
-tls = __config__.get('tls') or (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
+    @property
+    def proxy(self) -> Optional[str]:
+        return __config__.get('proxy') or _utilities.get_env('ALL_PROXY', 'all_proxy')
 
-username = __config__.get('username')
+    @property
+    def tls(self) -> str:
+        return __config__.get('tls') or (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
+
+    @property
+    def username(self) -> Optional[str]:
+        return __config__.get('username')
 

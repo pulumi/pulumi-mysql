@@ -208,3 +208,33 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="authenticationPlugin")
+    def authentication_plugin(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "authentication_plugin")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def proxy(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "proxy")
+
+    @property
+    @pulumi.getter
+    def tls(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "tls")
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "username")
+

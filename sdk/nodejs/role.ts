@@ -84,7 +84,7 @@ export interface RoleState {
     /**
      * The name of the role.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -94,5 +94,5 @@ export interface RoleArgs {
     /**
      * The name of the role.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

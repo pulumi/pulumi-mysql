@@ -25,6 +25,12 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    public readonly authenticationPlugin!: pulumi.Output<string | undefined>;
+    public readonly endpoint!: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string | undefined>;
+    public readonly proxy!: pulumi.Output<string | undefined>;
+    public readonly tls!: pulumi.Output<string | undefined>;
+    public readonly username!: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -63,12 +69,12 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    readonly authenticationPlugin?: pulumi.Input<string>;
-    readonly endpoint: pulumi.Input<string>;
-    readonly maxConnLifetimeSec?: pulumi.Input<number>;
-    readonly maxOpenConns?: pulumi.Input<number>;
-    readonly password?: pulumi.Input<string>;
-    readonly proxy?: pulumi.Input<string>;
-    readonly tls?: pulumi.Input<string>;
-    readonly username: pulumi.Input<string>;
+    authenticationPlugin?: pulumi.Input<string>;
+    endpoint: pulumi.Input<string>;
+    maxConnLifetimeSec?: pulumi.Input<number>;
+    maxOpenConns?: pulumi.Input<number>;
+    password?: pulumi.Input<string>;
+    proxy?: pulumi.Input<string>;
+    tls?: pulumi.Input<string>;
+    username: pulumi.Input<string>;
 }
