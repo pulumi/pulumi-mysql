@@ -55,6 +55,7 @@ setup(name='pulumi_mysql',
       package_data={
           'pulumi_mysql': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

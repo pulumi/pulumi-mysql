@@ -100,32 +100,30 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["authPlugin"] = state ? state.authPlugin : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["plaintextPassword"] = state ? state.plaintextPassword : undefined;
-            inputs["tlsOption"] = state ? state.tlsOption : undefined;
-            inputs["user"] = state ? state.user : undefined;
+            resourceInputs["authPlugin"] = state ? state.authPlugin : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["plaintextPassword"] = state ? state.plaintextPassword : undefined;
+            resourceInputs["tlsOption"] = state ? state.tlsOption : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.user === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            inputs["authPlugin"] = args ? args.authPlugin : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["plaintextPassword"] = args ? args.plaintextPassword : undefined;
-            inputs["tlsOption"] = args ? args.tlsOption : undefined;
-            inputs["user"] = args ? args.user : undefined;
+            resourceInputs["authPlugin"] = args ? args.authPlugin : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["plaintextPassword"] = args ? args.plaintextPassword : undefined;
+            resourceInputs["tlsOption"] = args ? args.tlsOption : undefined;
+            resourceInputs["user"] = args ? args.user : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -73,15 +73,15 @@ export class UserPassword extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserPasswordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserPasswordArgs | UserPasswordState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserPasswordState | undefined;
-            inputs["encryptedPassword"] = state ? state.encryptedPassword : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
-            inputs["pgpKey"] = state ? state.pgpKey : undefined;
-            inputs["user"] = state ? state.user : undefined;
+            resourceInputs["encryptedPassword"] = state ? state.encryptedPassword : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
+            resourceInputs["pgpKey"] = state ? state.pgpKey : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as UserPasswordArgs | undefined;
             if ((!args || args.pgpKey === undefined) && !opts.urn) {
@@ -90,16 +90,14 @@ export class UserPassword extends pulumi.CustomResource {
             if ((!args || args.user === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            inputs["host"] = args ? args.host : undefined;
-            inputs["pgpKey"] = args ? args.pgpKey : undefined;
-            inputs["user"] = args ? args.user : undefined;
-            inputs["encryptedPassword"] = undefined /*out*/;
-            inputs["keyFingerprint"] = undefined /*out*/;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["pgpKey"] = args ? args.pgpKey : undefined;
+            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["encryptedPassword"] = undefined /*out*/;
+            resourceInputs["keyFingerprint"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(UserPassword.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(UserPassword.__pulumiType, name, resourceInputs, opts);
     }
 }
 
