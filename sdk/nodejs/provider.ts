@@ -40,7 +40,7 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
             if ((!args || args.endpoint === undefined) && !opts.urn) {
@@ -49,19 +49,17 @@ export class Provider extends pulumi.ProviderResource {
             if ((!args || args.username === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            inputs["authenticationPlugin"] = args ? args.authenticationPlugin : undefined;
-            inputs["endpoint"] = args ? args.endpoint : undefined;
-            inputs["maxConnLifetimeSec"] = pulumi.output(args ? args.maxConnLifetimeSec : undefined).apply(JSON.stringify);
-            inputs["maxOpenConns"] = pulumi.output(args ? args.maxOpenConns : undefined).apply(JSON.stringify);
-            inputs["password"] = args ? args.password : undefined;
-            inputs["proxy"] = (args ? args.proxy : undefined) ?? utilities.getEnv("ALL_PROXY", "all_proxy");
-            inputs["tls"] = (args ? args.tls : undefined) ?? (utilities.getEnv("MYSQL_TLS_CONFIG") || "false");
-            inputs["username"] = args ? args.username : undefined;
+            resourceInputs["authenticationPlugin"] = args ? args.authenticationPlugin : undefined;
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["maxConnLifetimeSec"] = pulumi.output(args ? args.maxConnLifetimeSec : undefined).apply(JSON.stringify);
+            resourceInputs["maxOpenConns"] = pulumi.output(args ? args.maxOpenConns : undefined).apply(JSON.stringify);
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["proxy"] = (args ? args.proxy : undefined) ?? utilities.getEnv("ALL_PROXY", "all_proxy");
+            resourceInputs["tls"] = (args ? args.tls : undefined) ?? (utilities.getEnv("MYSQL_TLS_CONFIG") || "false");
+            resourceInputs["username"] = args ? args.username : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

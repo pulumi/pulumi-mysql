@@ -82,23 +82,21 @@ export class Database extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            inputs["defaultCharacterSet"] = state ? state.defaultCharacterSet : undefined;
-            inputs["defaultCollation"] = state ? state.defaultCollation : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["defaultCharacterSet"] = state ? state.defaultCharacterSet : undefined;
+            resourceInputs["defaultCollation"] = state ? state.defaultCollation : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            inputs["defaultCharacterSet"] = args ? args.defaultCharacterSet : undefined;
-            inputs["defaultCollation"] = args ? args.defaultCollation : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["defaultCharacterSet"] = args ? args.defaultCharacterSet : undefined;
+            resourceInputs["defaultCollation"] = args ? args.defaultCollation : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Database.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Database.__pulumiType, name, resourceInputs, opts);
     }
 }
 
