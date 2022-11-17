@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The ``Database`` resource creates and manages a database on a MySQL
+// The “Database“ resource creates and manages a database on a MySQL
 // server.
 //
 // ## Example Usage
@@ -19,19 +19,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mysql.NewDatabase(ctx, "app", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mysql.NewDatabase(ctx, "app", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -39,7 +42,9 @@ import (
 // Databases can be imported using their name, e.g.
 //
 // ```sh
-//  $ pulumi import mysql:index/database:Database example my-example-database
+//
+//	$ pulumi import mysql:index/database:Database example my-example-database
+//
 // ```
 type Database struct {
 	pulumi.CustomResourceState
@@ -182,7 +187,7 @@ func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutp
 // DatabaseArrayInput is an input type that accepts DatabaseArray and DatabaseArrayOutput values.
 // You can construct a concrete instance of `DatabaseArrayInput` via:
 //
-//          DatabaseArray{ DatabaseArgs{...} }
+//	DatabaseArray{ DatabaseArgs{...} }
 type DatabaseArrayInput interface {
 	pulumi.Input
 
@@ -207,7 +212,7 @@ func (i DatabaseArray) ToDatabaseArrayOutputWithContext(ctx context.Context) Dat
 // DatabaseMapInput is an input type that accepts DatabaseMap and DatabaseMapOutput values.
 // You can construct a concrete instance of `DatabaseMapInput` via:
 //
-//          DatabaseMap{ "key": DatabaseArgs{...} }
+//	DatabaseMap{ "key": DatabaseArgs{...} }
 type DatabaseMapInput interface {
 	pulumi.Input
 
