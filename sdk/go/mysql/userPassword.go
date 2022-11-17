@@ -15,11 +15,13 @@ import (
 // user on a MySQL server.
 //
 // > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
-//    argument for `User`. This resource uses PGP encryption to avoid
-//    storing unencrypted passwords in the provider state.
+//
+//	argument for `User`. This resource uses PGP encryption to avoid
+//	storing unencrypted passwords in the provider state.
 //
 // > **NOTE on How Passwords are Created:** This resource **automatically**
-//    generates a **random** password. The password will be a random UUID.
+//
+//	generates a **random** password. The password will be a random UUID.
 type UserPassword struct {
 	pulumi.CustomResourceState
 
@@ -144,7 +146,7 @@ func (i *UserPassword) ToUserPasswordOutputWithContext(ctx context.Context) User
 // UserPasswordArrayInput is an input type that accepts UserPasswordArray and UserPasswordArrayOutput values.
 // You can construct a concrete instance of `UserPasswordArrayInput` via:
 //
-//          UserPasswordArray{ UserPasswordArgs{...} }
+//	UserPasswordArray{ UserPasswordArgs{...} }
 type UserPasswordArrayInput interface {
 	pulumi.Input
 
@@ -169,7 +171,7 @@ func (i UserPasswordArray) ToUserPasswordArrayOutputWithContext(ctx context.Cont
 // UserPasswordMapInput is an input type that accepts UserPasswordMap and UserPasswordMapOutput values.
 // You can construct a concrete instance of `UserPasswordMapInput` via:
 //
-//          UserPasswordMap{ "key": UserPasswordArgs{...} }
+//	UserPasswordMap{ "key": UserPasswordArgs{...} }
 type UserPasswordMapInput interface {
 	pulumi.Input
 
