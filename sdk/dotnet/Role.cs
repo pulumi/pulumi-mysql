@@ -18,23 +18,20 @@ namespace Pulumi.MySql
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using MySql = Pulumi.MySql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var developer = new MySql.Role("developer", new MySql.RoleArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var developer = new MySql.Role("developer");
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [MySqlResourceType("mysql:index/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of the role.
@@ -86,7 +83,7 @@ namespace Pulumi.MySql
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the role.
@@ -97,9 +94,10 @@ namespace Pulumi.MySql
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the role.
@@ -110,5 +108,6 @@ namespace Pulumi.MySql
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

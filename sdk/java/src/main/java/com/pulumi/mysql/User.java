@@ -11,6 +11,7 @@ import com.pulumi.mysql.UserArgs;
 import com.pulumi.mysql.Utilities;
 import com.pulumi.mysql.inputs.UserState;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -21,8 +22,68 @@ import javax.annotation.Nullable;
  * ## Examples
  * 
  * ### Basic Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mysql.User;
+ * import com.pulumi.mysql.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var jdoe = new User(&#34;jdoe&#34;, UserArgs.builder()        
+ *             .host(&#34;example.com&#34;)
+ *             .plaintextPassword(&#34;password&#34;)
+ *             .user(&#34;jdoe&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ### Example Usage with an Authentication Plugin
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mysql.User;
+ * import com.pulumi.mysql.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var nologin = new User(&#34;nologin&#34;, UserArgs.builder()        
+ *             .authPlugin(&#34;mysql_no_login&#34;)
+ *             .host(&#34;example.com&#34;)
+ *             .user(&#34;nologin&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="mysql:index/user:User")
@@ -148,6 +209,10 @@ public class User extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password",
+                "plaintextPassword"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

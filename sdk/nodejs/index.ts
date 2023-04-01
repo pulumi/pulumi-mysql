@@ -5,12 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./database";
-export * from "./grant";
-export * from "./provider";
-export * from "./role";
-export * from "./user";
-export * from "./userPassword";
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+
+export { GrantArgs, GrantState } from "./grant";
+export type Grant = import("./grant").Grant;
+export const Grant: typeof import("./grant").Grant = null as any;
+utilities.lazyLoad(exports, ["Grant"], () => require("./grant"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserPasswordArgs, UserPasswordState } from "./userPassword";
+export type UserPassword = import("./userPassword").UserPassword;
+export const UserPassword: typeof import("./userPassword").UserPassword = null as any;
+utilities.lazyLoad(exports, ["UserPassword"], () => require("./userPassword"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -18,13 +42,6 @@ import * as config from "./config";
 export {
     config,
 };
-
-// Import resources to register:
-import { Database } from "./database";
-import { Grant } from "./grant";
-import { Role } from "./role";
-import { User } from "./user";
-import { UserPassword } from "./userPassword";
 
 const _module = {
     version: utilities.getVersion(),
@@ -50,9 +67,6 @@ pulumi.runtime.registerResourceModule("mysql", "index/grant", _module)
 pulumi.runtime.registerResourceModule("mysql", "index/role", _module)
 pulumi.runtime.registerResourceModule("mysql", "index/user", _module)
 pulumi.runtime.registerResourceModule("mysql", "index/userPassword", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("mysql", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

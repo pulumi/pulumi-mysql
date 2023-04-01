@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -361,6 +361,51 @@ func (o GrantOutput) ToGrantOutput() GrantOutput {
 
 func (o GrantOutput) ToGrantOutputWithContext(ctx context.Context) GrantOutput {
 	return o
+}
+
+// The database to grant privileges on.
+func (o GrantOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// Whether to also give the user privileges to grant the same privileges to other users.
+func (o GrantOutput) Grant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.BoolPtrOutput { return v.Grant }).(pulumi.BoolPtrOutput)
+}
+
+// The source host of the user. Defaults to "localhost". Conflicts with `role`.
+func (o GrantOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+func (o GrantOutput) Privileges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringArrayOutput { return v.Privileges }).(pulumi.StringArrayOutput)
+}
+
+// The role to grant `privileges` to. Conflicts with `user` and `host`.
+func (o GrantOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// A list of rols to grant to the user. Conflicts with `privileges`.
+func (o GrantOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// Which table to grant `privileges` on. Defaults to `*`, which is all tables.
+func (o GrantOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+// An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
+func (o GrantOutput) TlsOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.TlsOption }).(pulumi.StringPtrOutput)
+}
+
+// The name of the user. Conflicts with `role`.
+func (o GrantOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Grant) pulumi.StringPtrOutput { return v.User }).(pulumi.StringPtrOutput)
 }
 
 type GrantArrayOutput struct{ *pulumi.OutputState }

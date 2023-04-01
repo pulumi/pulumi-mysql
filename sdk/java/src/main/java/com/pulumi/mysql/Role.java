@@ -20,6 +20,31 @@ import javax.annotation.Nullable;
  * &gt; **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mysql.Role;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var developer = new Role(&#34;developer&#34;);
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="mysql:index/role:Role")

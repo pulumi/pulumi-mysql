@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -205,6 +205,31 @@ func (o UserPasswordOutput) ToUserPasswordOutput() UserPasswordOutput {
 
 func (o UserPasswordOutput) ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput {
 	return o
+}
+
+// The encrypted password, base64 encoded.
+func (o UserPasswordOutput) EncryptedPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserPassword) pulumi.StringOutput { return v.EncryptedPassword }).(pulumi.StringOutput)
+}
+
+// The source host of the user. Defaults to `localhost`.
+func (o UserPasswordOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserPassword) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The fingerprint of the PGP key used to encrypt the password
+func (o UserPasswordOutput) KeyFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserPassword) pulumi.StringOutput { return v.KeyFingerprint }).(pulumi.StringOutput)
+}
+
+// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
+func (o UserPasswordOutput) PgpKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserPassword) pulumi.StringOutput { return v.PgpKey }).(pulumi.StringOutput)
+}
+
+// The IAM user to associate with this access key.
+func (o UserPasswordOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserPassword) pulumi.StringOutput { return v.User }).(pulumi.StringOutput)
 }
 
 type UserPasswordArrayOutput struct{ *pulumi.OutputState }

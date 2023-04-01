@@ -21,7 +21,7 @@ namespace Pulumi.MySql
     ///    generates a **random** password. The password will be a random UUID.
     /// </summary>
     [MySqlResourceType("mysql:index/userPassword:UserPassword")]
-    public partial class UserPassword : Pulumi.CustomResource
+    public partial class UserPassword : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The encrypted password, base64 encoded.
@@ -97,7 +97,7 @@ namespace Pulumi.MySql
         }
     }
 
-    public sealed class UserPasswordArgs : Pulumi.ResourceArgs
+    public sealed class UserPasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The source host of the user. Defaults to `localhost`.
@@ -120,9 +120,10 @@ namespace Pulumi.MySql
         public UserPasswordArgs()
         {
         }
+        public static new UserPasswordArgs Empty => new UserPasswordArgs();
     }
 
-    public sealed class UserPasswordState : Pulumi.ResourceArgs
+    public sealed class UserPasswordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The encrypted password, base64 encoded.
@@ -157,5 +158,6 @@ namespace Pulumi.MySql
         public UserPasswordState()
         {
         }
+        public static new UserPasswordState Empty => new UserPasswordState();
     }
 }

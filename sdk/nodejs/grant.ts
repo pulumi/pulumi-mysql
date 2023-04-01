@@ -16,12 +16,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
- * const jdoeUser = new mysql.User("jdoe", {
+ * const jdoeUser = new mysql.User("jdoeUser", {
  *     host: "example.com",
  *     plaintextPassword: "password",
  *     user: "jdoe",
  * });
- * const jdoeGrant = new mysql.Grant("jdoe", {
+ * const jdoeGrant = new mysql.Grant("jdoeGrant", {
  *     database: "app",
  *     host: jdoeUser.host,
  *     privileges: [
@@ -38,8 +38,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
- * const developerRole = new mysql.Role("developer", {});
- * const developerGrant = new mysql.Grant("developer", {
+ * const developerRole = new mysql.Role("developerRole", {});
+ * const developerGrant = new mysql.Grant("developerGrant", {
  *     database: "app",
  *     privileges: [
  *         "SELECT",
@@ -60,8 +60,8 @@ import * as utilities from "./utilities";
  *     plaintextPassword: "password",
  *     user: "jdoe",
  * });
- * const developerRole = new mysql.Role("developer", {});
- * const developerGrant = new mysql.Grant("developer", {
+ * const developerRole = new mysql.Role("developerRole", {});
+ * const developerGrant = new mysql.Grant("developerGrant", {
  *     database: "app",
  *     host: jdoe.host,
  *     roles: [developerRole.name],

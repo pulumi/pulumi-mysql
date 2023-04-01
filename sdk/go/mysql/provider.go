@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,10 +39,10 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
-	if isZero(args.Proxy) {
+	if args.Proxy == nil {
 		args.Proxy = pulumi.StringPtr(getEnvOrDefault("", nil, "ALL_PROXY", "all_proxy").(string))
 	}
-	if isZero(args.Tls) {
+	if args.Tls == nil {
 		args.Tls = pulumi.StringPtr(getEnvOrDefault("false", nil, "MYSQL_TLS_CONFIG").(string))
 	}
 	var resource Provider
@@ -111,6 +111,30 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+func (o ProviderOutput) AuthenticationPlugin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthenticationPlugin }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+func (o ProviderOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Proxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Proxy }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Tls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Tls }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 func init() {

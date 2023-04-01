@@ -23,10 +23,128 @@ import javax.annotation.Nullable;
  * ## Examples
  * 
  * ### Granting Privileges to a User
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mysql.User;
+ * import com.pulumi.mysql.UserArgs;
+ * import com.pulumi.mysql.Grant;
+ * import com.pulumi.mysql.GrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var jdoeUser = new User(&#34;jdoeUser&#34;, UserArgs.builder()        
+ *             .host(&#34;example.com&#34;)
+ *             .plaintextPassword(&#34;password&#34;)
+ *             .user(&#34;jdoe&#34;)
+ *             .build());
+ * 
+ *         var jdoeGrant = new Grant(&#34;jdoeGrant&#34;, GrantArgs.builder()        
+ *             .database(&#34;app&#34;)
+ *             .host(jdoeUser.host())
+ *             .privileges(            
+ *                 &#34;SELECT&#34;,
+ *                 &#34;UPDATE&#34;)
+ *             .user(jdoeUser.user())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ### Granting Privileges to a Role
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mysql.Role;
+ * import com.pulumi.mysql.Grant;
+ * import com.pulumi.mysql.GrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var developerRole = new Role(&#34;developerRole&#34;);
+ * 
+ *         var developerGrant = new Grant(&#34;developerGrant&#34;, GrantArgs.builder()        
+ *             .database(&#34;app&#34;)
+ *             .privileges(            
+ *                 &#34;SELECT&#34;,
+ *                 &#34;UPDATE&#34;)
+ *             .role(developerRole.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ### Adding a Role to a User
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mysql.User;
+ * import com.pulumi.mysql.UserArgs;
+ * import com.pulumi.mysql.Role;
+ * import com.pulumi.mysql.Grant;
+ * import com.pulumi.mysql.GrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var jdoe = new User(&#34;jdoe&#34;, UserArgs.builder()        
+ *             .host(&#34;example.com&#34;)
+ *             .plaintextPassword(&#34;password&#34;)
+ *             .user(&#34;jdoe&#34;)
+ *             .build());
+ * 
+ *         var developerRole = new Role(&#34;developerRole&#34;);
+ * 
+ *         var developerGrant = new Grant(&#34;developerGrant&#34;, GrantArgs.builder()        
+ *             .database(&#34;app&#34;)
+ *             .host(jdoe.host())
+ *             .roles(developerRole.name())
+ *             .user(jdoe.user())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="mysql:index/grant:Grant")
