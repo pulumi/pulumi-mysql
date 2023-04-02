@@ -16,7 +16,7 @@ namespace Pulumi.MySql
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [MySqlResourceType("pulumi:providers:mysql")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         [Output("authenticationPlugin")]
         public Output<string?> AuthenticationPlugin { get; private set; } = null!;
@@ -62,7 +62,7 @@ namespace Pulumi.MySql
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("authenticationPlugin")]
         public Input<string>? AuthenticationPlugin { get; set; }
@@ -93,5 +93,6 @@ namespace Pulumi.MySql
             Proxy = Utilities.GetEnv("ALL_PROXY", "all_proxy");
             Tls = Utilities.GetEnv("MYSQL_TLS_CONFIG") ?? "false";
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

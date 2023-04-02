@@ -117,12 +117,14 @@ export class User extends pulumi.CustomResource {
             }
             resourceInputs["authPlugin"] = args ? args.authPlugin : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["plaintextPassword"] = args ? args.plaintextPassword : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["plaintextPassword"] = args?.plaintextPassword ? pulumi.secret(args.plaintextPassword) : undefined;
             resourceInputs["tlsOption"] = args ? args.tlsOption : undefined;
             resourceInputs["user"] = args ? args.user : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password", "plaintextPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }

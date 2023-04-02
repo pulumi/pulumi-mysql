@@ -30,7 +30,7 @@ namespace Pulumi.MySql
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("mysql");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("mysql");
 
         private static readonly __Value<string?> _authenticationPlugin = new __Value<string?>(() => __config.Get("authenticationPlugin"));
         public static string? AuthenticationPlugin

@@ -18,47 +18,45 @@ namespace Pulumi.MySql
     /// ### Basic Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using MySql = Pulumi.MySql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var jdoe = new MySql.User("jdoe", new()
     ///     {
-    ///         var jdoe = new MySql.User("jdoe", new MySql.UserArgs
-    ///         {
-    ///             Host = "example.com",
-    ///             PlaintextPassword = "password",
-    ///             User = "jdoe",
-    ///         });
-    ///     }
+    ///         Host = "example.com",
+    ///         PlaintextPassword = "password",
+    ///         UserName = "jdoe",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### Example Usage with an Authentication Plugin
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using MySql = Pulumi.MySql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var nologin = new MySql.User("nologin", new()
     ///     {
-    ///         var nologin = new MySql.User("nologin", new MySql.UserArgs
-    ///         {
-    ///             AuthPlugin = "mysql_no_login",
-    ///             Host = "example.com",
-    ///             User = "nologin",
-    ///         });
-    ///     }
+    ///         AuthPlugin = "mysql_no_login",
+    ///         Host = "example.com",
+    ///         UserName = "nologin",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [MySqlResourceType("mysql:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
@@ -119,6 +117,11 @@ namespace Pulumi.MySql
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                    "plaintextPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -140,7 +143,7 @@ namespace Pulumi.MySql
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
@@ -154,17 +157,38 @@ namespace Pulumi.MySql
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Obsolete(@"Please use plaintext_password instead")]
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("plaintextPassword")]
+        private Input<string>? _plaintextPassword;
 
         /// <summary>
         /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         /// </summary>
-        [Input("plaintextPassword")]
-        public Input<string>? PlaintextPassword { get; set; }
+        public Input<string>? PlaintextPassword
+        {
+            get => _plaintextPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintextPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
@@ -181,9 +205,10 @@ namespace Pulumi.MySql
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
@@ -197,17 +222,38 @@ namespace Pulumi.MySql
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Obsolete(@"Please use plaintext_password instead")]
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("plaintextPassword")]
+        private Input<string>? _plaintextPassword;
 
         /// <summary>
         /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         /// </summary>
-        [Input("plaintextPassword")]
-        public Input<string>? PlaintextPassword { get; set; }
+        public Input<string>? PlaintextPassword
+        {
+            get => _plaintextPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _plaintextPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
@@ -224,5 +270,6 @@ namespace Pulumi.MySql
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

@@ -248,6 +248,28 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+// The default character set to use when
+// a table is created without specifying an explicit character set. Defaults
+// to "utf8".
+func (o DatabaseOutput) DefaultCharacterSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultCharacterSet }).(pulumi.StringPtrOutput)
+}
+
+// The default collation to use when a table
+// is created without specifying an explicit collation. Defaults to
+// “utf8GeneralCi“. Each character set has its own set of collations, so
+// changing the character set requires also changing the collation.
+func (o DatabaseOutput) DefaultCollation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultCollation }).(pulumi.StringPtrOutput)
+}
+
+// The name of the database. This must be unique within
+// a given MySQL server and may or may not be case-sensitive depending on
+// the operating system on which the MySQL server is running.
+func (o DatabaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type DatabaseArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseArrayOutput) ElementType() reflect.Type {

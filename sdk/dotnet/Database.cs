@@ -16,19 +16,16 @@ namespace Pulumi.MySql
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using MySql = Pulumi.MySql;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var app = new MySql.Database("app", new MySql.DatabaseArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var app = new MySql.Database("app");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -40,7 +37,7 @@ namespace Pulumi.MySql
     /// ```
     /// </summary>
     [MySqlResourceType("mysql:index/database:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The default character set to use when
@@ -111,7 +108,7 @@ namespace Pulumi.MySql
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default character set to use when
@@ -141,9 +138,10 @@ namespace Pulumi.MySql
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 
-    public sealed class DatabaseState : Pulumi.ResourceArgs
+    public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default character set to use when
@@ -173,5 +171,6 @@ namespace Pulumi.MySql
         public DatabaseState()
         {
         }
+        public static new DatabaseState Empty => new DatabaseState();
     }
 }
