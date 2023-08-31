@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-mysql/provider/v3
 
-go 1.20
+go 1.21
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
