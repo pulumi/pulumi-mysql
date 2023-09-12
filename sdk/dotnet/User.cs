@@ -84,6 +84,8 @@ namespace Pulumi.MySql
 
         /// <summary>
         /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+        /// 
+        /// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         /// </summary>
         [Output("tlsOption")]
         public Output<string?> TlsOption { get; private set; } = null!;
@@ -192,6 +194,8 @@ namespace Pulumi.MySql
 
         /// <summary>
         /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+        /// 
+        /// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         /// </summary>
         [Input("tlsOption")]
         public Input<string>? TlsOption { get; set; }
@@ -257,6 +261,8 @@ namespace Pulumi.MySql
 
         /// <summary>
         /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+        /// 
+        /// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         /// </summary>
         [Input("tlsOption")]
         public Input<string>? TlsOption { get; set; }

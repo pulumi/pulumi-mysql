@@ -151,12 +151,16 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
      * 
+     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
+     * 
      */
     @Export(name="tlsOption", type=String.class, parameters={})
     private Output</* @Nullable */ String> tlsOption;
 
     /**
      * @return An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+     * 
+     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
      * 
      */
     public Output<Optional<String>> tlsOption() {
