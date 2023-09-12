@@ -14,21 +14,22 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
+            "packageReferences": {
+                "Pulumi": "3.*-*"
+            },
             "namespaces": {
                 "mysql": "MySql"
             },
-            "packageReferences": {
-                "Pulumi": "3.*-*"
-            }
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
+            "generateExtraInputTypes": true
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageDescription": "A Pulumi package for creating and managing mysql cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-mysql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-mysql` repo](https://github.com/pulumi/pulumi-mysql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-mysql` repo](https://github.com/terraform-providers/terraform-provider-mysql/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0-alpha.0"
             },
@@ -36,18 +37,16 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing mysql cloud resources.",
-            "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-mysql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-mysql` repo](https://github.com/pulumi/pulumi-mysql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-mysql` repo](https://github.com/terraform-providers/terraform-provider-mysql/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-mysql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-mysql` repo](https://github.com/pulumi/pulumi-mysql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-mysql` repo](https://github.com/terraform-providers/terraform-provider-mysql/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0a1,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-mysql)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-mysql` repo](https://github.com/pulumi/pulumi-mysql/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-mysql` repo](https://github.com/terraform-providers/terraform-provider-mysql/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -171,7 +170,7 @@
     },
     "resources": {
         "mysql:index/database:Database": {
-            "description": "The ``mysql.Database`` resource creates and manages a database on a MySQL\nserver.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mysql from \"@pulumi/mysql\";\n\nconst app = new mysql.Database(\"app\", {});\n```\n```python\nimport pulumi\nimport pulumi_mysql as mysql\n\napp = mysql.Database(\"app\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing MySql = Pulumi.MySql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var app = new MySql.Database(\"app\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mysql.NewDatabase(ctx, \"app\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mysql.Database;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var app = new Database(\"app\");\n\n    }\n}\n```\n```yaml\nresources:\n  app:\n    type: mysql:Database\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabases can be imported using their name, e.g.\n\n```sh\n $ pulumi import mysql:index/database:Database example my-example-database\n```\n\n ",
+            "description": "The ``mysql.Database`` resource creates and manages a database on a MySQL\nserver.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mysql from \"@pulumi/mysql\";\n\nconst app = new mysql.Database(\"app\", {});\n```\n```python\nimport pulumi\nimport pulumi_mysql as mysql\n\napp = mysql.Database(\"app\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing MySql = Pulumi.MySql;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var app = new MySql.Database(\"app\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mysql.NewDatabase(ctx, \"app\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mysql.Database;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var app = new Database(\"app\");\n\n    }\n}\n```\n```yaml\nresources:\n  app:\n    type: mysql:Database\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDatabases can be imported using their name, e.g.\n\n```sh\n $ pulumi import mysql:index/database:Database example my-example-database\n```\n ",
             "properties": {
                 "defaultCharacterSet": {
                     "type": "string",
@@ -179,7 +178,7 @@
                 },
                 "defaultCollation": {
                     "type": "string",
-                    "description": "The default collation to use when a table\nis created without specifying an explicit collation. Defaults to\n``utf8_general_ci``. Each character set has its own set of collations, so\nchanging the character set requires also changing the collation.\n"
+                    "description": "The default collation to use when a table\nis created without specifying an explicit collation. Defaults to\n``utf8_general_ci``. Each character set has its own set of collations, so\nchanging the character set requires also changing the collation.\n\nNote that the defaults for character set and collation above do not respect\nany defaults set on the MySQL server, so that the configuration can be set\nappropriately even though this provider cannot see the server-level defaults. If\nyou wish to use the server's defaults you must consult the server's\nconfiguration and then set the ``default_character_set`` and\n``default_collation`` to match.\n"
                 },
                 "name": {
                     "type": "string",
@@ -196,7 +195,7 @@
                 },
                 "defaultCollation": {
                     "type": "string",
-                    "description": "The default collation to use when a table\nis created without specifying an explicit collation. Defaults to\n``utf8_general_ci``. Each character set has its own set of collations, so\nchanging the character set requires also changing the collation.\n"
+                    "description": "The default collation to use when a table\nis created without specifying an explicit collation. Defaults to\n``utf8_general_ci``. Each character set has its own set of collations, so\nchanging the character set requires also changing the collation.\n\nNote that the defaults for character set and collation above do not respect\nany defaults set on the MySQL server, so that the configuration can be set\nappropriately even though this provider cannot see the server-level defaults. If\nyou wish to use the server's defaults you must consult the server's\nconfiguration and then set the ``default_character_set`` and\n``default_collation`` to match.\n"
                 },
                 "name": {
                     "type": "string",
@@ -213,7 +212,7 @@
                     },
                     "defaultCollation": {
                         "type": "string",
-                        "description": "The default collation to use when a table\nis created without specifying an explicit collation. Defaults to\n``utf8_general_ci``. Each character set has its own set of collations, so\nchanging the character set requires also changing the collation.\n"
+                        "description": "The default collation to use when a table\nis created without specifying an explicit collation. Defaults to\n``utf8_general_ci``. Each character set has its own set of collations, so\nchanging the character set requires also changing the collation.\n\nNote that the defaults for character set and collation above do not respect\nany defaults set on the MySQL server, so that the configuration can be set\nappropriately even though this provider cannot see the server-level defaults. If\nyou wish to use the server's defaults you must consult the server's\nconfiguration and then set the ``default_character_set`` and\n``default_collation`` to match.\n"
                     },
                     "name": {
                         "type": "string",
@@ -456,7 +455,7 @@
                 },
                 "tlsOption": {
                     "type": "string",
-                    "description": "An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.\n"
+                    "description": "An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.\n\n[ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html\n"
                 },
                 "user": {
                     "type": "string",
@@ -495,7 +494,7 @@
                 },
                 "tlsOption": {
                     "type": "string",
-                    "description": "An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.\n",
+                    "description": "An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.\n\n[ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html\n",
                     "willReplaceOnChanges": true
                 },
                 "user": {
@@ -538,7 +537,7 @@
                     },
                     "tlsOption": {
                         "type": "string",
-                        "description": "An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.\n",
+                        "description": "An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.\n\n[ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html\n",
                         "willReplaceOnChanges": true
                     },
                     "user": {
