@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “User“ resource creates and manages a user on a MySQL
@@ -85,6 +87,8 @@ type User struct {
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrOutput `pulumi:"plaintextPassword"`
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+	//
+	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption pulumi.StringPtrOutput `pulumi:"tlsOption"`
 	// The name of the user.
 	User pulumi.StringOutput `pulumi:"user"`
@@ -111,6 +115,7 @@ func NewUser(ctx *pulumi.Context,
 		"plaintextPassword",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("mysql:index/user:User", name, args, &resource, opts...)
 	if err != nil {
@@ -144,6 +149,8 @@ type userState struct {
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword *string `pulumi:"plaintextPassword"`
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+	//
+	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption *string `pulumi:"tlsOption"`
 	// The name of the user.
 	User *string `pulumi:"user"`
@@ -161,6 +168,8 @@ type UserState struct {
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrInput
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+	//
+	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption pulumi.StringPtrInput
 	// The name of the user.
 	User pulumi.StringPtrInput
@@ -182,6 +191,8 @@ type userArgs struct {
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword *string `pulumi:"plaintextPassword"`
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+	//
+	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption *string `pulumi:"tlsOption"`
 	// The name of the user.
 	User string `pulumi:"user"`
@@ -200,6 +211,8 @@ type UserArgs struct {
 	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrInput
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+	//
+	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption pulumi.StringPtrInput
 	// The name of the user.
 	User pulumi.StringInput
@@ -228,6 +241,12 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserOutput)
 }
 
+func (i *User) ToOutput(ctx context.Context) pulumix.Output[*User] {
+	return pulumix.Output[*User]{
+		OutputState: i.ToUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
@@ -251,6 +270,12 @@ func (i UserArray) ToUserArrayOutput() UserArrayOutput {
 
 func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserArrayOutput)
+}
+
+func (i UserArray) ToOutput(ctx context.Context) pulumix.Output[[]*User] {
+	return pulumix.Output[[]*User]{
+		OutputState: i.ToUserArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
@@ -278,6 +303,12 @@ func (i UserMap) ToUserMapOutputWithContext(ctx context.Context) UserMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserMapOutput)
 }
 
+func (i UserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*User] {
+	return pulumix.Output[map[string]*User]{
+		OutputState: i.ToUserMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserOutput struct{ *pulumi.OutputState }
 
 func (UserOutput) ElementType() reflect.Type {
@@ -290,6 +321,12 @@ func (o UserOutput) ToUserOutput() UserOutput {
 
 func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
+}
+
+func (o UserOutput) ToOutput(ctx context.Context) pulumix.Output[*User] {
+	return pulumix.Output[*User]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
@@ -315,6 +352,8 @@ func (o UserOutput) PlaintextPassword() pulumi.StringPtrOutput {
 }
 
 // An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
+//
+// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 func (o UserOutput) TlsOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.TlsOption }).(pulumi.StringPtrOutput)
 }
@@ -338,6 +377,12 @@ func (o UserArrayOutput) ToUserArrayOutputWithContext(ctx context.Context) UserA
 	return o
 }
 
+func (o UserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*User] {
+	return pulumix.Output[[]*User]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserArrayOutput) Index(i pulumi.IntInput) UserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *User {
 		return vs[0].([]*User)[vs[1].(int)]
@@ -356,6 +401,12 @@ func (o UserMapOutput) ToUserMapOutput() UserMapOutput {
 
 func (o UserMapOutput) ToUserMapOutputWithContext(ctx context.Context) UserMapOutput {
 	return o
+}
+
+func (o UserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*User] {
+	return pulumix.Output[map[string]*User]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserMapOutput) MapIndex(k pulumi.StringInput) UserOutput {

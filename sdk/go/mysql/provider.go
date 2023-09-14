@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The provider type for the mysql package. By default, resources use package-wide configuration
@@ -40,11 +42,16 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
 	if args.Proxy == nil {
-		args.Proxy = pulumi.StringPtr(getEnvOrDefault("", nil, "ALL_PROXY", "all_proxy").(string))
+		if d := internal.GetEnvOrDefault(nil, nil, "ALL_PROXY", "all_proxy"); d != nil {
+			args.Proxy = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.Tls == nil {
-		args.Tls = pulumi.StringPtr(getEnvOrDefault("false", nil, "MYSQL_TLS_CONFIG").(string))
+		if d := internal.GetEnvOrDefault("false", nil, "MYSQL_TLS_CONFIG"); d != nil {
+			args.Tls = pulumi.StringPtr(d.(string))
+		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:mysql", name, args, &resource, opts...)
 	if err != nil {
@@ -99,6 +106,12 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i *Provider) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
+	return pulumix.Output[*Provider]{
+		OutputState: i.ToProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
@@ -111,6 +124,12 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+func (o ProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
+	return pulumix.Output[*Provider]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProviderOutput) AuthenticationPlugin() pulumi.StringPtrOutput {

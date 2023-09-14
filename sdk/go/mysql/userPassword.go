@@ -8,7 +8,9 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The `UserPassword` resource sets and manages a password for a given
@@ -50,6 +52,7 @@ func NewUserPassword(ctx *pulumi.Context,
 	if args.User == nil {
 		return nil, errors.New("invalid value for required argument 'User'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserPassword
 	err := ctx.RegisterResource("mysql:index/userPassword:UserPassword", name, args, &resource, opts...)
 	if err != nil {
@@ -143,6 +146,12 @@ func (i *UserPassword) ToUserPasswordOutputWithContext(ctx context.Context) User
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordOutput)
 }
 
+func (i *UserPassword) ToOutput(ctx context.Context) pulumix.Output[*UserPassword] {
+	return pulumix.Output[*UserPassword]{
+		OutputState: i.ToUserPasswordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserPasswordArrayInput is an input type that accepts UserPasswordArray and UserPasswordArrayOutput values.
 // You can construct a concrete instance of `UserPasswordArrayInput` via:
 //
@@ -166,6 +175,12 @@ func (i UserPasswordArray) ToUserPasswordArrayOutput() UserPasswordArrayOutput {
 
 func (i UserPasswordArray) ToUserPasswordArrayOutputWithContext(ctx context.Context) UserPasswordArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordArrayOutput)
+}
+
+func (i UserPasswordArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserPassword] {
+	return pulumix.Output[[]*UserPassword]{
+		OutputState: i.ToUserPasswordArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UserPasswordMapInput is an input type that accepts UserPasswordMap and UserPasswordMapOutput values.
@@ -193,6 +208,12 @@ func (i UserPasswordMap) ToUserPasswordMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordMapOutput)
 }
 
+func (i UserPasswordMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserPassword] {
+	return pulumix.Output[map[string]*UserPassword]{
+		OutputState: i.ToUserPasswordMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserPasswordOutput struct{ *pulumi.OutputState }
 
 func (UserPasswordOutput) ElementType() reflect.Type {
@@ -205,6 +226,12 @@ func (o UserPasswordOutput) ToUserPasswordOutput() UserPasswordOutput {
 
 func (o UserPasswordOutput) ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput {
 	return o
+}
+
+func (o UserPasswordOutput) ToOutput(ctx context.Context) pulumix.Output[*UserPassword] {
+	return pulumix.Output[*UserPassword]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The encrypted password, base64 encoded.
@@ -246,6 +273,12 @@ func (o UserPasswordArrayOutput) ToUserPasswordArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o UserPasswordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserPassword] {
+	return pulumix.Output[[]*UserPassword]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserPasswordArrayOutput) Index(i pulumi.IntInput) UserPasswordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserPassword {
 		return vs[0].([]*UserPassword)[vs[1].(int)]
@@ -264,6 +297,12 @@ func (o UserPasswordMapOutput) ToUserPasswordMapOutput() UserPasswordMapOutput {
 
 func (o UserPasswordMapOutput) ToUserPasswordMapOutputWithContext(ctx context.Context) UserPasswordMapOutput {
 	return o
+}
+
+func (o UserPasswordMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserPassword] {
+	return pulumix.Output[map[string]*UserPassword]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserPasswordMapOutput) MapIndex(k pulumi.StringInput) UserPasswordOutput {

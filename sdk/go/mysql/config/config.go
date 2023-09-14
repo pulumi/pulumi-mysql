@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 func GetAuthenticationPlugin(ctx *pulumi.Context) string {
 	return config.Get(ctx, "mysql:authenticationPlugin")
@@ -28,14 +31,22 @@ func GetProxy(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ALL_PROXY", "all_proxy").(string)
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "ALL_PROXY", "all_proxy"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetTls(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "mysql:tls")
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("false", nil, "MYSQL_TLS_CONFIG").(string)
+	var value string
+	if d := internal.GetEnvOrDefault("false", nil, "MYSQL_TLS_CONFIG"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetUsername(ctx *pulumi.Context) string {
 	return config.Get(ctx, "mysql:username")

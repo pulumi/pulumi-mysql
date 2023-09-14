@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The “Database“ resource creates and manages a database on a MySQL
@@ -57,6 +59,13 @@ type Database struct {
 	// is created without specifying an explicit collation. Defaults to
 	// ``utf8GeneralCi``. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though this provider cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
 	DefaultCollation pulumi.StringPtrOutput `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -71,6 +80,7 @@ func NewDatabase(ctx *pulumi.Context,
 		args = &DatabaseArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Database
 	err := ctx.RegisterResource("mysql:index/database:Database", name, args, &resource, opts...)
 	if err != nil {
@@ -101,6 +111,13 @@ type databaseState struct {
 	// is created without specifying an explicit collation. Defaults to
 	// ``utf8GeneralCi``. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though this provider cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
 	DefaultCollation *string `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -117,6 +134,13 @@ type DatabaseState struct {
 	// is created without specifying an explicit collation. Defaults to
 	// ``utf8GeneralCi``. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though this provider cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
 	DefaultCollation pulumi.StringPtrInput
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -137,6 +161,13 @@ type databaseArgs struct {
 	// is created without specifying an explicit collation. Defaults to
 	// ``utf8GeneralCi``. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though this provider cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
 	DefaultCollation *string `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -154,6 +185,13 @@ type DatabaseArgs struct {
 	// is created without specifying an explicit collation. Defaults to
 	// ``utf8GeneralCi``. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though this provider cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
 	DefaultCollation pulumi.StringPtrInput
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -184,6 +222,12 @@ func (i *Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
 }
 
+func (i *Database) ToOutput(ctx context.Context) pulumix.Output[*Database] {
+	return pulumix.Output[*Database]{
+		OutputState: i.ToDatabaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DatabaseArrayInput is an input type that accepts DatabaseArray and DatabaseArrayOutput values.
 // You can construct a concrete instance of `DatabaseArrayInput` via:
 //
@@ -207,6 +251,12 @@ func (i DatabaseArray) ToDatabaseArrayOutput() DatabaseArrayOutput {
 
 func (i DatabaseArray) ToDatabaseArrayOutputWithContext(ctx context.Context) DatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseArrayOutput)
+}
+
+func (i DatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*Database] {
+	return pulumix.Output[[]*Database]{
+		OutputState: i.ToDatabaseArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DatabaseMapInput is an input type that accepts DatabaseMap and DatabaseMapOutput values.
@@ -234,6 +284,12 @@ func (i DatabaseMap) ToDatabaseMapOutputWithContext(ctx context.Context) Databas
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMapOutput)
 }
 
+func (i DatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Database] {
+	return pulumix.Output[map[string]*Database]{
+		OutputState: i.ToDatabaseMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DatabaseOutput struct{ *pulumi.OutputState }
 
 func (DatabaseOutput) ElementType() reflect.Type {
@@ -248,6 +304,12 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+func (o DatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*Database] {
+	return pulumix.Output[*Database]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The default character set to use when
 // a table is created without specifying an explicit character set. Defaults
 // to "utf8".
@@ -259,6 +321,13 @@ func (o DatabaseOutput) DefaultCharacterSet() pulumi.StringPtrOutput {
 // is created without specifying an explicit collation. Defaults to
 // “utf8GeneralCi“. Each character set has its own set of collations, so
 // changing the character set requires also changing the collation.
+//
+// Note that the defaults for character set and collation above do not respect
+// any defaults set on the MySQL server, so that the configuration can be set
+// appropriately even though this provider cannot see the server-level defaults. If
+// you wish to use the server's defaults you must consult the server's
+// configuration and then set the “defaultCharacterSet“ and
+// “defaultCollation“ to match.
 func (o DatabaseOutput) DefaultCollation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultCollation }).(pulumi.StringPtrOutput)
 }
@@ -284,6 +353,12 @@ func (o DatabaseArrayOutput) ToDatabaseArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o DatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Database] {
+	return pulumix.Output[[]*Database]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DatabaseArrayOutput) Index(i pulumi.IntInput) DatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Database {
 		return vs[0].([]*Database)[vs[1].(int)]
@@ -302,6 +377,12 @@ func (o DatabaseMapOutput) ToDatabaseMapOutput() DatabaseMapOutput {
 
 func (o DatabaseMapOutput) ToDatabaseMapOutputWithContext(ctx context.Context) DatabaseMapOutput {
 	return o
+}
+
+func (o DatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Database] {
+	return pulumix.Output[map[string]*Database]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DatabaseMapOutput) MapIndex(k pulumi.StringInput) DatabaseOutput {
