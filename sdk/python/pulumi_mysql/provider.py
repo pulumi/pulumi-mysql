@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -25,24 +25,47 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "username", username)
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            username=username,
+            authentication_plugin=authentication_plugin,
+            max_conn_lifetime_sec=max_conn_lifetime_sec,
+            max_open_conns=max_open_conns,
+            password=password,
+            proxy=proxy,
+            tls=tls,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: pulumi.Input[str],
+             username: pulumi.Input[str],
+             authentication_plugin: Optional[pulumi.Input[str]] = None,
+             max_conn_lifetime_sec: Optional[pulumi.Input[int]] = None,
+             max_open_conns: Optional[pulumi.Input[int]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             proxy: Optional[pulumi.Input[str]] = None,
+             tls: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint", endpoint)
+        _setter("username", username)
         if authentication_plugin is not None:
-            pulumi.set(__self__, "authentication_plugin", authentication_plugin)
+            _setter("authentication_plugin", authentication_plugin)
         if max_conn_lifetime_sec is not None:
-            pulumi.set(__self__, "max_conn_lifetime_sec", max_conn_lifetime_sec)
+            _setter("max_conn_lifetime_sec", max_conn_lifetime_sec)
         if max_open_conns is not None:
-            pulumi.set(__self__, "max_open_conns", max_open_conns)
+            _setter("max_open_conns", max_open_conns)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if proxy is None:
             proxy = _utilities.get_env('ALL_PROXY', 'all_proxy')
         if proxy is not None:
-            pulumi.set(__self__, "proxy", proxy)
+            _setter("proxy", proxy)
         if tls is None:
             tls = (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
 
     @property
     @pulumi.getter
@@ -162,6 +185,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
