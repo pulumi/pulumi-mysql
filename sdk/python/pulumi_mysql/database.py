@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
@@ -37,12 +37,25 @@ class DatabaseArgs:
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
         """
+        DatabaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_character_set=default_character_set,
+            default_collation=default_collation,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_character_set: Optional[pulumi.Input[str]] = None,
+             default_collation: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if default_character_set is not None:
-            pulumi.set(__self__, "default_character_set", default_character_set)
+            _setter("default_character_set", default_character_set)
         if default_collation is not None:
-            pulumi.set(__self__, "default_collation", default_collation)
+            _setter("default_collation", default_collation)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="defaultCharacterSet")
@@ -121,12 +134,25 @@ class _DatabaseState:
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
         """
+        _DatabaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_character_set=default_character_set,
+            default_collation=default_collation,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_character_set: Optional[pulumi.Input[str]] = None,
+             default_collation: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if default_character_set is not None:
-            pulumi.set(__self__, "default_character_set", default_character_set)
+            _setter("default_character_set", default_character_set)
         if default_collation is not None:
-            pulumi.set(__self__, "default_collation", default_collation)
+            _setter("default_collation", default_collation)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="defaultCharacterSet")
@@ -266,6 +292,10 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
