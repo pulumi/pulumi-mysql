@@ -14,6 +14,46 @@ namespace Pulumi.MySql
     /// server.
     /// 
     /// ## Examples
+    /// 
+    /// ### Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var jdoe = new MySql.User("jdoe", new()
+    ///     {
+    ///         Host = "example.com",
+    ///         PlaintextPassword = "password",
+    ///         UserName = "jdoe",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Example Usage with an Authentication Plugin
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var nologin = new MySql.User("nologin", new()
+    ///     {
+    ///         AuthPlugin = "mysql_no_login",
+    ///         Host = "example.com",
+    ///         UserName = "nologin",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [MySqlResourceType("mysql:index/user:User")]
     public partial class User : global::Pulumi.CustomResource

@@ -13,6 +13,21 @@ namespace Pulumi.MySql
     /// The ``mysql.Database`` resource creates and manages a database on a MySQL
     /// server.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var app = new MySql.Database("app");
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Databases can be imported using their name, e.g.

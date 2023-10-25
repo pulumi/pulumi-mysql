@@ -9,6 +9,32 @@ import * as utilities from "./utilities";
  * server.
  *
  * ## Examples
+ *
+ * ### Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ *
+ * const jdoe = new mysql.User("jdoe", {
+ *     host: "example.com",
+ *     plaintextPassword: "password",
+ *     user: "jdoe",
+ * });
+ * ```
+ *
+ * ### Example Usage with an Authentication Plugin
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ *
+ * const nologin = new mysql.User("nologin", {
+ *     authPlugin: "mysql_no_login",
+ *     host: "example.com",
+ *     user: "nologin",
+ * });
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**

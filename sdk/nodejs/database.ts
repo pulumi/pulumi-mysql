@@ -8,6 +8,15 @@ import * as utilities from "./utilities";
  * The ``mysql.Database`` resource creates and manages a database on a MySQL
  * server.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ *
+ * const app = new mysql.Database("app", {});
+ * ```
+ *
  * ## Import
  *
  * Databases can be imported using their name, e.g.
