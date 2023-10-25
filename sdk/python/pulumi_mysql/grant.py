@@ -50,7 +50,7 @@ class GrantArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             database: pulumi.Input[str],
+             database: Optional[pulumi.Input[str]] = None,
              grant: Optional[pulumi.Input[bool]] = None,
              host: Optional[pulumi.Input[str]] = None,
              privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -59,7 +59,13 @@ class GrantArgs:
              table: Optional[pulumi.Input[str]] = None,
              tls_option: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if database is None:
+            raise TypeError("Missing 'database' argument")
+        if tls_option is None and 'tlsOption' in kwargs:
+            tls_option = kwargs['tlsOption']
+
         _setter("database", database)
         if grant is not None:
             _setter("grant", grant)
@@ -235,7 +241,11 @@ class _GrantState:
              table: Optional[pulumi.Input[str]] = None,
              tls_option: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tls_option is None and 'tlsOption' in kwargs:
+            tls_option = kwargs['tlsOption']
+
         if database is not None:
             _setter("database", database)
         if grant is not None:
@@ -385,60 +395,6 @@ class Grant(pulumi.CustomResource):
 
         ## Examples
 
-        ### Granting Privileges to a User
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        jdoe_user = mysql.User("jdoeUser",
-            host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        jdoe_grant = mysql.Grant("jdoeGrant",
-            database="app",
-            host=jdoe_user.host,
-            privileges=[
-                "SELECT",
-                "UPDATE",
-            ],
-            user=jdoe_user.user)
-        ```
-
-        ### Granting Privileges to a Role
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        developer_role = mysql.Role("developerRole")
-        developer_grant = mysql.Grant("developerGrant",
-            database="app",
-            privileges=[
-                "SELECT",
-                "UPDATE",
-            ],
-            role=developer_role.name)
-        ```
-
-        ### Adding a Role to a User
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        jdoe = mysql.User("jdoe",
-            host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        developer_role = mysql.Role("developerRole")
-        developer_grant = mysql.Grant("developerGrant",
-            database="app",
-            host=jdoe.host,
-            roles=[developer_role.name],
-            user=jdoe.user)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The database to grant privileges on.
@@ -462,60 +418,6 @@ class Grant(pulumi.CustomResource):
         a user on a MySQL server.
 
         ## Examples
-
-        ### Granting Privileges to a User
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        jdoe_user = mysql.User("jdoeUser",
-            host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        jdoe_grant = mysql.Grant("jdoeGrant",
-            database="app",
-            host=jdoe_user.host,
-            privileges=[
-                "SELECT",
-                "UPDATE",
-            ],
-            user=jdoe_user.user)
-        ```
-
-        ### Granting Privileges to a Role
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        developer_role = mysql.Role("developerRole")
-        developer_grant = mysql.Grant("developerGrant",
-            database="app",
-            privileges=[
-                "SELECT",
-                "UPDATE",
-            ],
-            role=developer_role.name)
-        ```
-
-        ### Adding a Role to a User
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        jdoe = mysql.User("jdoe",
-            host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        developer_role = mysql.Role("developerRole")
-        developer_grant = mysql.Grant("developerGrant",
-            database="app",
-            host=jdoe.host,
-            roles=[developer_role.name],
-            user=jdoe.user)
-        ```
 
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.

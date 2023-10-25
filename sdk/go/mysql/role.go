@@ -16,30 +16,6 @@ import (
 // server.
 //
 // > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := mysql.NewRole(ctx, "developer", nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Role struct {
 	pulumi.CustomResourceState
 

@@ -49,7 +49,13 @@ class DatabaseArgs:
              default_character_set: Optional[pulumi.Input[str]] = None,
              default_collation: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_character_set is None and 'defaultCharacterSet' in kwargs:
+            default_character_set = kwargs['defaultCharacterSet']
+        if default_collation is None and 'defaultCollation' in kwargs:
+            default_collation = kwargs['defaultCollation']
+
         if default_character_set is not None:
             _setter("default_character_set", default_character_set)
         if default_collation is not None:
@@ -146,7 +152,13 @@ class _DatabaseState:
              default_character_set: Optional[pulumi.Input[str]] = None,
              default_collation: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_character_set is None and 'defaultCharacterSet' in kwargs:
+            default_character_set = kwargs['defaultCharacterSet']
+        if default_collation is None and 'defaultCollation' in kwargs:
+            default_collation = kwargs['defaultCollation']
+
         if default_character_set is not None:
             _setter("default_character_set", default_character_set)
         if default_collation is not None:
@@ -218,15 +230,6 @@ class Database(pulumi.CustomResource):
         The ``Database`` resource creates and manages a database on a MySQL
         server.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        app = mysql.Database("app")
-        ```
-
         ## Import
 
         Databases can be imported using their name, e.g.
@@ -264,15 +267,6 @@ class Database(pulumi.CustomResource):
         """
         The ``Database`` resource creates and manages a database on a MySQL
         server.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        app = mysql.Database("app")
-        ```
 
         ## Import
 

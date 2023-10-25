@@ -27,7 +27,9 @@ class RoleArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -60,7 +62,9 @@ class _RoleState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -90,15 +94,6 @@ class Role(pulumi.CustomResource):
 
         > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        developer = mysql.Role("developer")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the role.
@@ -114,15 +109,6 @@ class Role(pulumi.CustomResource):
         server.
 
         > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        developer = mysql.Role("developer")
-        ```
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.
