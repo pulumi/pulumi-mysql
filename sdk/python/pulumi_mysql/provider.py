@@ -39,15 +39,27 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             username: pulumi.Input[str],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              authentication_plugin: Optional[pulumi.Input[str]] = None,
              max_conn_lifetime_sec: Optional[pulumi.Input[int]] = None,
              max_open_conns: Optional[pulumi.Input[int]] = None,
              password: Optional[pulumi.Input[str]] = None,
              proxy: Optional[pulumi.Input[str]] = None,
              tls: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if authentication_plugin is None and 'authenticationPlugin' in kwargs:
+            authentication_plugin = kwargs['authenticationPlugin']
+        if max_conn_lifetime_sec is None and 'maxConnLifetimeSec' in kwargs:
+            max_conn_lifetime_sec = kwargs['maxConnLifetimeSec']
+        if max_open_conns is None and 'maxOpenConns' in kwargs:
+            max_open_conns = kwargs['maxOpenConns']
+
         _setter("endpoint", endpoint)
         _setter("username", username)
         if authentication_plugin is not None:

@@ -9,65 +9,6 @@ import * as utilities from "./utilities";
  * a user on a MySQL server.
  *
  * ## Examples
- *
- * ### Granting Privileges to a User
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mysql from "@pulumi/mysql";
- *
- * const jdoeUser = new mysql.User("jdoeUser", {
- *     host: "example.com",
- *     plaintextPassword: "password",
- *     user: "jdoe",
- * });
- * const jdoeGrant = new mysql.Grant("jdoeGrant", {
- *     database: "app",
- *     host: jdoeUser.host,
- *     privileges: [
- *         "SELECT",
- *         "UPDATE",
- *     ],
- *     user: jdoeUser.user,
- * });
- * ```
- *
- * ### Granting Privileges to a Role
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mysql from "@pulumi/mysql";
- *
- * const developerRole = new mysql.Role("developerRole", {});
- * const developerGrant = new mysql.Grant("developerGrant", {
- *     database: "app",
- *     privileges: [
- *         "SELECT",
- *         "UPDATE",
- *     ],
- *     role: developerRole.name,
- * });
- * ```
- *
- * ### Adding a Role to a User
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mysql from "@pulumi/mysql";
- *
- * const jdoe = new mysql.User("jdoe", {
- *     host: "example.com",
- *     plaintextPassword: "password",
- *     user: "jdoe",
- * });
- * const developerRole = new mysql.Role("developerRole", {});
- * const developerGrant = new mysql.Grant("developerGrant", {
- *     database: "app",
- *     host: jdoe.host,
- *     roles: [developerRole.name],
- *     user: jdoe.user,
- * });
- * ```
  */
 export class Grant extends pulumi.CustomResource {
     /**

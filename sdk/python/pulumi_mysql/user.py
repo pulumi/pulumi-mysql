@@ -43,13 +43,23 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             user: pulumi.Input[str],
+             user: Optional[pulumi.Input[str]] = None,
              auth_plugin: Optional[pulumi.Input[str]] = None,
              host: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              plaintext_password: Optional[pulumi.Input[str]] = None,
              tls_option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+        if auth_plugin is None and 'authPlugin' in kwargs:
+            auth_plugin = kwargs['authPlugin']
+        if plaintext_password is None and 'plaintextPassword' in kwargs:
+            plaintext_password = kwargs['plaintextPassword']
+        if tls_option is None and 'tlsOption' in kwargs:
+            tls_option = kwargs['tlsOption']
+
         _setter("user", user)
         if auth_plugin is not None:
             _setter("auth_plugin", auth_plugin)
@@ -181,7 +191,15 @@ class _UserState:
              plaintext_password: Optional[pulumi.Input[str]] = None,
              tls_option: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_plugin is None and 'authPlugin' in kwargs:
+            auth_plugin = kwargs['authPlugin']
+        if plaintext_password is None and 'plaintextPassword' in kwargs:
+            plaintext_password = kwargs['plaintextPassword']
+        if tls_option is None and 'tlsOption' in kwargs:
+            tls_option = kwargs['tlsOption']
+
         if auth_plugin is not None:
             _setter("auth_plugin", auth_plugin)
         if host is not None:
@@ -294,30 +312,6 @@ class User(pulumi.CustomResource):
 
         ## Examples
 
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        jdoe = mysql.User("jdoe",
-            host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        ```
-
-        ### Example Usage with an Authentication Plugin
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        nologin = mysql.User("nologin",
-            auth_plugin="mysql_no_login",
-            host="example.com",
-            user="nologin")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
@@ -340,30 +334,6 @@ class User(pulumi.CustomResource):
         server.
 
         ## Examples
-
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        jdoe = mysql.User("jdoe",
-            host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        ```
-
-        ### Example Usage with an Authentication Plugin
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        nologin = mysql.User("nologin",
-            auth_plugin="mysql_no_login",
-            host="example.com",
-            user="nologin")
-        ```
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

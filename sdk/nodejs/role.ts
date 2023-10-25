@@ -9,15 +9,6 @@ import * as utilities from "./utilities";
  * server.
  *
  * > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mysql from "@pulumi/mysql";
- *
- * const developer = new mysql.Role("developer", {});
- * ```
  */
 export class Role extends pulumi.CustomResource {
     /**

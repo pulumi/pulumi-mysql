@@ -32,10 +32,18 @@ class UserPasswordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pgp_key: pulumi.Input[str],
-             user: pulumi.Input[str],
+             pgp_key: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
              host: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pgp_key is None and 'pgpKey' in kwargs:
+            pgp_key = kwargs['pgpKey']
+        if pgp_key is None:
+            raise TypeError("Missing 'pgp_key' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+
         _setter("pgp_key", pgp_key)
         _setter("user", user)
         if host is not None:
@@ -110,7 +118,15 @@ class _UserPasswordState:
              key_fingerprint: Optional[pulumi.Input[str]] = None,
              pgp_key: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encrypted_password is None and 'encryptedPassword' in kwargs:
+            encrypted_password = kwargs['encryptedPassword']
+        if key_fingerprint is None and 'keyFingerprint' in kwargs:
+            key_fingerprint = kwargs['keyFingerprint']
+        if pgp_key is None and 'pgpKey' in kwargs:
+            pgp_key = kwargs['pgpKey']
+
         if encrypted_password is not None:
             _setter("encrypted_password", encrypted_password)
         if host is not None:
