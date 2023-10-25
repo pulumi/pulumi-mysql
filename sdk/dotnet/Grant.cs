@@ -14,6 +14,97 @@ namespace Pulumi.MySql
     /// a user on a MySQL server.
     /// 
     /// ## Examples
+    /// 
+    /// ### Granting Privileges to a User
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var jdoeUser = new MySql.User("jdoeUser", new()
+    ///     {
+    ///         Host = "example.com",
+    ///         PlaintextPassword = "password",
+    ///         UserName = "jdoe",
+    ///     });
+    /// 
+    ///     var jdoeGrant = new MySql.Grant("jdoeGrant", new()
+    ///     {
+    ///         Database = "app",
+    ///         Host = jdoeUser.Host,
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///             "UPDATE",
+    ///         },
+    ///         User = jdoeUser.UserName,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Granting Privileges to a Role
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var developerRole = new MySql.Role("developerRole");
+    /// 
+    ///     var developerGrant = new MySql.Grant("developerGrant", new()
+    ///     {
+    ///         Database = "app",
+    ///         Privileges = new[]
+    ///         {
+    ///             "SELECT",
+    ///             "UPDATE",
+    ///         },
+    ///         Role = developerRole.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Adding a Role to a User
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var jdoe = new MySql.User("jdoe", new()
+    ///     {
+    ///         Host = "example.com",
+    ///         PlaintextPassword = "password",
+    ///         UserName = "jdoe",
+    ///     });
+    /// 
+    ///     var developerRole = new MySql.Role("developerRole");
+    /// 
+    ///     var developerGrant = new MySql.Grant("developerGrant", new()
+    ///     {
+    ///         Database = "app",
+    ///         Host = jdoe.Host,
+    ///         Roles = new[]
+    ///         {
+    ///             developerRole.Name,
+    ///         },
+    ///         User = jdoe.UserName,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [MySqlResourceType("mysql:index/grant:Grant")]
     public partial class Grant : global::Pulumi.CustomResource

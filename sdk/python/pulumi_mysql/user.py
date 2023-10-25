@@ -312,6 +312,30 @@ class User(pulumi.CustomResource):
 
         ## Examples
 
+        ### Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        jdoe = mysql.User("jdoe",
+            host="example.com",
+            plaintext_password="password",
+            user="jdoe")
+        ```
+
+        ### Example Usage with an Authentication Plugin
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        nologin = mysql.User("nologin",
+            auth_plugin="mysql_no_login",
+            host="example.com",
+            user="nologin")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
@@ -334,6 +358,30 @@ class User(pulumi.CustomResource):
         server.
 
         ## Examples
+
+        ### Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        jdoe = mysql.User("jdoe",
+            host="example.com",
+            plaintext_password="password",
+            user="jdoe")
+        ```
+
+        ### Example Usage with an Authentication Plugin
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        nologin = mysql.User("nologin",
+            auth_plugin="mysql_no_login",
+            host="example.com",
+            user="nologin")
+        ```
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

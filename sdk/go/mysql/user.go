@@ -17,6 +17,62 @@ import (
 // server.
 //
 // ## Examples
+//
+// ### Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
+//				Host:              pulumi.String("example.com"),
+//				PlaintextPassword: pulumi.String("password"),
+//				User:              pulumi.String("jdoe"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Example Usage with an Authentication Plugin
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mysql.NewUser(ctx, "nologin", &mysql.UserArgs{
+//				AuthPlugin: pulumi.String("mysql_no_login"),
+//				Host:       pulumi.String("example.com"),
+//				User:       pulumi.String("nologin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type User struct {
 	pulumi.CustomResourceState
 

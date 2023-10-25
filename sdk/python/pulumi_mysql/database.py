@@ -230,6 +230,15 @@ class Database(pulumi.CustomResource):
         The ``Database`` resource creates and manages a database on a MySQL
         server.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        app = mysql.Database("app")
+        ```
+
         ## Import
 
         Databases can be imported using their name, e.g.
@@ -267,6 +276,15 @@ class Database(pulumi.CustomResource):
         """
         The ``Database`` resource creates and manages a database on a MySQL
         server.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_mysql as mysql
+
+        app = mysql.Database("app")
+        ```
 
         ## Import
 
