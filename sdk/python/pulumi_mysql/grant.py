@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GrantArgs', 'Grant']
@@ -35,54 +35,23 @@ class GrantArgs:
         :param pulumi.Input[str] tls_option: An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
         :param pulumi.Input[str] user: The name of the user. Conflicts with `role`.
         """
-        GrantArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database=database,
-            grant=grant,
-            host=host,
-            privileges=privileges,
-            role=role,
-            roles=roles,
-            table=table,
-            tls_option=tls_option,
-            user=user,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database: Optional[pulumi.Input[str]] = None,
-             grant: Optional[pulumi.Input[bool]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             tls_option: Optional[pulumi.Input[str]] = None,
-             user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if database is None:
-            raise TypeError("Missing 'database' argument")
-        if tls_option is None and 'tlsOption' in kwargs:
-            tls_option = kwargs['tlsOption']
-
-        _setter("database", database)
+        pulumi.set(__self__, "database", database)
         if grant is not None:
-            _setter("grant", grant)
+            pulumi.set(__self__, "grant", grant)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if privileges is not None:
-            _setter("privileges", privileges)
+            pulumi.set(__self__, "privileges", privileges)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if roles is not None:
-            _setter("roles", roles)
+            pulumi.set(__self__, "roles", roles)
         if table is not None:
-            _setter("table", table)
+            pulumi.set(__self__, "table", table)
         if tls_option is not None:
-            _setter("tls_option", tls_option)
+            pulumi.set(__self__, "tls_option", tls_option)
         if user is not None:
-            _setter("user", user)
+            pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter
@@ -217,53 +186,24 @@ class _GrantState:
         :param pulumi.Input[str] tls_option: An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
         :param pulumi.Input[str] user: The name of the user. Conflicts with `role`.
         """
-        _GrantState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            database=database,
-            grant=grant,
-            host=host,
-            privileges=privileges,
-            role=role,
-            roles=roles,
-            table=table,
-            tls_option=tls_option,
-            user=user,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             database: Optional[pulumi.Input[str]] = None,
-             grant: Optional[pulumi.Input[bool]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             privileges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role: Optional[pulumi.Input[str]] = None,
-             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             table: Optional[pulumi.Input[str]] = None,
-             tls_option: Optional[pulumi.Input[str]] = None,
-             user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if tls_option is None and 'tlsOption' in kwargs:
-            tls_option = kwargs['tlsOption']
-
         if database is not None:
-            _setter("database", database)
+            pulumi.set(__self__, "database", database)
         if grant is not None:
-            _setter("grant", grant)
+            pulumi.set(__self__, "grant", grant)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if privileges is not None:
-            _setter("privileges", privileges)
+            pulumi.set(__self__, "privileges", privileges)
         if role is not None:
-            _setter("role", role)
+            pulumi.set(__self__, "role", role)
         if roles is not None:
-            _setter("roles", roles)
+            pulumi.set(__self__, "roles", roles)
         if table is not None:
-            _setter("table", table)
+            pulumi.set(__self__, "table", table)
         if tls_option is not None:
-            _setter("tls_option", tls_option)
+            pulumi.set(__self__, "tls_option", tls_option)
         if user is not None:
-            _setter("user", user)
+            pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter
@@ -537,10 +477,6 @@ class Grant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GrantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
