@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -31,49 +31,20 @@ class UserArgs:
                
                [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            user=user,
-            auth_plugin=auth_plugin,
-            host=host,
-            password=password,
-            plaintext_password=plaintext_password,
-            tls_option=tls_option,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             user: Optional[pulumi.Input[str]] = None,
-             auth_plugin: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             plaintext_password: Optional[pulumi.Input[str]] = None,
-             tls_option: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if user is None:
-            raise TypeError("Missing 'user' argument")
-        if auth_plugin is None and 'authPlugin' in kwargs:
-            auth_plugin = kwargs['authPlugin']
-        if plaintext_password is None and 'plaintextPassword' in kwargs:
-            plaintext_password = kwargs['plaintextPassword']
-        if tls_option is None and 'tlsOption' in kwargs:
-            tls_option = kwargs['tlsOption']
-
-        _setter("user", user)
+        pulumi.set(__self__, "user", user)
         if auth_plugin is not None:
-            _setter("auth_plugin", auth_plugin)
+            pulumi.set(__self__, "auth_plugin", auth_plugin)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if password is not None:
             warnings.warn("""Please use plaintext_password instead""", DeprecationWarning)
             pulumi.log.warn("""password is deprecated: Please use plaintext_password instead""")
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if plaintext_password is not None:
-            _setter("plaintext_password", plaintext_password)
+            pulumi.set(__self__, "plaintext_password", plaintext_password)
         if tls_option is not None:
-            _setter("tls_option", tls_option)
+            pulumi.set(__self__, "tls_option", tls_option)
 
     @property
     @pulumi.getter
@@ -173,48 +144,21 @@ class _UserState:
                [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         :param pulumi.Input[str] user: The name of the user.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_plugin=auth_plugin,
-            host=host,
-            password=password,
-            plaintext_password=plaintext_password,
-            tls_option=tls_option,
-            user=user,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_plugin: Optional[pulumi.Input[str]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             plaintext_password: Optional[pulumi.Input[str]] = None,
-             tls_option: Optional[pulumi.Input[str]] = None,
-             user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auth_plugin is None and 'authPlugin' in kwargs:
-            auth_plugin = kwargs['authPlugin']
-        if plaintext_password is None and 'plaintextPassword' in kwargs:
-            plaintext_password = kwargs['plaintextPassword']
-        if tls_option is None and 'tlsOption' in kwargs:
-            tls_option = kwargs['tlsOption']
-
         if auth_plugin is not None:
-            _setter("auth_plugin", auth_plugin)
+            pulumi.set(__self__, "auth_plugin", auth_plugin)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if password is not None:
             warnings.warn("""Please use plaintext_password instead""", DeprecationWarning)
             pulumi.log.warn("""password is deprecated: Please use plaintext_password instead""")
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if plaintext_password is not None:
-            _setter("plaintext_password", plaintext_password)
+            pulumi.set(__self__, "plaintext_password", plaintext_password)
         if tls_option is not None:
-            _setter("tls_option", tls_option)
+            pulumi.set(__self__, "tls_option", tls_option)
         if user is not None:
-            _setter("user", user)
+            pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter(name="authPlugin")
@@ -393,10 +337,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
