@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserPasswordArgs', 'UserPassword']
@@ -23,10 +23,31 @@ class UserPasswordArgs:
         :param pulumi.Input[str] user: The IAM user to associate with this access key.
         :param pulumi.Input[str] host: The source host of the user. Defaults to `localhost`.
         """
-        pulumi.set(__self__, "pgp_key", pgp_key)
-        pulumi.set(__self__, "user", user)
+        UserPasswordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pgp_key=pgp_key,
+            user=user,
+            host=host,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pgp_key: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pgp_key is None and 'pgpKey' in kwargs:
+            pgp_key = kwargs['pgpKey']
+        if pgp_key is None:
+            raise TypeError("Missing 'pgp_key' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
+
+        _setter("pgp_key", pgp_key)
+        _setter("user", user)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
 
     @property
     @pulumi.getter(name="pgpKey")
@@ -81,16 +102,41 @@ class _UserPasswordState:
         :param pulumi.Input[str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
         :param pulumi.Input[str] user: The IAM user to associate with this access key.
         """
+        _UserPasswordState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encrypted_password=encrypted_password,
+            host=host,
+            key_fingerprint=key_fingerprint,
+            pgp_key=pgp_key,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encrypted_password: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             key_fingerprint: Optional[pulumi.Input[str]] = None,
+             pgp_key: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if encrypted_password is None and 'encryptedPassword' in kwargs:
+            encrypted_password = kwargs['encryptedPassword']
+        if key_fingerprint is None and 'keyFingerprint' in kwargs:
+            key_fingerprint = kwargs['keyFingerprint']
+        if pgp_key is None and 'pgpKey' in kwargs:
+            pgp_key = kwargs['pgpKey']
+
         if encrypted_password is not None:
-            pulumi.set(__self__, "encrypted_password", encrypted_password)
+            _setter("encrypted_password", encrypted_password)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if key_fingerprint is not None:
-            pulumi.set(__self__, "key_fingerprint", key_fingerprint)
+            _setter("key_fingerprint", key_fingerprint)
         if pgp_key is not None:
-            pulumi.set(__self__, "pgp_key", pgp_key)
+            _setter("pgp_key", pgp_key)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter(name="encryptedPassword")
@@ -206,6 +252,10 @@ class UserPassword(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserPasswordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
