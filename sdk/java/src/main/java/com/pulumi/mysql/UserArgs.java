@@ -86,16 +86,12 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
      * 
-     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
-     * 
      */
     @Import(name="tlsOption")
     private @Nullable Output<String> tlsOption;
 
     /**
      * @return An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-     * 
-     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
      * 
      */
     public Optional<Output<String>> tlsOption() {
@@ -241,8 +237,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tlsOption An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
          * 
-         * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
-         * 
          * @return builder
          * 
          */
@@ -253,8 +247,6 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tlsOption An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-         * 
-         * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
          * 
          * @return builder
          * 

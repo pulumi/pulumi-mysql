@@ -84,8 +84,6 @@ export class User extends pulumi.CustomResource {
     public readonly plaintextPassword!: pulumi.Output<string | undefined>;
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-     *
-     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
      */
     public readonly tlsOption!: pulumi.Output<string | undefined>;
     /**
@@ -155,8 +153,6 @@ export interface UserState {
     plaintextPassword?: pulumi.Input<string>;
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-     *
-     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
      */
     tlsOption?: pulumi.Input<string>;
     /**
@@ -189,8 +185,6 @@ export interface UserArgs {
     plaintextPassword?: pulumi.Input<string>;
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-     *
-     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
      */
     tlsOption?: pulumi.Input<string>;
     /**
