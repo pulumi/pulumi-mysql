@@ -22,37 +22,37 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:mysql")
 public class Provider extends com.pulumi.resources.ProviderResource {
-    @Export(name="authenticationPlugin", type=String.class, parameters={})
+    @Export(name="authenticationPlugin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authenticationPlugin;
 
     public Output<Optional<String>> authenticationPlugin() {
         return Codegen.optional(this.authenticationPlugin);
     }
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     public Output<String> endpoint() {
         return this.endpoint;
     }
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
-    @Export(name="proxy", type=String.class, parameters={})
+    @Export(name="proxy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxy;
 
     public Output<Optional<String>> proxy() {
         return Codegen.optional(this.proxy);
     }
-    @Export(name="tls", type=String.class, parameters={})
+    @Export(name="tls", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tls;
 
     public Output<Optional<String>> tls() {
         return Codegen.optional(this.tls);
     }
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     public Output<String> username() {

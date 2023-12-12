@@ -62,7 +62,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * to &#34;utf8&#34;.
      * 
      */
-    @Export(name="defaultCharacterSet", type=String.class, parameters={})
+    @Export(name="defaultCharacterSet", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultCharacterSet;
 
     /**
@@ -88,7 +88,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * ``default_collation`` to match.
      * 
      */
-    @Export(name="defaultCollation", type=String.class, parameters={})
+    @Export(name="defaultCollation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultCollation;
 
     /**
@@ -114,7 +114,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * the operating system on which the MySQL server is running.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

@@ -53,7 +53,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The name of the role.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

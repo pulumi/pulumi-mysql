@@ -92,7 +92,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
      * 
      */
-    @Export(name="authPlugin", type=String.class, parameters={})
+    @Export(name="authPlugin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authPlugin;
 
     /**
@@ -106,7 +106,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The source host of the user. Defaults to &#34;localhost&#34;.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     /**
@@ -124,7 +124,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Please use plaintext_password instead */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -138,7 +138,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
      * 
      */
-    @Export(name="plaintextPassword", type=String.class, parameters={})
+    @Export(name="plaintextPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plaintextPassword;
 
     /**
@@ -154,7 +154,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
      * 
      */
-    @Export(name="tlsOption", type=String.class, parameters={})
+    @Export(name="tlsOption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tlsOption;
 
     /**
@@ -170,7 +170,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The name of the user.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**
