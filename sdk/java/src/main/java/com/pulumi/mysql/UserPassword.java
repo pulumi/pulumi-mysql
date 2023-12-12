@@ -32,7 +32,7 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      * The encrypted password, base64 encoded.
      * 
      */
-    @Export(name="encryptedPassword", type=String.class, parameters={})
+    @Export(name="encryptedPassword", refs={String.class}, tree="[0]")
     private Output<String> encryptedPassword;
 
     /**
@@ -46,7 +46,7 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      * The source host of the user. Defaults to `localhost`.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     /**
@@ -60,7 +60,7 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      * The fingerprint of the PGP key used to encrypt the password
      * 
      */
-    @Export(name="keyFingerprint", type=String.class, parameters={})
+    @Export(name="keyFingerprint", refs={String.class}, tree="[0]")
     private Output<String> keyFingerprint;
 
     /**
@@ -74,7 +74,7 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
      * 
      */
-    @Export(name="pgpKey", type=String.class, parameters={})
+    @Export(name="pgpKey", refs={String.class}, tree="[0]")
     private Output<String> pgpKey;
 
     /**
@@ -88,7 +88,7 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      * The IAM user to associate with this access key.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output<String> user;
 
     /**

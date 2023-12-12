@@ -153,7 +153,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The database to grant privileges on.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -167,7 +167,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * Whether to also give the user privileges to grant the same privileges to other users.
      * 
      */
-    @Export(name="grant", type=Boolean.class, parameters={})
+    @Export(name="grant", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> grant;
 
     /**
@@ -181,7 +181,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The source host of the user. Defaults to &#34;localhost&#34;. Conflicts with `role`.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     /**
@@ -195,7 +195,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
      * 
      */
-    @Export(name="privileges", type=List.class, parameters={String.class})
+    @Export(name="privileges", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> privileges;
 
     /**
@@ -209,7 +209,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The role to grant `privileges` to. Conflicts with `user` and `host`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> role;
 
     /**
@@ -223,7 +223,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * A list of rols to grant to the user. Conflicts with `privileges`.
      * 
      */
-    @Export(name="roles", type=List.class, parameters={String.class})
+    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> roles;
 
     /**
@@ -237,7 +237,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * Which table to grant `privileges` on. Defaults to `*`, which is all tables.
      * 
      */
-    @Export(name="table", type=String.class, parameters={})
+    @Export(name="table", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> table;
 
     /**
@@ -251,7 +251,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
      * 
      */
-    @Export(name="tlsOption", type=String.class, parameters={})
+    @Export(name="tlsOption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tlsOption;
 
     /**
@@ -265,7 +265,7 @@ public class Grant extends com.pulumi.resources.CustomResource {
      * The name of the user. Conflicts with `role`.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> user;
 
     /**
