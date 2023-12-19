@@ -26,6 +26,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "mysql:index/database:Database": "mysql_database",
