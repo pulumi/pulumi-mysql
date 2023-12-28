@@ -3,3 +3,6 @@ major-version: 3
 docker: true
 makeTemplate: bridged
 team: ecosystem
+env:
+    PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+    PYPI_USERNAME: __token__
