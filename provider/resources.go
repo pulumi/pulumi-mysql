@@ -42,15 +42,17 @@ func Provider() tfbridge.ProviderInfo {
 	p := shimv1.NewProvider(mysql.Provider().(*schema.Provider))
 
 	prov := tfbridge.ProviderInfo{
-		P:            p,
-		Name:         "mysql",
-		Description:  "A Pulumi package for creating and managing mysql cloud resources.",
-		Keywords:     []string{"pulumi", "mysql"},
-		License:      "Apache-2.0",
-		Homepage:     "https://pulumi.io",
-		Repository:   "https://github.com/pulumi/pulumi-mysql",
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Version:      version.Version,
+		P:                p,
+		Name:             "mysql",
+		Description:      "A Pulumi package for creating and managing mysql cloud resources.",
+		Keywords:         []string{"pulumi", "mysql"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-mysql",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		Version:          version.Version,
+		UpstreamRepoPath: "./upstream",
+
 		Config: map[string]*tfbridge.SchemaInfo{
 			"proxy": {
 				Default: &tfbridge.DefaultInfo{
