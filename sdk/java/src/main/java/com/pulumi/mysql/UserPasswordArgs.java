@@ -5,6 +5,7 @@ package com.pulumi.mysql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class UserPasswordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserPasswordArgs build() {
-            $.pgpKey = Objects.requireNonNull($.pgpKey, "expected parameter 'pgpKey' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.pgpKey == null) {
+                throw new MissingRequiredPropertyException("UserPasswordArgs", "pgpKey");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("UserPasswordArgs", "user");
+            }
             return $;
         }
     }
