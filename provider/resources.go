@@ -16,20 +16,17 @@ package mysql
 
 import (
 	"fmt"
-	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	"path/filepath"
-	"unicode"
+	"path"
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pulumi/pulumi-mysql/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/terraform-providers/terraform-provider-mysql/mysql"
+
+	"github.com/pulumi/pulumi-mysql/provider/v3/pkg/version"
 )
 
 // all of the token components used below.
@@ -40,44 +37,22 @@ const (
 	mainMod = "index"
 )
 
-// makeMember manufactures a type token for the package and the given module and type.
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
-
-// makeType manufactures a type token for the package and the given module and type.
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
-// makeResource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the resource's
-// first character.
-func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
-}
-
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	p := shimv1.NewProvider(mysql.Provider().(*schema.Provider))
 
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "mysql",
-		Description: "A Pulumi package for creating and managing mysql cloud resources.",
-		Keywords:    []string{"pulumi", "mysql"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-mysql",
+		P:                p,
+		Name:             "mysql",
+		Description:      "A Pulumi package for creating and managing mysql cloud resources.",
+		Keywords:         []string{"pulumi", "mysql"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-mysql",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		Version:          version.Version,
+		UpstreamRepoPath: "./upstream",
+
 		Config: map[string]*tfbridge.SchemaInfo{
 			"proxy": {
 				Default: &tfbridge.DefaultInfo{
@@ -91,29 +66,18 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"mysql_database": {Tok: makeResource(mainMod, "Database")},
 			"mysql_grant": {
-				Tok: makeResource(mainMod, "Grant"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"grant": {
-						CSharpName: "GrantName",
-					},
+					"grant": {CSharpName: "GrantName"},
 				},
 			},
-			"mysql_role": {Tok: makeResource(mainMod, "Role")},
 			"mysql_user": {
-				Tok: makeResource(mainMod, "User"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"user": {
-						CSharpName: "UserName",
-					},
+					"user": {CSharpName: "UserName"},
 				},
 			},
-			"mysql_user_password": {Tok: makeResource(mainMod, "UserPassword")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0-alpha.0",
@@ -123,17 +87,15 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0a1,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0a1,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -149,11 +111,10 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg: "MySql",
 			},
 		},
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	prov.MustComputeTokens(tfbridgetokens.SingleModule("mysql_", mainMod,
-		tfbridgetokens.MakeStandard(mainPkg)))
+	prov.MustComputeTokens(tokens.SingleModule("mysql_", mainMod,
+		tokens.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 

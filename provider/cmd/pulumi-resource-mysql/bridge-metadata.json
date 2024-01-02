@@ -2,10 +2,12 @@
     "auto-aliasing": {
         "resources": {
             "mysql_database": {
-                "current": "mysql:index/database:Database"
+                "current": "mysql:index/database:Database",
+                "majorVersion": 3
             },
             "mysql_grant": {
                 "current": "mysql:index/grant:Grant",
+                "majorVersion": 3,
                 "fields": {
                     "privileges": {
                         "maxItemsOne": false
@@ -16,13 +18,16 @@
                 }
             },
             "mysql_role": {
-                "current": "mysql:index/role:Role"
+                "current": "mysql:index/role:Role",
+                "majorVersion": 3
             },
             "mysql_user": {
-                "current": "mysql:index/user:User"
+                "current": "mysql:index/user:User",
+                "majorVersion": 3
             },
             "mysql_user_password": {
-                "current": "mysql:index/userPassword:UserPassword"
+                "current": "mysql:index/userPassword:UserPassword",
+                "majorVersion": 3
             }
         }
     },

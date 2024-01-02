@@ -5,11 +5,14 @@ go 1.21
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.69.0
-	github.com/pulumi/pulumi/sdk/v3 v3.98.0
-	github.com/terraform-providers/terraform-provider-mysql v1.9.0
+	github.com/terraform-providers/terraform-provider-mysql v0.0.0
 )
 
-replace github.com/spf13/afero => github.com/spf13/afero v1.2.2
+replace (
+	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.4.0
+	github.com/spf13/afero => github.com/spf13/afero v1.2.2
+	github.com/terraform-providers/terraform-provider-mysql => ../upstream
+)
 
 require (
 	cloud.google.com/go v0.110.8 // indirect
@@ -181,6 +184,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
 	github.com/pulumi/pulumi-yaml v1.4.3 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.98.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.98.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -239,9 +243,4 @@ require (
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
-)
-
-replace (
-	github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.4.0
-	github.com/terraform-providers/terraform-provider-mysql => github.com/pulumi/terraform-provider-mysql v1.9.1-0.20200902192533-20f24655e960
 )
