@@ -6,6 +6,7 @@ package com.pulumi.mysql;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -177,10 +178,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "endpoint");
+            }
             $.proxy = Codegen.stringProp("proxy").output().arg($.proxy).env("ALL_PROXY", "all_proxy").getNullable();
             $.tls = Codegen.stringProp("tls").output().arg($.tls).env("MYSQL_TLS_CONFIG").def("false").getNullable();
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "username");
+            }
             return $;
         }
     }
