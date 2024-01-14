@@ -17,14 +17,16 @@ package mysql
 import (
 	"fmt"
 	"path"
+
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/terraform-providers/terraform-provider-mysql/mysql"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
-	"github.com/terraform-providers/terraform-provider-mysql/mysql"
 
 	"github.com/pulumi/pulumi-mysql/provider/v3/pkg/version"
 )
