@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,15 +38,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Databases can be imported using their name, e.g.
 //
 // ```sh
-//
-//	$ pulumi import mysql:index/database:Database example my-example-database
-//
+// $ pulumi import mysql:index/database:Database example my-example-database
 // ```
 type Database struct {
 	pulumi.CustomResourceState

@@ -12,12 +12,14 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
  * const developer = new mysql.Role("developer", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Role extends pulumi.CustomResource {
     /**
