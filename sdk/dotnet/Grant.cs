@@ -17,6 +17,7 @@ namespace Pulumi.MySql
     /// 
     /// ### Granting Privileges to a User
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,9 +47,11 @@ namespace Pulumi.MySql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Granting Privileges to a Role
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -72,9 +75,11 @@ namespace Pulumi.MySql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Adding a Role to a User
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -105,6 +110,7 @@ namespace Pulumi.MySql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [MySqlResourceType("mysql:index/grant:Grant")]
     public partial class Grant : global::Pulumi.CustomResource

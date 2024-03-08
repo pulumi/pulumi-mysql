@@ -25,6 +25,46 @@ import javax.annotation.Nullable;
  * &gt; **NOTE on How Passwords are Created:** This resource **automatically**
  *    generates a **random** password. The password will be a random UUID.
  * 
+ * ## Example Usage
+ * 
+ *  &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mysql.User;
+ * import com.pulumi.mysql.UserArgs;
+ * import com.pulumi.mysql.UserPassword;
+ * import com.pulumi.mysql.UserPasswordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var jdoeUser = new User(&#34;jdoeUser&#34;, UserArgs.builder()        
+ *             .user(&#34;jdoe&#34;)
+ *             .build());
+ * 
+ *         var jdoeUserPassword = new UserPassword(&#34;jdoeUserPassword&#34;, UserPasswordArgs.builder()        
+ *             .pgpKey(&#34;keybase:joestump&#34;)
+ *             .user(jdoeUser.user())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="mysql:index/userPassword:UserPassword")
 public class UserPassword extends com.pulumi.resources.CustomResource {
