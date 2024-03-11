@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * &gt; **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -45,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="mysql:index/role:Role")

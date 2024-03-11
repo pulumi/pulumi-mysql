@@ -15,6 +15,7 @@ namespace Pulumi.MySql
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -27,13 +28,14 @@ namespace Pulumi.MySql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Databases can be imported using their name, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import mysql:index/database:Database example my-example-database
+    /// $ pulumi import mysql:index/database:Database example my-example-database
     /// ```
     /// </summary>
     [MySqlResourceType("mysql:index/database:Database")]

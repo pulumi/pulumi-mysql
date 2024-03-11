@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ### Basic Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
@@ -22,9 +23,11 @@ import * as utilities from "./utilities";
  *     user: "jdoe",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Example Usage with an Authentication Plugin
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
@@ -35,6 +38,7 @@ import * as utilities from "./utilities";
  *     user: "nologin",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class User extends pulumi.CustomResource {
     /**

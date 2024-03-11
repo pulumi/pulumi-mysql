@@ -258,6 +258,7 @@ class User(pulumi.CustomResource):
 
         ### Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -267,9 +268,11 @@ class User(pulumi.CustomResource):
             plaintext_password="password",
             user="jdoe")
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Example Usage with an Authentication Plugin
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -279,6 +282,7 @@ class User(pulumi.CustomResource):
             host="example.com",
             user="nologin")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -305,6 +309,7 @@ class User(pulumi.CustomResource):
 
         ### Basic Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -314,9 +319,11 @@ class User(pulumi.CustomResource):
             plaintext_password="password",
             user="jdoe")
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Example Usage with an Authentication Plugin
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -326,6 +333,7 @@ class User(pulumi.CustomResource):
             host="example.com",
             user="nologin")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

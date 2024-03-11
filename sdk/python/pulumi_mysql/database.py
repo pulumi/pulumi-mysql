@@ -194,19 +194,21 @@ class Database(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
 
         app = mysql.Database("app")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Databases can be imported using their name, e.g.
 
         ```sh
-         $ pulumi import mysql:index/database:Database example my-example-database
+        $ pulumi import mysql:index/database:Database example my-example-database
         ```
 
         :param str resource_name: The name of the resource.
@@ -241,19 +243,21 @@ class Database(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
 
         app = mysql.Database("app")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Databases can be imported using their name, e.g.
 
         ```sh
-         $ pulumi import mysql:index/database:Database example my-example-database
+        $ pulumi import mysql:index/database:Database example my-example-database
         ```
 
         :param str resource_name: The name of the resource.

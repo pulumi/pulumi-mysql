@@ -17,6 +17,7 @@ namespace Pulumi.MySql
     /// 
     /// ### Basic Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,9 +35,11 @@ namespace Pulumi.MySql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Example Usage with an Authentication Plugin
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -54,6 +57,7 @@ namespace Pulumi.MySql
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [MySqlResourceType("mysql:index/user:User")]
     public partial class User : global::Pulumi.CustomResource
