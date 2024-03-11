@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * server.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -44,13 +46,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Databases can be imported using their name, e.g.
  * 
  * ```sh
- *  $ pulumi import mysql:index/database:Database example my-example-database
+ * $ pulumi import mysql:index/database:Database example my-example-database
  * ```
  * 
  */

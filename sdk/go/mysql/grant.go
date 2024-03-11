@@ -19,6 +19,7 @@ import (
 //
 // ### Granting Privileges to a User
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,9 +57,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Granting Privileges to a Role
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,9 +94,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Adding a Role to a User
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,6 +139,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type Grant struct {
 	pulumi.CustomResourceState
 

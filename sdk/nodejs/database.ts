@@ -10,19 +10,21 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
  * const app = new mysql.Database("app", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Databases can be imported using their name, e.g.
  *
  * ```sh
- *  $ pulumi import mysql:index/database:Database example my-example-database
+ * $ pulumi import mysql:index/database:Database example my-example-database
  * ```
  */
 export class Database extends pulumi.CustomResource {

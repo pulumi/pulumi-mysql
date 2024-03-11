@@ -337,6 +337,7 @@ class Grant(pulumi.CustomResource):
 
         ### Granting Privileges to a User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -354,9 +355,11 @@ class Grant(pulumi.CustomResource):
             ],
             user=jdoe_user.user)
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Granting Privileges to a Role
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -370,9 +373,11 @@ class Grant(pulumi.CustomResource):
             ],
             role=developer_role.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Adding a Role to a User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -388,6 +393,7 @@ class Grant(pulumi.CustomResource):
             roles=[developer_role.name],
             user=jdoe.user)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -415,6 +421,7 @@ class Grant(pulumi.CustomResource):
 
         ### Granting Privileges to a User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -432,9 +439,11 @@ class Grant(pulumi.CustomResource):
             ],
             user=jdoe_user.user)
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Granting Privileges to a Role
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -448,9 +457,11 @@ class Grant(pulumi.CustomResource):
             ],
             role=developer_role.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Adding a Role to a User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
@@ -466,6 +477,7 @@ class Grant(pulumi.CustomResource):
             roles=[developer_role.name],
             user=jdoe.user)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.
