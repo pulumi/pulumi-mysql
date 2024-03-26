@@ -79,7 +79,7 @@ export class User extends pulumi.CustomResource {
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      *
-     * @deprecated Please use plaintextPassword instead
+     * @deprecated Please use plaintext_password instead
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
@@ -150,7 +150,7 @@ export interface UserState {
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      *
-     * @deprecated Please use plaintextPassword instead
+     * @deprecated Please use plaintext_password instead
      */
     password?: pulumi.Input<string>;
     /**
@@ -184,7 +184,7 @@ export interface UserArgs {
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      *
-     * @deprecated Please use plaintextPassword instead
+     * @deprecated Please use plaintext_password instead
      */
     password?: pulumi.Input<string>;
     /**
