@@ -20,125 +20,16 @@ import (
 // ### Granting Privileges to a User
 //
 // <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			jdoeUser, err := mysql.NewUser(ctx, "jdoeUser", &mysql.UserArgs{
-//				Host:              pulumi.String("example.com"),
-//				PlaintextPassword: pulumi.String("password"),
-//				User:              pulumi.String("jdoe"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = mysql.NewGrant(ctx, "jdoeGrant", &mysql.GrantArgs{
-//				Database: pulumi.String("app"),
-//				Host:     jdoeUser.Host,
-//				Privileges: pulumi.StringArray{
-//					pulumi.String("SELECT"),
-//					pulumi.String("UPDATE"),
-//				},
-//				User: jdoeUser.User,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // <!--End PulumiCodeChooser -->
 //
 // ### Granting Privileges to a Role
 //
 // <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			developerRole, err := mysql.NewRole(ctx, "developerRole", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = mysql.NewGrant(ctx, "developerGrant", &mysql.GrantArgs{
-//				Database: pulumi.String("app"),
-//				Privileges: pulumi.StringArray{
-//					pulumi.String("SELECT"),
-//					pulumi.String("UPDATE"),
-//				},
-//				Role: developerRole.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // <!--End PulumiCodeChooser -->
 //
 // ### Adding a Role to a User
 //
 // <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
-//				Host:              pulumi.String("example.com"),
-//				PlaintextPassword: pulumi.String("password"),
-//				User:              pulumi.String("jdoe"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			developerRole, err := mysql.NewRole(ctx, "developerRole", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = mysql.NewGrant(ctx, "developerGrant", &mysql.GrantArgs{
-//				Database: pulumi.String("app"),
-//				Host:     jdoe.Host,
-//				Roles: pulumi.StringArray{
-//					developerRole.Name,
-//				},
-//				User: jdoe.User,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // <!--End PulumiCodeChooser -->
 type Grant struct {
 	pulumi.CustomResourceState
