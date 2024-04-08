@@ -2,3 +2,12 @@ provider: mysql
 major-version: 3
 docker: true
 makeTemplate: bridged
+
+actions:
+  preTest:
+    - name: make upstream
+      run: |
+        make upstream
+    - name: Run provider tests
+      run: |
+        cd provider && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
