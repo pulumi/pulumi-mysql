@@ -32,22 +32,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			jdoeUser, err := mysql.NewUser(ctx, "jdoeUser", &mysql.UserArgs{
+//			jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
+//				User:              pulumi.String("jdoe"),
 //				Host:              pulumi.String("example.com"),
 //				PlaintextPassword: pulumi.String("password"),
-//				User:              pulumi.String("jdoe"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mysql.NewGrant(ctx, "jdoeGrant", &mysql.GrantArgs{
+//			_, err = mysql.NewGrant(ctx, "jdoe", &mysql.GrantArgs{
+//				User:     jdoe.User,
+//				Host:     jdoe.Host,
 //				Database: pulumi.String("app"),
-//				Host:     jdoeUser.Host,
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("SELECT"),
 //					pulumi.String("UPDATE"),
 //				},
-//				User: jdoeUser.User,
 //			})
 //			if err != nil {
 //				return err
@@ -74,17 +74,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			developerRole, err := mysql.NewRole(ctx, "developerRole", nil)
+//			developer, err := mysql.NewRole(ctx, "developer", &mysql.RoleArgs{
+//				Name: pulumi.String("developer"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mysql.NewGrant(ctx, "developerGrant", &mysql.GrantArgs{
+//			_, err = mysql.NewGrant(ctx, "developer", &mysql.GrantArgs{
+//				Role:     developer.Name,
 //				Database: pulumi.String("app"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("SELECT"),
 //					pulumi.String("UPDATE"),
 //				},
-//				Role: developerRole.Name,
 //			})
 //			if err != nil {
 //				return err
@@ -112,24 +114,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
+//				User:              pulumi.String("jdoe"),
 //				Host:              pulumi.String("example.com"),
 //				PlaintextPassword: pulumi.String("password"),
-//				User:              pulumi.String("jdoe"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			developerRole, err := mysql.NewRole(ctx, "developerRole", nil)
+//			developer, err := mysql.NewRole(ctx, "developer", &mysql.RoleArgs{
+//				Name: pulumi.String("developer"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mysql.NewGrant(ctx, "developerGrant", &mysql.GrantArgs{
-//				Database: pulumi.String("app"),
+//			_, err = mysql.NewGrant(ctx, "developer", &mysql.GrantArgs{
+//				User:     jdoe.User,
 //				Host:     jdoe.Host,
+//				Database: pulumi.String("app"),
 //				Roles: pulumi.StringArray{
-//					developerRole.Name,
+//					developer.Name,
 //				},
-//				User: jdoe.User,
 //			})
 //			if err != nil {
 //				return err

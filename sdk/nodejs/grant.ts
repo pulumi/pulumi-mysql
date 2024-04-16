@@ -17,19 +17,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
- * const jdoeUser = new mysql.User("jdoeUser", {
+ * const jdoe = new mysql.User("jdoe", {
+ *     user: "jdoe",
  *     host: "example.com",
  *     plaintextPassword: "password",
- *     user: "jdoe",
  * });
- * const jdoeGrant = new mysql.Grant("jdoeGrant", {
+ * const jdoeGrant = new mysql.Grant("jdoe", {
+ *     user: jdoe.user,
+ *     host: jdoe.host,
  *     database: "app",
- *     host: jdoeUser.host,
  *     privileges: [
  *         "SELECT",
  *         "UPDATE",
  *     ],
- *     user: jdoeUser.user,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -41,14 +41,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
- * const developerRole = new mysql.Role("developerRole", {});
- * const developerGrant = new mysql.Grant("developerGrant", {
+ * const developer = new mysql.Role("developer", {name: "developer"});
+ * const developerGrant = new mysql.Grant("developer", {
+ *     role: developer.name,
  *     database: "app",
  *     privileges: [
  *         "SELECT",
  *         "UPDATE",
  *     ],
- *     role: developerRole.name,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -61,16 +61,16 @@ import * as utilities from "./utilities";
  * import * as mysql from "@pulumi/mysql";
  *
  * const jdoe = new mysql.User("jdoe", {
+ *     user: "jdoe",
  *     host: "example.com",
  *     plaintextPassword: "password",
- *     user: "jdoe",
  * });
- * const developerRole = new mysql.Role("developerRole", {});
- * const developerGrant = new mysql.Grant("developerGrant", {
- *     database: "app",
- *     host: jdoe.host,
- *     roles: [developerRole.name],
+ * const developer = new mysql.Role("developer", {name: "developer"});
+ * const developerGrant = new mysql.Grant("developer", {
  *     user: jdoe.user,
+ *     host: jdoe.host,
+ *     database: "app",
+ *     roles: [developer.name],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

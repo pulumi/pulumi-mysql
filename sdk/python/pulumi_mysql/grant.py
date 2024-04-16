@@ -342,18 +342,18 @@ class Grant(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        jdoe_user = mysql.User("jdoeUser",
+        jdoe = mysql.User("jdoe",
+            user="jdoe",
             host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        jdoe_grant = mysql.Grant("jdoeGrant",
+            plaintext_password="password")
+        jdoe_grant = mysql.Grant("jdoe",
+            user=jdoe.user,
+            host=jdoe.host,
             database="app",
-            host=jdoe_user.host,
             privileges=[
                 "SELECT",
                 "UPDATE",
-            ],
-            user=jdoe_user.user)
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -364,14 +364,14 @@ class Grant(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        developer_role = mysql.Role("developerRole")
-        developer_grant = mysql.Grant("developerGrant",
+        developer = mysql.Role("developer", name="developer")
+        developer_grant = mysql.Grant("developer",
+            role=developer.name,
             database="app",
             privileges=[
                 "SELECT",
                 "UPDATE",
-            ],
-            role=developer_role.name)
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -383,15 +383,15 @@ class Grant(pulumi.CustomResource):
         import pulumi_mysql as mysql
 
         jdoe = mysql.User("jdoe",
+            user="jdoe",
             host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        developer_role = mysql.Role("developerRole")
-        developer_grant = mysql.Grant("developerGrant",
-            database="app",
+            plaintext_password="password")
+        developer = mysql.Role("developer", name="developer")
+        developer_grant = mysql.Grant("developer",
+            user=jdoe.user,
             host=jdoe.host,
-            roles=[developer_role.name],
-            user=jdoe.user)
+            database="app",
+            roles=[developer.name])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -426,18 +426,18 @@ class Grant(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        jdoe_user = mysql.User("jdoeUser",
+        jdoe = mysql.User("jdoe",
+            user="jdoe",
             host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        jdoe_grant = mysql.Grant("jdoeGrant",
+            plaintext_password="password")
+        jdoe_grant = mysql.Grant("jdoe",
+            user=jdoe.user,
+            host=jdoe.host,
             database="app",
-            host=jdoe_user.host,
             privileges=[
                 "SELECT",
                 "UPDATE",
-            ],
-            user=jdoe_user.user)
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -448,14 +448,14 @@ class Grant(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        developer_role = mysql.Role("developerRole")
-        developer_grant = mysql.Grant("developerGrant",
+        developer = mysql.Role("developer", name="developer")
+        developer_grant = mysql.Grant("developer",
+            role=developer.name,
             database="app",
             privileges=[
                 "SELECT",
                 "UPDATE",
-            ],
-            role=developer_role.name)
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -467,15 +467,15 @@ class Grant(pulumi.CustomResource):
         import pulumi_mysql as mysql
 
         jdoe = mysql.User("jdoe",
+            user="jdoe",
             host="example.com",
-            plaintext_password="password",
-            user="jdoe")
-        developer_role = mysql.Role("developerRole")
-        developer_grant = mysql.Grant("developerGrant",
-            database="app",
+            plaintext_password="password")
+        developer = mysql.Role("developer", name="developer")
+        developer_grant = mysql.Grant("developer",
+            user=jdoe.user,
             host=jdoe.host,
-            roles=[developer_role.name],
-            user=jdoe.user)
+            database="app",
+            roles=[developer.name])
         ```
         <!--End PulumiCodeChooser -->
 

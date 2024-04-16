@@ -180,10 +180,10 @@ class UserPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        jdoe_user = mysql.User("jdoeUser", user="jdoe")
-        jdoe_user_password = mysql.UserPassword("jdoeUserPassword",
-            pgp_key="keybase:joestump",
-            user=jdoe_user.user)
+        jdoe = mysql.User("jdoe", user="jdoe")
+        jdoe_user_password = mysql.UserPassword("jdoe",
+            user=jdoe.user,
+            pgp_key="keybase:joestump")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -217,10 +217,10 @@ class UserPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        jdoe_user = mysql.User("jdoeUser", user="jdoe")
-        jdoe_user_password = mysql.UserPassword("jdoeUserPassword",
-            pgp_key="keybase:joestump",
-            user=jdoe_user.user)
+        jdoe = mysql.User("jdoe", user="jdoe")
+        jdoe_user_password = mysql.UserPassword("jdoe",
+            user=jdoe.user,
+            pgp_key="keybase:joestump")
         ```
         <!--End PulumiCodeChooser -->
 

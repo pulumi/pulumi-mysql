@@ -26,23 +26,23 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jdoeUser = new MySql.User("jdoeUser", new()
+    ///     var jdoe = new MySql.User("jdoe", new()
     ///     {
+    ///         UserName = "jdoe",
     ///         Host = "example.com",
     ///         PlaintextPassword = "password",
-    ///         UserName = "jdoe",
     ///     });
     /// 
-    ///     var jdoeGrant = new MySql.Grant("jdoeGrant", new()
+    ///     var jdoeGrant = new MySql.Grant("jdoe", new()
     ///     {
+    ///         User = jdoe.UserName,
+    ///         Host = jdoe.Host,
     ///         Database = "app",
-    ///         Host = jdoeUser.Host,
     ///         Privileges = new[]
     ///         {
     ///             "SELECT",
     ///             "UPDATE",
     ///         },
-    ///         User = jdoeUser.UserName,
     ///     });
     /// 
     /// });
@@ -60,17 +60,20 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var developerRole = new MySql.Role("developerRole");
-    /// 
-    ///     var developerGrant = new MySql.Grant("developerGrant", new()
+    ///     var developer = new MySql.Role("developer", new()
     ///     {
+    ///         Name = "developer",
+    ///     });
+    /// 
+    ///     var developerGrant = new MySql.Grant("developer", new()
+    ///     {
+    ///         Role = developer.Name,
     ///         Database = "app",
     ///         Privileges = new[]
     ///         {
     ///             "SELECT",
     ///             "UPDATE",
     ///         },
-    ///         Role = developerRole.Name,
     ///     });
     /// 
     /// });
@@ -90,22 +93,25 @@ namespace Pulumi.MySql
     /// {
     ///     var jdoe = new MySql.User("jdoe", new()
     ///     {
+    ///         UserName = "jdoe",
     ///         Host = "example.com",
     ///         PlaintextPassword = "password",
-    ///         UserName = "jdoe",
     ///     });
     /// 
-    ///     var developerRole = new MySql.Role("developerRole");
-    /// 
-    ///     var developerGrant = new MySql.Grant("developerGrant", new()
+    ///     var developer = new MySql.Role("developer", new()
     ///     {
-    ///         Database = "app",
+    ///         Name = "developer",
+    ///     });
+    /// 
+    ///     var developerGrant = new MySql.Grant("developer", new()
+    ///     {
+    ///         User = jdoe.UserName,
     ///         Host = jdoe.Host,
+    ///         Database = "app",
     ///         Roles = new[]
     ///         {
-    ///             developerRole.Name,
+    ///             developer.Name,
     ///         },
-    ///         User = jdoe.UserName,
     ///     });
     /// 
     /// });
