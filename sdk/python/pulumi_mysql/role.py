@@ -79,7 +79,7 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        developer = mysql.Role("developer")
+        developer = mysql.Role("developer", name="developer")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -106,7 +106,7 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        developer = mysql.Role("developer")
+        developer = mysql.Role("developer", name="developer")
         ```
         <!--End PulumiCodeChooser -->
 

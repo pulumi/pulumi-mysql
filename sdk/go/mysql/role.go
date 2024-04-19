@@ -31,7 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := mysql.NewRole(ctx, "developer", nil)
+//			_, err := mysql.NewRole(ctx, "developer", &mysql.RoleArgs{
+//				Name: pulumi.String("developer"),
+//			})
 //			if err != nil {
 //				return err
 //			}

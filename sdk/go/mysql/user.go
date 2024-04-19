@@ -33,9 +33,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
+//				User:              pulumi.String("jdoe"),
 //				Host:              pulumi.String("example.com"),
 //				PlaintextPassword: pulumi.String("password"),
-//				User:              pulumi.String("jdoe"),
 //			})
 //			if err != nil {
 //				return err
@@ -63,9 +63,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := mysql.NewUser(ctx, "nologin", &mysql.UserArgs{
-//				AuthPlugin: pulumi.String("mysql_no_login"),
-//				Host:       pulumi.String("example.com"),
 //				User:       pulumi.String("nologin"),
+//				Host:       pulumi.String("example.com"),
+//				AuthPlugin: pulumi.String("mysql_no_login"),
 //			})
 //			if err != nil {
 //				return err

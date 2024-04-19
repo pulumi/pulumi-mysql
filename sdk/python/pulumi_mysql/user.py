@@ -264,9 +264,9 @@ class User(pulumi.CustomResource):
         import pulumi_mysql as mysql
 
         jdoe = mysql.User("jdoe",
+            user="jdoe",
             host="example.com",
-            plaintext_password="password",
-            user="jdoe")
+            plaintext_password="password")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -278,9 +278,9 @@ class User(pulumi.CustomResource):
         import pulumi_mysql as mysql
 
         nologin = mysql.User("nologin",
-            auth_plugin="mysql_no_login",
+            user="nologin",
             host="example.com",
-            user="nologin")
+            auth_plugin="mysql_no_login")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -315,9 +315,9 @@ class User(pulumi.CustomResource):
         import pulumi_mysql as mysql
 
         jdoe = mysql.User("jdoe",
+            user="jdoe",
             host="example.com",
-            plaintext_password="password",
-            user="jdoe")
+            plaintext_password="password")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -329,9 +329,9 @@ class User(pulumi.CustomResource):
         import pulumi_mysql as mysql
 
         nologin = mysql.User("nologin",
-            auth_plugin="mysql_no_login",
+            user="nologin",
             host="example.com",
-            user="nologin")
+            auth_plugin="mysql_no_login")
         ```
         <!--End PulumiCodeChooser -->
 

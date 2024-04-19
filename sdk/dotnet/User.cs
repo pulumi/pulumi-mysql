@@ -28,9 +28,9 @@ namespace Pulumi.MySql
     /// {
     ///     var jdoe = new MySql.User("jdoe", new()
     ///     {
+    ///         UserName = "jdoe",
     ///         Host = "example.com",
     ///         PlaintextPassword = "password",
-    ///         UserName = "jdoe",
     ///     });
     /// 
     /// });
@@ -50,9 +50,9 @@ namespace Pulumi.MySql
     /// {
     ///     var nologin = new MySql.User("nologin", new()
     ///     {
-    ///         AuthPlugin = "mysql_no_login",
-    ///         Host = "example.com",
     ///         UserName = "nologin",
+    ///         Host = "example.com",
+    ///         AuthPlugin = "mysql_no_login",
     ///     });
     /// 
     /// });

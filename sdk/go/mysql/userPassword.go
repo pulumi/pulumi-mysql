@@ -40,15 +40,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			jdoeUser, err := mysql.NewUser(ctx, "jdoeUser", &mysql.UserArgs{
+//			jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
 //				User: pulumi.String("jdoe"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mysql.NewUserPassword(ctx, "jdoeUserPassword", &mysql.UserPasswordArgs{
+//			_, err = mysql.NewUserPassword(ctx, "jdoe", &mysql.UserPasswordArgs{
+//				User:   jdoe.User,
 //				PgpKey: pulumi.String("keybase:joestump"),
-//				User:   jdoeUser.User,
 //			})
 //			if err != nil {
 //				return err

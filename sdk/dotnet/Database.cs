@@ -24,7 +24,10 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var app = new MySql.Database("app");
+    ///     var app = new MySql.Database("app", new()
+    ///     {
+    ///         Name = "my_awesome_app",
+    ///     });
     /// 
     /// });
     /// ```

@@ -31,15 +31,15 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jdoeUser = new MySql.User("jdoeUser", new()
+    ///     var jdoe = new MySql.User("jdoe", new()
     ///     {
     ///         UserName = "jdoe",
     ///     });
     /// 
-    ///     var jdoeUserPassword = new MySql.UserPassword("jdoeUserPassword", new()
+    ///     var jdoeUserPassword = new MySql.UserPassword("jdoe", new()
     ///     {
+    ///         User = jdoe.UserName,
     ///         PgpKey = "keybase:joestump",
-    ///         User = jdoeUser.UserName,
     ///     });
     /// 
     /// });

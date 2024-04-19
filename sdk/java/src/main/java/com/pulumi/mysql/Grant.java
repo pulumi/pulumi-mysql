@@ -48,19 +48,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoeUser = new User(&#34;jdoeUser&#34;, UserArgs.builder()        
+ *         var jdoe = new User(&#34;jdoe&#34;, UserArgs.builder()        
+ *             .user(&#34;jdoe&#34;)
  *             .host(&#34;example.com&#34;)
  *             .plaintextPassword(&#34;password&#34;)
- *             .user(&#34;jdoe&#34;)
  *             .build());
  * 
  *         var jdoeGrant = new Grant(&#34;jdoeGrant&#34;, GrantArgs.builder()        
+ *             .user(jdoe.user())
+ *             .host(jdoe.host())
  *             .database(&#34;app&#34;)
- *             .host(jdoeUser.host())
  *             .privileges(            
  *                 &#34;SELECT&#34;,
  *                 &#34;UPDATE&#34;)
- *             .user(jdoeUser.user())
  *             .build());
  * 
  *     }
@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.mysql.Role;
+ * import com.pulumi.mysql.RoleArgs;
  * import com.pulumi.mysql.Grant;
  * import com.pulumi.mysql.GrantArgs;
  * import java.util.List;
@@ -93,14 +94,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developerRole = new Role(&#34;developerRole&#34;);
+ *         var developer = new Role(&#34;developer&#34;, RoleArgs.builder()        
+ *             .name(&#34;developer&#34;)
+ *             .build());
  * 
  *         var developerGrant = new Grant(&#34;developerGrant&#34;, GrantArgs.builder()        
+ *             .role(developer.name())
  *             .database(&#34;app&#34;)
  *             .privileges(            
  *                 &#34;SELECT&#34;,
  *                 &#34;UPDATE&#34;)
- *             .role(developerRole.name())
  *             .build());
  * 
  *     }
@@ -120,6 +123,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.mysql.User;
  * import com.pulumi.mysql.UserArgs;
  * import com.pulumi.mysql.Role;
+ * import com.pulumi.mysql.RoleArgs;
  * import com.pulumi.mysql.Grant;
  * import com.pulumi.mysql.GrantArgs;
  * import java.util.List;
@@ -136,18 +140,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var jdoe = new User(&#34;jdoe&#34;, UserArgs.builder()        
+ *             .user(&#34;jdoe&#34;)
  *             .host(&#34;example.com&#34;)
  *             .plaintextPassword(&#34;password&#34;)
- *             .user(&#34;jdoe&#34;)
  *             .build());
  * 
- *         var developerRole = new Role(&#34;developerRole&#34;);
+ *         var developer = new Role(&#34;developer&#34;, RoleArgs.builder()        
+ *             .name(&#34;developer&#34;)
+ *             .build());
  * 
  *         var developerGrant = new Grant(&#34;developerGrant&#34;, GrantArgs.builder()        
- *             .database(&#34;app&#34;)
- *             .host(jdoe.host())
- *             .roles(developerRole.name())
  *             .user(jdoe.user())
+ *             .host(jdoe.host())
+ *             .database(&#34;app&#34;)
+ *             .roles(developer.name())
  *             .build());
  * 
  *     }

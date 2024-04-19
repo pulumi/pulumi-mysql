@@ -29,7 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := mysql.NewDatabase(ctx, "app", nil)
+//			_, err := mysql.NewDatabase(ctx, "app", &mysql.DatabaseArgs{
+//				Name: pulumi.String("my_awesome_app"),
+//			})
 //			if err != nil {
 //				return err
 //			}

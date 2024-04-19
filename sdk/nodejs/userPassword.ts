@@ -22,10 +22,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
- * const jdoeUser = new mysql.User("jdoeUser", {user: "jdoe"});
- * const jdoeUserPassword = new mysql.UserPassword("jdoeUserPassword", {
+ * const jdoe = new mysql.User("jdoe", {user: "jdoe"});
+ * const jdoeUserPassword = new mysql.UserPassword("jdoe", {
+ *     user: jdoe.user,
  *     pgpKey: "keybase:joestump",
- *     user: jdoeUser.user,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

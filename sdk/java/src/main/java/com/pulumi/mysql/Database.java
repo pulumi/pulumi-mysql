@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.mysql.Database;
+ * import com.pulumi.mysql.DatabaseArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,7 +42,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new Database(&#34;app&#34;);
+ *         var app = new Database(&#34;app&#34;, DatabaseArgs.builder()        
+ *             .name(&#34;my_awesome_app&#34;)
+ *             .build());
  * 
  *     }
  * }

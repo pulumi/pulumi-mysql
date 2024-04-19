@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  * import * as mysql from "@pulumi/mysql";
  *
  * const jdoe = new mysql.User("jdoe", {
+ *     user: "jdoe",
  *     host: "example.com",
  *     plaintextPassword: "password",
- *     user: "jdoe",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -33,9 +33,9 @@ import * as utilities from "./utilities";
  * import * as mysql from "@pulumi/mysql";
  *
  * const nologin = new mysql.User("nologin", {
- *     authPlugin: "mysql_no_login",
- *     host: "example.com",
  *     user: "nologin",
+ *     host: "example.com",
+ *     authPlugin: "mysql_no_login",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

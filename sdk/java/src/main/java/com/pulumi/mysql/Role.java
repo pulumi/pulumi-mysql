@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.mysql.Role;
+ * import com.pulumi.mysql.RoleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,7 +43,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new Role(&#34;developer&#34;);
+ *         var developer = new Role(&#34;developer&#34;, RoleArgs.builder()        
+ *             .name(&#34;developer&#34;)
+ *             .build());
  * 
  *     }
  * }

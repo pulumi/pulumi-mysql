@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
- * const developer = new mysql.Role("developer", {});
+ * const developer = new mysql.Role("developer", {name: "developer"});
  * ```
  * <!--End PulumiCodeChooser -->
  */

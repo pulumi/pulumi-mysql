@@ -199,7 +199,7 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        app = mysql.Database("app")
+        app = mysql.Database("app", name="my_awesome_app")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -248,7 +248,7 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_mysql as mysql
 
-        app = mysql.Database("app")
+        app = mysql.Database("app", name="my_awesome_app")
         ```
         <!--End PulumiCodeChooser -->
 
