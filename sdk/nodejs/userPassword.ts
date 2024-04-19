@@ -17,18 +17,16 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *  <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
  * const jdoeUser = new mysql.User("jdoeUser", {user: "jdoe"});
  * const jdoeUserPassword = new mysql.UserPassword("jdoeUserPassword", {
- *     pgpKey: "keybase:joestump",
- *     user: jdoeUser.user,
+ *    pgpKey: "keybase:joestump",
+ *    user: jdoeUser.user,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class UserPassword extends pulumi.CustomResource {
     /**

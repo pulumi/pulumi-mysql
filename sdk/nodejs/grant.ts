@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ### Granting Privileges to a User
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
@@ -32,11 +31,9 @@ import * as utilities from "./utilities";
  *     user: jdoeUser.user,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Granting Privileges to a Role
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
@@ -51,11 +48,9 @@ import * as utilities from "./utilities";
  *     role: developerRole.name,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Adding a Role to a User
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
@@ -73,7 +68,6 @@ import * as utilities from "./utilities";
  *     user: jdoe.user,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Grant extends pulumi.CustomResource {
     /**

@@ -175,17 +175,15 @@ class UserPassword(pulumi.CustomResource):
 
         ## Example Usage
 
-         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
 
         jdoe_user = mysql.User("jdoeUser", user="jdoe")
         jdoe_user_password = mysql.UserPassword("jdoeUserPassword",
-            pgp_key="keybase:joestump",
-            user=jdoe_user.user)
+           pgp_key="keybase:joestump",
+           user=jdoe_user.user)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -212,17 +210,15 @@ class UserPassword(pulumi.CustomResource):
 
         ## Example Usage
 
-         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
 
         jdoe_user = mysql.User("jdoeUser", user="jdoe")
         jdoe_user_password = mysql.UserPassword("jdoeUserPassword",
-            pgp_key="keybase:joestump",
-            user=jdoe_user.user)
+           pgp_key="keybase:joestump",
+           user=jdoe_user.user)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param UserPasswordArgs args: The arguments to use to populate this resource's properties.

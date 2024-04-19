@@ -194,14 +194,12 @@ class Database(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
 
         app = mysql.Database("app")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -243,14 +241,12 @@ class Database(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mysql as mysql
 
         app = mysql.Database("app")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
