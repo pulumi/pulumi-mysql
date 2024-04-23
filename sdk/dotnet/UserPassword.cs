@@ -22,7 +22,6 @@ namespace Pulumi.MySql
     /// 
     /// ## Example Usage
     /// 
-    ///  &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,20 +30,19 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jdoe = new MySql.User("jdoe", new()
-    ///     {
-    ///         UserName = "jdoe",
-    ///     });
+    ///    var jdoe = new MySql.User("jdoe", new()
+    ///    {
+    ///        UserName = "jdoe",
+    ///    });
     /// 
-    ///     var jdoeUserPassword = new MySql.UserPassword("jdoe", new()
-    ///     {
-    ///         User = jdoe.UserName,
-    ///         PgpKey = "keybase:joestump",
-    ///     });
+    ///    var jdoeUserPassword = new MySql.UserPassword("jdoe", new()
+    ///    {
+    ///        User = jdoe.UserName,
+    ///        PgpKey = "keybase:joestump",
+    ///    });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [MySqlResourceType("mysql:index/userPassword:UserPassword")]
     public partial class UserPassword : global::Pulumi.CustomResource
