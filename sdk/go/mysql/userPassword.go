@@ -26,8 +26,6 @@ import (
 //
 // ## Example Usage
 //
-//	<!--Start PulumiCodeChooser -->
-//
 // ```go
 // package main
 //
@@ -39,26 +37,25 @@ import (
 // )
 //
 //	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
-//				User: pulumi.String("jdoe"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = mysql.NewUserPassword(ctx, "jdoe", &mysql.UserPasswordArgs{
-//				User:   jdoe.User,
-//				PgpKey: pulumi.String("keybase:joestump"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
+//	   pulumi.Run(func(ctx *pulumi.Context) error {
+//	       jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
+//	           User: pulumi.String("jdoe"),
+//	       })
+//	       if err != nil {
+//	           return err
+//	       }
+//	       _, err = mysql.NewUserPassword(ctx, "jdoe", &mysql.UserPasswordArgs{
+//	           User:   jdoe.User,
+//	           PgpKey: pulumi.String("keybase:joestump"),
+//	       })
+//	       if err != nil {
+//	           return err
+//	       }
+//	       return nil
+//	   })
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type UserPassword struct {
 	pulumi.CustomResourceState
 

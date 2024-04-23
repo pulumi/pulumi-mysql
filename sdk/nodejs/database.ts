@@ -10,14 +10,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mysql from "@pulumi/mysql";
  *
  * const app = new mysql.Database("app", {name: "my_awesome_app"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
