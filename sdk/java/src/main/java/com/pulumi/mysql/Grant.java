@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Granting Privileges to a User
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,30 +49,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoe = new User(&#34;jdoe&#34;, UserArgs.builder()        
- *             .user(&#34;jdoe&#34;)
- *             .host(&#34;example.com&#34;)
- *             .plaintextPassword(&#34;password&#34;)
+ *         var jdoe = new User("jdoe", UserArgs.builder()        
+ *             .user("jdoe")
+ *             .host("example.com")
+ *             .plaintextPassword("password")
  *             .build());
  * 
- *         var jdoeGrant = new Grant(&#34;jdoeGrant&#34;, GrantArgs.builder()        
+ *         var jdoeGrant = new Grant("jdoeGrant", GrantArgs.builder()        
  *             .user(jdoe.user())
  *             .host(jdoe.host())
- *             .database(&#34;app&#34;)
+ *             .database("app")
  *             .privileges(            
- *                 &#34;SELECT&#34;,
- *                 &#34;UPDATE&#34;)
+ *                 "SELECT",
+ *                 "UPDATE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Granting Privileges to a Role
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,27 +97,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new Role(&#34;developer&#34;, RoleArgs.builder()        
- *             .name(&#34;developer&#34;)
+ *         var developer = new Role("developer", RoleArgs.builder()        
+ *             .name("developer")
  *             .build());
  * 
- *         var developerGrant = new Grant(&#34;developerGrant&#34;, GrantArgs.builder()        
+ *         var developerGrant = new Grant("developerGrant", GrantArgs.builder()        
  *             .role(developer.name())
- *             .database(&#34;app&#34;)
+ *             .database("app")
  *             .privileges(            
- *                 &#34;SELECT&#34;,
- *                 &#34;UPDATE&#34;)
+ *                 "SELECT",
+ *                 "UPDATE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Adding a Role to a User
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -139,26 +144,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoe = new User(&#34;jdoe&#34;, UserArgs.builder()        
- *             .user(&#34;jdoe&#34;)
- *             .host(&#34;example.com&#34;)
- *             .plaintextPassword(&#34;password&#34;)
+ *         var jdoe = new User("jdoe", UserArgs.builder()        
+ *             .user("jdoe")
+ *             .host("example.com")
+ *             .plaintextPassword("password")
  *             .build());
  * 
- *         var developer = new Role(&#34;developer&#34;, RoleArgs.builder()        
- *             .name(&#34;developer&#34;)
+ *         var developer = new Role("developer", RoleArgs.builder()        
+ *             .name("developer")
  *             .build());
  * 
- *         var developerGrant = new Grant(&#34;developerGrant&#34;, GrantArgs.builder()        
+ *         var developerGrant = new Grant("developerGrant", GrantArgs.builder()        
  *             .user(jdoe.user())
  *             .host(jdoe.host())
- *             .database(&#34;app&#34;)
+ *             .database("app")
  *             .roles(developer.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

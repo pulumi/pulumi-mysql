@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,21 +46,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoe = new User(&#34;jdoe&#34;, UserArgs.builder()        
- *             .user(&#34;jdoe&#34;)
- *             .host(&#34;example.com&#34;)
- *             .plaintextPassword(&#34;password&#34;)
+ *         var jdoe = new User("jdoe", UserArgs.builder()        
+ *             .user("jdoe")
+ *             .host("example.com")
+ *             .plaintextPassword("password")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Example Usage with an Authentication Plugin
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -80,15 +83,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var nologin = new User(&#34;nologin&#34;, UserArgs.builder()        
- *             .user(&#34;nologin&#34;)
- *             .host(&#34;example.com&#34;)
- *             .authPlugin(&#34;mysql_no_login&#34;)
+ *         var nologin = new User("nologin", UserArgs.builder()        
+ *             .user("nologin")
+ *             .host("example.com")
+ *             .authPlugin("mysql_no_login")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
