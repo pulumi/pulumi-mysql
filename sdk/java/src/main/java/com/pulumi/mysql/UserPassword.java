@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  *  &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,18 +52,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoe = new User(&#34;jdoe&#34;, UserArgs.builder()        
- *             .user(&#34;jdoe&#34;)
+ *         var jdoe = new User("jdoe", UserArgs.builder()        
+ *             .user("jdoe")
  *             .build());
  * 
- *         var jdoeUserPassword = new UserPassword(&#34;jdoeUserPassword&#34;, UserPasswordArgs.builder()        
+ *         var jdoeUserPassword = new UserPassword("jdoeUserPassword", UserPasswordArgs.builder()        
  *             .user(jdoe.user())
- *             .pgpKey(&#34;keybase:joestump&#34;)
+ *             .pgpKey("keybase:joestump")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
