@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoe = new User("jdoe", UserArgs.builder()        
+ *         var jdoe = new User("jdoe", UserArgs.builder()
  *             .user("jdoe")
  *             .build());
  * 
- *         var jdoeUserPassword = new UserPassword("jdoeUserPassword", UserPasswordArgs.builder()        
+ *         var jdoeUserPassword = new UserPassword("jdoeUserPassword", UserPasswordArgs.builder()
  *             .user(jdoe.user())
  *             .pgpKey("keybase:joestump")
  *             .build());

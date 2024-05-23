@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoe = new User("jdoe", UserArgs.builder()        
+ *         var jdoe = new User("jdoe", UserArgs.builder()
  *             .user("jdoe")
  *             .host("example.com")
  *             .plaintextPassword("password")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var nologin = new User("nologin", UserArgs.builder()        
+ *         var nologin = new User("nologin", UserArgs.builder()
  *             .user("nologin")
  *             .host("example.com")
  *             .authPlugin("mysql_no_login")

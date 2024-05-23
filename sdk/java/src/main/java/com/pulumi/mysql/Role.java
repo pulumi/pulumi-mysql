@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new Role("developer", RoleArgs.builder()        
+ *         var developer = new Role("developer", RoleArgs.builder()
  *             .name("developer")
  *             .build());
  * 
