@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var app = new Database("app", DatabaseArgs.builder()        
+ *         var app = new Database("app", DatabaseArgs.builder()
  *             .name("my_awesome_app")
  *             .build());
  * 
