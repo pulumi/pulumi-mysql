@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoe = new User("jdoe", UserArgs.builder()        
+ *         var jdoe = new User("jdoe", UserArgs.builder()
  *             .user("jdoe")
  *             .host("example.com")
  *             .plaintextPassword("password")
  *             .build());
  * 
- *         var jdoeGrant = new Grant("jdoeGrant", GrantArgs.builder()        
+ *         var jdoeGrant = new Grant("jdoeGrant", GrantArgs.builder()
  *             .user(jdoe.user())
  *             .host(jdoe.host())
  *             .database("app")
@@ -97,11 +97,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developer = new Role("developer", RoleArgs.builder()        
+ *         var developer = new Role("developer", RoleArgs.builder()
  *             .name("developer")
  *             .build());
  * 
- *         var developerGrant = new Grant("developerGrant", GrantArgs.builder()        
+ *         var developerGrant = new Grant("developerGrant", GrantArgs.builder()
  *             .role(developer.name())
  *             .database("app")
  *             .privileges(            
@@ -144,17 +144,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var jdoe = new User("jdoe", UserArgs.builder()        
+ *         var jdoe = new User("jdoe", UserArgs.builder()
  *             .user("jdoe")
  *             .host("example.com")
  *             .plaintextPassword("password")
  *             .build());
  * 
- *         var developer = new Role("developer", RoleArgs.builder()        
+ *         var developer = new Role("developer", RoleArgs.builder()
  *             .name("developer")
  *             .build());
  * 
- *         var developerGrant = new Grant("developerGrant", GrantArgs.builder()        
+ *         var developerGrant = new Grant("developerGrant", GrantArgs.builder()
  *             .user(jdoe.user())
  *             .host(jdoe.host())
  *             .database("app")
