@@ -84,13 +84,11 @@ class UserArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Please use plaintext_password instead""")
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
         """
-        warnings.warn("""Please use plaintext_password instead""", DeprecationWarning)
-        pulumi.log.warn("""password is deprecated: Please use plaintext_password instead""")
-
         return pulumi.get(self, "password")
 
     @password.setter
@@ -186,13 +184,11 @@ class _UserState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Please use plaintext_password instead""")
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
         """
-        warnings.warn("""Please use plaintext_password instead""", DeprecationWarning)
-        pulumi.log.warn("""password is deprecated: Please use plaintext_password instead""")
-
         return pulumi.get(self, "password")
 
     @password.setter
@@ -429,13 +425,11 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Please use plaintext_password instead""")
     def password(self) -> pulumi.Output[Optional[str]]:
         """
         Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
         """
-        warnings.warn("""Please use plaintext_password instead""", DeprecationWarning)
-        pulumi.log.warn("""password is deprecated: Please use plaintext_password instead""")
-
         return pulumi.get(self, "password")
 
     @property
