@@ -145,7 +145,7 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserPassword(String name) {
+    public UserPassword(java.lang.String name) {
         this(name, UserPasswordArgs.Empty);
     }
     /**
@@ -153,7 +153,7 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserPassword(String name, UserPasswordArgs args) {
+    public UserPassword(java.lang.String name, UserPasswordArgs args) {
         this(name, args, null);
     }
     /**
@@ -162,15 +162,22 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserPassword(String name, UserPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("mysql:index/userPassword:UserPassword", name, args == null ? UserPasswordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserPassword(java.lang.String name, UserPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("mysql:index/userPassword:UserPassword", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserPassword(String name, Output<String> id, @Nullable UserPasswordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("mysql:index/userPassword:UserPassword", name, state, makeResourceOptions(options, id));
+    private UserPassword(java.lang.String name, Output<java.lang.String> id, @Nullable UserPasswordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("mysql:index/userPassword:UserPassword", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserPasswordArgs makeArgs(UserPasswordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserPasswordArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -186,7 +193,7 @@ public class UserPassword extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserPassword get(String name, Output<String> id, @Nullable UserPasswordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserPassword get(java.lang.String name, Output<java.lang.String> id, @Nullable UserPasswordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserPassword(name, id, state, options);
     }
 }
