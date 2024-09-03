@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The ``mysql.Grant`` resource creates and manages privileges given to
+ * The `mysql.Grant` resource creates and manages privileges given to
  * a user on a MySQL server.
  * 
  * ## Examples

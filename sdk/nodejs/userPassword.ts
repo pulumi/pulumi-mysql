@@ -9,11 +9,11 @@ import * as utilities from "./utilities";
  * user on a MySQL server.
  *
  * > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
- *    argument for `mysql.User`. This resource uses PGP encryption to avoid
- *    storing unencrypted passwords in the provider state.
+ * argument for `mysql.User`. This resource uses PGP encryption to avoid
+ * storing unencrypted passwords in the provider state.
  *
  * > **NOTE on How Passwords are Created:** This resource **automatically**
- *    generates a **random** password. The password will be a random UUID.
+ * generates a **random** password. The password will be a random UUID.
  *
  * ## Example Usage
  *
@@ -23,8 +23,8 @@ import * as utilities from "./utilities";
  *
  * const jdoe = new mysql.User("jdoe", {user: "jdoe"});
  * const jdoeUserPassword = new mysql.UserPassword("jdoe", {
- *    user: jdoe.user,
- *    pgpKey: "keybase:joestump",
+ *     user: jdoe.user,
+ *     pgpKey: "keybase:joestump",
  * });
  * ```
  */

@@ -23,13 +23,11 @@ class UserArgs:
         """
         The set of arguments for constructing a User resource.
         :param pulumi.Input[str] user: The name of the user.
-        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost".
         :param pulumi.Input[str] password: Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
-        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         :param pulumi.Input[str] tls_option: An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-               
-               [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         """
         pulumi.set(__self__, "user", user)
         if auth_plugin is not None:
@@ -62,7 +60,7 @@ class UserArgs:
     @pulumi.getter(name="authPlugin")
     def auth_plugin(self) -> Optional[pulumi.Input[str]]:
         """
-        Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         """
         return pulumi.get(self, "auth_plugin")
 
@@ -99,7 +97,7 @@ class UserArgs:
     @pulumi.getter(name="plaintextPassword")
     def plaintext_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         """
         return pulumi.get(self, "plaintext_password")
 
@@ -112,8 +110,6 @@ class UserArgs:
     def tls_option(self) -> Optional[pulumi.Input[str]]:
         """
         An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-
-        [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         """
         return pulumi.get(self, "tls_option")
 
@@ -133,13 +129,11 @@ class _UserState:
                  user: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
-        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost".
         :param pulumi.Input[str] password: Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
-        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         :param pulumi.Input[str] tls_option: An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-               
-               [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         :param pulumi.Input[str] user: The name of the user.
         """
         if auth_plugin is not None:
@@ -162,7 +156,7 @@ class _UserState:
     @pulumi.getter(name="authPlugin")
     def auth_plugin(self) -> Optional[pulumi.Input[str]]:
         """
-        Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         """
         return pulumi.get(self, "auth_plugin")
 
@@ -199,7 +193,7 @@ class _UserState:
     @pulumi.getter(name="plaintextPassword")
     def plaintext_password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         """
         return pulumi.get(self, "plaintext_password")
 
@@ -212,8 +206,6 @@ class _UserState:
     def tls_option(self) -> Optional[pulumi.Input[str]]:
         """
         An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-
-        [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         """
         return pulumi.get(self, "tls_option")
 
@@ -247,7 +239,7 @@ class User(pulumi.CustomResource):
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The ``User`` resource creates and manages a user on a MySQL
+        The `User` resource creates and manages a user on a MySQL
         server.
 
         ## Examples
@@ -278,13 +270,11 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost".
         :param pulumi.Input[str] password: Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
-        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         :param pulumi.Input[str] tls_option: An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-               
-               [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         :param pulumi.Input[str] user: The name of the user.
         """
         ...
@@ -294,7 +284,7 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``User`` resource creates and manages a user on a MySQL
+        The `User` resource creates and manages a user on a MySQL
         server.
 
         ## Examples
@@ -386,13 +376,11 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        :param pulumi.Input[str] auth_plugin: Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         :param pulumi.Input[str] host: The source host of the user. Defaults to "localhost".
         :param pulumi.Input[str] password: Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
-        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        :param pulumi.Input[str] plaintext_password: The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         :param pulumi.Input[str] tls_option: An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-               
-               [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         :param pulumi.Input[str] user: The name of the user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -411,7 +399,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="authPlugin")
     def auth_plugin(self) -> pulumi.Output[Optional[str]]:
         """
-        Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         """
         return pulumi.get(self, "auth_plugin")
 
@@ -436,7 +424,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="plaintextPassword")
     def plaintext_password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         """
         return pulumi.get(self, "plaintext_password")
 
@@ -445,8 +433,6 @@ class User(pulumi.CustomResource):
     def tls_option(self) -> pulumi.Output[Optional[str]]:
         """
         An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-
-        [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         """
         return pulumi.get(self, "tls_option")
 

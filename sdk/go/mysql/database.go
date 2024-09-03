@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “Database“ resource creates and manages a database on a MySQL
+// The `Database` resource creates and manages a database on a MySQL
 // server.
 //
 // ## Example Usage
@@ -56,15 +56,15 @@ type Database struct {
 	DefaultCharacterSet pulumi.StringPtrOutput `pulumi:"defaultCharacterSet"`
 	// The default collation to use when a table
 	// is created without specifying an explicit collation. Defaults to
-	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// `utf8GeneralCi`. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
 	//
 	// Note that the defaults for character set and collation above do not respect
 	// any defaults set on the MySQL server, so that the configuration can be set
 	// appropriately even though this provider cannot see the server-level defaults. If
 	// you wish to use the server's defaults you must consult the server's
-	// configuration and then set the ``defaultCharacterSet`` and
-	// ``defaultCollation`` to match.
+	// configuration and then set the `defaultCharacterSet` and
+	// `defaultCollation` to match.
 	DefaultCollation pulumi.StringPtrOutput `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -108,15 +108,15 @@ type databaseState struct {
 	DefaultCharacterSet *string `pulumi:"defaultCharacterSet"`
 	// The default collation to use when a table
 	// is created without specifying an explicit collation. Defaults to
-	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// `utf8GeneralCi`. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
 	//
 	// Note that the defaults for character set and collation above do not respect
 	// any defaults set on the MySQL server, so that the configuration can be set
 	// appropriately even though this provider cannot see the server-level defaults. If
 	// you wish to use the server's defaults you must consult the server's
-	// configuration and then set the ``defaultCharacterSet`` and
-	// ``defaultCollation`` to match.
+	// configuration and then set the `defaultCharacterSet` and
+	// `defaultCollation` to match.
 	DefaultCollation *string `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -131,15 +131,15 @@ type DatabaseState struct {
 	DefaultCharacterSet pulumi.StringPtrInput
 	// The default collation to use when a table
 	// is created without specifying an explicit collation. Defaults to
-	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// `utf8GeneralCi`. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
 	//
 	// Note that the defaults for character set and collation above do not respect
 	// any defaults set on the MySQL server, so that the configuration can be set
 	// appropriately even though this provider cannot see the server-level defaults. If
 	// you wish to use the server's defaults you must consult the server's
-	// configuration and then set the ``defaultCharacterSet`` and
-	// ``defaultCollation`` to match.
+	// configuration and then set the `defaultCharacterSet` and
+	// `defaultCollation` to match.
 	DefaultCollation pulumi.StringPtrInput
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -158,15 +158,15 @@ type databaseArgs struct {
 	DefaultCharacterSet *string `pulumi:"defaultCharacterSet"`
 	// The default collation to use when a table
 	// is created without specifying an explicit collation. Defaults to
-	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// `utf8GeneralCi`. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
 	//
 	// Note that the defaults for character set and collation above do not respect
 	// any defaults set on the MySQL server, so that the configuration can be set
 	// appropriately even though this provider cannot see the server-level defaults. If
 	// you wish to use the server's defaults you must consult the server's
-	// configuration and then set the ``defaultCharacterSet`` and
-	// ``defaultCollation`` to match.
+	// configuration and then set the `defaultCharacterSet` and
+	// `defaultCollation` to match.
 	DefaultCollation *string `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -182,15 +182,15 @@ type DatabaseArgs struct {
 	DefaultCharacterSet pulumi.StringPtrInput
 	// The default collation to use when a table
 	// is created without specifying an explicit collation. Defaults to
-	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// `utf8GeneralCi`. Each character set has its own set of collations, so
 	// changing the character set requires also changing the collation.
 	//
 	// Note that the defaults for character set and collation above do not respect
 	// any defaults set on the MySQL server, so that the configuration can be set
 	// appropriately even though this provider cannot see the server-level defaults. If
 	// you wish to use the server's defaults you must consult the server's
-	// configuration and then set the ``defaultCharacterSet`` and
-	// ``defaultCollation`` to match.
+	// configuration and then set the `defaultCharacterSet` and
+	// `defaultCollation` to match.
 	DefaultCollation pulumi.StringPtrInput
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
@@ -294,15 +294,15 @@ func (o DatabaseOutput) DefaultCharacterSet() pulumi.StringPtrOutput {
 
 // The default collation to use when a table
 // is created without specifying an explicit collation. Defaults to
-// “utf8GeneralCi“. Each character set has its own set of collations, so
+// `utf8GeneralCi`. Each character set has its own set of collations, so
 // changing the character set requires also changing the collation.
 //
 // Note that the defaults for character set and collation above do not respect
 // any defaults set on the MySQL server, so that the configuration can be set
 // appropriately even though this provider cannot see the server-level defaults. If
 // you wish to use the server's defaults you must consult the server's
-// configuration and then set the “defaultCharacterSet“ and
-// “defaultCollation“ to match.
+// configuration and then set the `defaultCharacterSet` and
+// `defaultCollation` to match.
 func (o DatabaseOutput) DefaultCollation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultCollation }).(pulumi.StringPtrOutput)
 }

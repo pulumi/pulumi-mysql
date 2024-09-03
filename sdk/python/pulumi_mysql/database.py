@@ -24,15 +24,15 @@ class DatabaseArgs:
                to "utf8".
         :param pulumi.Input[str] default_collation: The default collation to use when a table
                is created without specifying an explicit collation. Defaults to
-               ``utf8_general_ci``. Each character set has its own set of collations, so
+               `utf8_general_ci`. Each character set has its own set of collations, so
                changing the character set requires also changing the collation.
                
                Note that the defaults for character set and collation above do not respect
                any defaults set on the MySQL server, so that the configuration can be set
                appropriately even though this provider cannot see the server-level defaults. If
                you wish to use the server's defaults you must consult the server's
-               configuration and then set the ``default_character_set`` and
-               ``default_collation`` to match.
+               configuration and then set the `default_character_set` and
+               `default_collation` to match.
         :param pulumi.Input[str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
@@ -64,15 +64,15 @@ class DatabaseArgs:
         """
         The default collation to use when a table
         is created without specifying an explicit collation. Defaults to
-        ``utf8_general_ci``. Each character set has its own set of collations, so
+        `utf8_general_ci`. Each character set has its own set of collations, so
         changing the character set requires also changing the collation.
 
         Note that the defaults for character set and collation above do not respect
         any defaults set on the MySQL server, so that the configuration can be set
         appropriately even though this provider cannot see the server-level defaults. If
         you wish to use the server's defaults you must consult the server's
-        configuration and then set the ``default_character_set`` and
-        ``default_collation`` to match.
+        configuration and then set the `default_character_set` and
+        `default_collation` to match.
         """
         return pulumi.get(self, "default_collation")
 
@@ -108,15 +108,15 @@ class _DatabaseState:
                to "utf8".
         :param pulumi.Input[str] default_collation: The default collation to use when a table
                is created without specifying an explicit collation. Defaults to
-               ``utf8_general_ci``. Each character set has its own set of collations, so
+               `utf8_general_ci`. Each character set has its own set of collations, so
                changing the character set requires also changing the collation.
                
                Note that the defaults for character set and collation above do not respect
                any defaults set on the MySQL server, so that the configuration can be set
                appropriately even though this provider cannot see the server-level defaults. If
                you wish to use the server's defaults you must consult the server's
-               configuration and then set the ``default_character_set`` and
-               ``default_collation`` to match.
+               configuration and then set the `default_character_set` and
+               `default_collation` to match.
         :param pulumi.Input[str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
@@ -148,15 +148,15 @@ class _DatabaseState:
         """
         The default collation to use when a table
         is created without specifying an explicit collation. Defaults to
-        ``utf8_general_ci``. Each character set has its own set of collations, so
+        `utf8_general_ci`. Each character set has its own set of collations, so
         changing the character set requires also changing the collation.
 
         Note that the defaults for character set and collation above do not respect
         any defaults set on the MySQL server, so that the configuration can be set
         appropriately even though this provider cannot see the server-level defaults. If
         you wish to use the server's defaults you must consult the server's
-        configuration and then set the ``default_character_set`` and
-        ``default_collation`` to match.
+        configuration and then set the `default_character_set` and
+        `default_collation` to match.
         """
         return pulumi.get(self, "default_collation")
 
@@ -189,7 +189,7 @@ class Database(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The ``Database`` resource creates and manages a database on a MySQL
+        The `Database` resource creates and manages a database on a MySQL
         server.
 
         ## Example Usage
@@ -216,15 +216,15 @@ class Database(pulumi.CustomResource):
                to "utf8".
         :param pulumi.Input[str] default_collation: The default collation to use when a table
                is created without specifying an explicit collation. Defaults to
-               ``utf8_general_ci``. Each character set has its own set of collations, so
+               `utf8_general_ci`. Each character set has its own set of collations, so
                changing the character set requires also changing the collation.
                
                Note that the defaults for character set and collation above do not respect
                any defaults set on the MySQL server, so that the configuration can be set
                appropriately even though this provider cannot see the server-level defaults. If
                you wish to use the server's defaults you must consult the server's
-               configuration and then set the ``default_character_set`` and
-               ``default_collation`` to match.
+               configuration and then set the `default_character_set` and
+               `default_collation` to match.
         :param pulumi.Input[str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
@@ -236,7 +236,7 @@ class Database(pulumi.CustomResource):
                  args: Optional[DatabaseArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``Database`` resource creates and manages a database on a MySQL
+        The `Database` resource creates and manages a database on a MySQL
         server.
 
         ## Example Usage
@@ -311,15 +311,15 @@ class Database(pulumi.CustomResource):
                to "utf8".
         :param pulumi.Input[str] default_collation: The default collation to use when a table
                is created without specifying an explicit collation. Defaults to
-               ``utf8_general_ci``. Each character set has its own set of collations, so
+               `utf8_general_ci`. Each character set has its own set of collations, so
                changing the character set requires also changing the collation.
                
                Note that the defaults for character set and collation above do not respect
                any defaults set on the MySQL server, so that the configuration can be set
                appropriately even though this provider cannot see the server-level defaults. If
                you wish to use the server's defaults you must consult the server's
-               configuration and then set the ``default_character_set`` and
-               ``default_collation`` to match.
+               configuration and then set the `default_character_set` and
+               `default_collation` to match.
         :param pulumi.Input[str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
@@ -349,15 +349,15 @@ class Database(pulumi.CustomResource):
         """
         The default collation to use when a table
         is created without specifying an explicit collation. Defaults to
-        ``utf8_general_ci``. Each character set has its own set of collations, so
+        `utf8_general_ci`. Each character set has its own set of collations, so
         changing the character set requires also changing the collation.
 
         Note that the defaults for character set and collation above do not respect
         any defaults set on the MySQL server, so that the configuration can be set
         appropriately even though this provider cannot see the server-level defaults. If
         you wish to use the server's defaults you must consult the server's
-        configuration and then set the ``default_character_set`` and
-        ``default_collation`` to match.
+        configuration and then set the `default_character_set` and
+        `default_collation` to match.
         """
         return pulumi.get(self, "default_collation")
 

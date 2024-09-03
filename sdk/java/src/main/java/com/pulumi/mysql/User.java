@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The ``mysql.User`` resource creates and manages a user on a MySQL
+ * The `mysql.User` resource creates and manages a user on a MySQL
  * server.
  * 
  * ## Examples
@@ -99,14 +99,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="mysql:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
-     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+     * Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
      * 
      */
     @Export(name="authPlugin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authPlugin;
 
     /**
-     * @return Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+     * @return Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
      * 
      */
     public Output<Optional<String>> authPlugin() {
@@ -145,14 +145,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
      * 
      */
     @Export(name="plaintextPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plaintextPassword;
 
     /**
-     * @return The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+     * @return The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
      * 
      */
     public Output<Optional<String>> plaintextPassword() {
@@ -161,16 +161,12 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
      * 
-     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
-     * 
      */
     @Export(name="tlsOption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tlsOption;
 
     /**
      * @return An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of &#39;SSL&#39; will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-     * 
-     * [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
      * 
      */
     public Output<Optional<String>> tlsOption() {

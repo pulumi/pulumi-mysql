@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “User“ resource creates and manages a user on a MySQL
+// The `User` resource creates and manages a user on a MySQL
 // server.
 //
 // ## Examples
@@ -75,7 +75,7 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
+	// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin pulumi.StringPtrOutput `pulumi:"authPlugin"`
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrOutput `pulumi:"host"`
@@ -83,11 +83,9 @@ type User struct {
 	//
 	// Deprecated: Please use plaintextPassword instead
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
+	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrOutput `pulumi:"plaintextPassword"`
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-	//
-	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption pulumi.StringPtrOutput `pulumi:"tlsOption"`
 	// The name of the user.
 	User pulumi.StringOutput `pulumi:"user"`
@@ -137,7 +135,7 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
+	// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin *string `pulumi:"authPlugin"`
 	// The source host of the user. Defaults to "localhost".
 	Host *string `pulumi:"host"`
@@ -145,18 +143,16 @@ type userState struct {
 	//
 	// Deprecated: Please use plaintextPassword instead
 	Password *string `pulumi:"password"`
-	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
+	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword *string `pulumi:"plaintextPassword"`
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-	//
-	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption *string `pulumi:"tlsOption"`
 	// The name of the user.
 	User *string `pulumi:"user"`
 }
 
 type UserState struct {
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
+	// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin pulumi.StringPtrInput
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrInput
@@ -164,11 +160,9 @@ type UserState struct {
 	//
 	// Deprecated: Please use plaintextPassword instead
 	Password pulumi.StringPtrInput
-	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
+	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrInput
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-	//
-	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption pulumi.StringPtrInput
 	// The name of the user.
 	User pulumi.StringPtrInput
@@ -179,7 +173,7 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
+	// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin *string `pulumi:"authPlugin"`
 	// The source host of the user. Defaults to "localhost".
 	Host *string `pulumi:"host"`
@@ -187,11 +181,9 @@ type userArgs struct {
 	//
 	// Deprecated: Please use plaintextPassword instead
 	Password *string `pulumi:"password"`
-	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
+	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword *string `pulumi:"plaintextPassword"`
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-	//
-	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption *string `pulumi:"tlsOption"`
 	// The name of the user.
 	User string `pulumi:"user"`
@@ -199,7 +191,7 @@ type userArgs struct {
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
+	// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin pulumi.StringPtrInput
 	// The source host of the user. Defaults to "localhost".
 	Host pulumi.StringPtrInput
@@ -207,11 +199,9 @@ type UserArgs struct {
 	//
 	// Deprecated: Please use plaintextPassword instead
 	Password pulumi.StringPtrInput
-	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
+	// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `authPlugin`.
 	PlaintextPassword pulumi.StringPtrInput
 	// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-	//
-	// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 	TlsOption pulumi.StringPtrInput
 	// The name of the user.
 	User pulumi.StringInput
@@ -304,7 +294,7 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
+// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 func (o UserOutput) AuthPlugin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.AuthPlugin }).(pulumi.StringPtrOutput)
 }
@@ -321,14 +311,12 @@ func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
+// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `authPlugin`.
 func (o UserOutput) PlaintextPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PlaintextPassword }).(pulumi.StringPtrOutput)
 }
 
 // An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-//
-// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
 func (o UserOutput) TlsOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.TlsOption }).(pulumi.StringPtrOutput)
 }

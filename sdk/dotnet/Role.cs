@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.MySql
 {
     /// <summary>
-    /// The ``mysql.Role`` resource creates and manages a user on a MySQL
+    /// The `mysql.Role` resource creates and manages a user on a MySQL
     /// server.
     /// 
     /// &gt; **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.

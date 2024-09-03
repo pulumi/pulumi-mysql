@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “Grant“ resource creates and manages privileges given to
+// The `Grant` resource creates and manages privileges given to
 // a user on a MySQL server.
 //
 // ## Examples
