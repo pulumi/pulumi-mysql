@@ -167,11 +167,11 @@ class UserPassword(pulumi.CustomResource):
         user on a MySQL server.
 
         > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
-           argument for `User`. This resource uses PGP encryption to avoid
-           storing unencrypted passwords in the provider state.
+        argument for `User`. This resource uses PGP encryption to avoid
+        storing unencrypted passwords in the provider state.
 
         > **NOTE on How Passwords are Created:** This resource **automatically**
-           generates a **random** password. The password will be a random UUID.
+        generates a **random** password. The password will be a random UUID.
 
         ## Example Usage
 
@@ -181,8 +181,8 @@ class UserPassword(pulumi.CustomResource):
 
         jdoe = mysql.User("jdoe", user="jdoe")
         jdoe_user_password = mysql.UserPassword("jdoe",
-           user=jdoe.user,
-           pgp_key="keybase:joestump")
+            user=jdoe.user,
+            pgp_key="keybase:joestump")
         ```
 
         :param str resource_name: The name of the resource.
@@ -202,11 +202,11 @@ class UserPassword(pulumi.CustomResource):
         user on a MySQL server.
 
         > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
-           argument for `User`. This resource uses PGP encryption to avoid
-           storing unencrypted passwords in the provider state.
+        argument for `User`. This resource uses PGP encryption to avoid
+        storing unencrypted passwords in the provider state.
 
         > **NOTE on How Passwords are Created:** This resource **automatically**
-           generates a **random** password. The password will be a random UUID.
+        generates a **random** password. The password will be a random UUID.
 
         ## Example Usage
 
@@ -216,8 +216,8 @@ class UserPassword(pulumi.CustomResource):
 
         jdoe = mysql.User("jdoe", user="jdoe")
         jdoe_user_password = mysql.UserPassword("jdoe",
-           user=jdoe.user,
-           pgp_key="keybase:joestump")
+            user=jdoe.user,
+            pgp_key="keybase:joestump")
         ```
 
         :param str resource_name: The name of the resource.

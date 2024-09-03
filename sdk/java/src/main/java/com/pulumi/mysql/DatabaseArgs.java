@@ -37,15 +37,15 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
-     * ``utf8_general_ci``. Each character set has its own set of collations, so
+     * `utf8_general_ci`. Each character set has its own set of collations, so
      * changing the character set requires also changing the collation.
      * 
      * Note that the defaults for character set and collation above do not respect
      * any defaults set on the MySQL server, so that the configuration can be set
      * appropriately even though this provider cannot see the server-level defaults. If
      * you wish to use the server&#39;s defaults you must consult the server&#39;s
-     * configuration and then set the ``default_character_set`` and
-     * ``default_collation`` to match.
+     * configuration and then set the `default_character_set` and
+     * `default_collation` to match.
      * 
      */
     @Import(name="defaultCollation")
@@ -54,15 +54,15 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
-     * ``utf8_general_ci``. Each character set has its own set of collations, so
+     * `utf8_general_ci`. Each character set has its own set of collations, so
      * changing the character set requires also changing the collation.
      * 
      * Note that the defaults for character set and collation above do not respect
      * any defaults set on the MySQL server, so that the configuration can be set
      * appropriately even though this provider cannot see the server-level defaults. If
      * you wish to use the server&#39;s defaults you must consult the server&#39;s
-     * configuration and then set the ``default_character_set`` and
-     * ``default_collation`` to match.
+     * configuration and then set the `default_character_set` and
+     * `default_collation` to match.
      * 
      */
     public Optional<Output<String>> defaultCollation() {
@@ -142,15 +142,15 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultCollation The default collation to use when a table
          * is created without specifying an explicit collation. Defaults to
-         * ``utf8_general_ci``. Each character set has its own set of collations, so
+         * `utf8_general_ci`. Each character set has its own set of collations, so
          * changing the character set requires also changing the collation.
          * 
          * Note that the defaults for character set and collation above do not respect
          * any defaults set on the MySQL server, so that the configuration can be set
          * appropriately even though this provider cannot see the server-level defaults. If
          * you wish to use the server&#39;s defaults you must consult the server&#39;s
-         * configuration and then set the ``default_character_set`` and
-         * ``default_collation`` to match.
+         * configuration and then set the `default_character_set` and
+         * `default_collation` to match.
          * 
          * @return builder
          * 
@@ -163,15 +163,15 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultCollation The default collation to use when a table
          * is created without specifying an explicit collation. Defaults to
-         * ``utf8_general_ci``. Each character set has its own set of collations, so
+         * `utf8_general_ci`. Each character set has its own set of collations, so
          * changing the character set requires also changing the collation.
          * 
          * Note that the defaults for character set and collation above do not respect
          * any defaults set on the MySQL server, so that the configuration can be set
          * appropriately even though this provider cannot see the server-level defaults. If
          * you wish to use the server&#39;s defaults you must consult the server&#39;s
-         * configuration and then set the ``default_character_set`` and
-         * ``default_collation`` to match.
+         * configuration and then set the `default_character_set` and
+         * `default_collation` to match.
          * 
          * @return builder
          * 

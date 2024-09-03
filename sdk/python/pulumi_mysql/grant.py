@@ -330,7 +330,7 @@ class Grant(pulumi.CustomResource):
                  user: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The ``Grant`` resource creates and manages privileges given to
+        The `Grant` resource creates and manages privileges given to
         a user on a MySQL server.
 
         ## Examples
@@ -408,7 +408,7 @@ class Grant(pulumi.CustomResource):
                  args: GrantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``Grant`` resource creates and manages privileges given to
+        The `Grant` resource creates and manages privileges given to
         a user on a MySQL server.
 
         ## Examples

@@ -16,13 +16,11 @@ import (
 // user on a MySQL server.
 //
 // > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
-//
-//	argument for `User`. This resource uses PGP encryption to avoid
-//	storing unencrypted passwords in the provider state.
+// argument for `User`. This resource uses PGP encryption to avoid
+// storing unencrypted passwords in the provider state.
 //
 // > **NOTE on How Passwords are Created:** This resource **automatically**
-//
-//	generates a **random** password. The password will be a random UUID.
+// generates a **random** password. The password will be a random UUID.
 //
 // ## Example Usage
 //
@@ -37,22 +35,22 @@ import (
 // )
 //
 //	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
-//	           User: pulumi.String("jdoe"),
-//	       })
-//	       if err != nil {
-//	           return err
-//	       }
-//	       _, err = mysql.NewUserPassword(ctx, "jdoe", &mysql.UserPasswordArgs{
-//	           User:   jdoe.User,
-//	           PgpKey: pulumi.String("keybase:joestump"),
-//	       })
-//	       if err != nil {
-//	           return err
-//	       }
-//	       return nil
-//	   })
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
+//				User: pulumi.String("jdoe"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = mysql.NewUserPassword(ctx, "jdoe", &mysql.UserPasswordArgs{
+//				User:   jdoe.User,
+//				PgpKey: pulumi.String("keybase:joestump"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
 //	}
 //
 // ```

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The “Role“ resource creates and manages a user on a MySQL
+// The `Role` resource creates and manages a user on a MySQL
 // server.
 //
 // > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.MySql
 {
     /// <summary>
-    /// The ``mysql.User`` resource creates and manages a user on a MySQL
+    /// The `mysql.User` resource creates and manages a user on a MySQL
     /// server.
     /// 
     /// ## Examples
@@ -59,7 +59,7 @@ namespace Pulumi.MySql
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        /// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         /// </summary>
         [Output("authPlugin")]
         public Output<string?> AuthPlugin { get; private set; } = null!;
@@ -77,15 +77,13 @@ namespace Pulumi.MySql
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         /// </summary>
         [Output("plaintextPassword")]
         public Output<string?> PlaintextPassword { get; private set; } = null!;
 
         /// <summary>
         /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-        /// 
-        /// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         /// </summary>
         [Output("tlsOption")]
         public Output<string?> TlsOption { get; private set; } = null!;
@@ -148,7 +146,7 @@ namespace Pulumi.MySql
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        /// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         /// </summary>
         [Input("authPlugin")]
         public Input<string>? AuthPlugin { get; set; }
@@ -180,7 +178,7 @@ namespace Pulumi.MySql
         private Input<string>? _plaintextPassword;
 
         /// <summary>
-        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         /// </summary>
         public Input<string>? PlaintextPassword
         {
@@ -194,8 +192,6 @@ namespace Pulumi.MySql
 
         /// <summary>
         /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-        /// 
-        /// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         /// </summary>
         [Input("tlsOption")]
         public Input<string>? TlsOption { get; set; }
@@ -215,7 +211,7 @@ namespace Pulumi.MySql
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        /// Use an [authentication plugin](https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html) to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         /// </summary>
         [Input("authPlugin")]
         public Input<string>? AuthPlugin { get; set; }
@@ -247,7 +243,7 @@ namespace Pulumi.MySql
         private Input<string>? _plaintextPassword;
 
         /// <summary>
-        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An *unsalted* hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         /// </summary>
         public Input<string>? PlaintextPassword
         {
@@ -261,8 +257,6 @@ namespace Pulumi.MySql
 
         /// <summary>
         /// An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
-        /// 
-        /// [ref-auth-plugins]: https://dev.mysql.com/doc/refman/5.7/en/authentication-plugins.html
         /// </summary>
         [Input("tlsOption")]
         public Input<string>? TlsOption { get; set; }

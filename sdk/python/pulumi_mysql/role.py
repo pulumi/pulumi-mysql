@@ -67,7 +67,7 @@ class Role(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The ``Role`` resource creates and manages a user on a MySQL
+        The `Role` resource creates and manages a user on a MySQL
         server.
 
         > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
@@ -92,7 +92,7 @@ class Role(pulumi.CustomResource):
                  args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The ``Role`` resource creates and manages a user on a MySQL
+        The `Role` resource creates and manages a user on a MySQL
         server.
 
         > **Note:** MySQL introduced roles in version 8. They do not work on MySQL 5 and lower.
