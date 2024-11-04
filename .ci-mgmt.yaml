@@ -8,3 +8,4 @@ plugins:
   - name: terraform
     version: "1.0.16"
     kind: converter
+checkUpstreamUpgrade: false
