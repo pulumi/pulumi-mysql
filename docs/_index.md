@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The mysql provider is available as a package in all Pulumi languages:
+The Mysql provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/mysql`](https://www.npmjs.com/package/@pulumi/mysql)
 * Python: [`pulumi-mysql`](https://pypi.org/project/pulumi-mysql/)
