@@ -16,17 +16,6 @@ import * as utilities from "./utilities";
  *    generates a **random** password. The password will be a random UUID.
  *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mysql from "@pulumi/mysql";
- *
- * const jdoe = new mysql.User("jdoe", {user: "jdoe"});
- * const jdoeUserPassword = new mysql.UserPassword("jdoe", {
- *    user: jdoe.user,
- *    pgpKey: "keybase:joestump",
- * });
- * ```
  */
 export class UserPassword extends pulumi.CustomResource {
     /**

@@ -25,37 +25,6 @@ import (
 //	generates a **random** password. The password will be a random UUID.
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
-//	           User: pulumi.String("jdoe"),
-//	       })
-//	       if err != nil {
-//	           return err
-//	       }
-//	       _, err = mysql.NewUserPassword(ctx, "jdoe", &mysql.UserPasswordArgs{
-//	           User:   jdoe.User,
-//	           PgpKey: pulumi.String("keybase:joestump"),
-//	       })
-//	       if err != nil {
-//	           return err
-//	       }
-//	       return nil
-//	   })
-//	}
-//
-// ```
 type UserPassword struct {
 	pulumi.CustomResourceState
 

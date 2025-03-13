@@ -180,16 +180,6 @@ class UserPassword(pulumi.CustomResource):
 
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        jdoe = mysql.User("jdoe", user="jdoe")
-        jdoe_user_password = mysql.UserPassword("jdoe",
-           user=jdoe.user,
-           pgp_key="keybase:joestump")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host: The source host of the user. Defaults to `localhost`.
@@ -214,16 +204,6 @@ class UserPassword(pulumi.CustomResource):
            generates a **random** password. The password will be a random UUID.
 
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mysql as mysql
-
-        jdoe = mysql.User("jdoe", user="jdoe")
-        jdoe_user_password = mysql.UserPassword("jdoe",
-           user=jdoe.user,
-           pgp_key="keybase:joestump")
-        ```
 
         :param str resource_name: The name of the resource.
         :param UserPasswordArgs args: The arguments to use to populate this resource's properties.

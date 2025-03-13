@@ -21,28 +21,6 @@ namespace Pulumi.MySql
     ///    generates a **random** password. The password will be a random UUID.
     /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using MySql = Pulumi.MySql;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///    var jdoe = new MySql.User("jdoe", new()
-    ///    {
-    ///        UserName = "jdoe",
-    ///    });
-    /// 
-    ///    var jdoeUserPassword = new MySql.UserPassword("jdoe", new()
-    ///    {
-    ///        User = jdoe.UserName,
-    ///        PgpKey = "keybase:joestump",
-    ///    });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [MySqlResourceType("mysql:index/userPassword:UserPassword")]
     public partial class UserPassword : global::Pulumi.CustomResource
