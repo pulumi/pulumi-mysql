@@ -241,6 +241,9 @@ class _UserState:
 
 
 class User(pulumi.CustomResource):
+
+    pulumi_type = "mysql:index/user:User"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
