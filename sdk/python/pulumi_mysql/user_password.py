@@ -159,10 +159,8 @@ class _UserPasswordState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("mysql:index/userPassword:UserPassword")
 class UserPassword(pulumi.CustomResource):
-
-    pulumi_type = "mysql:index/userPassword:UserPassword"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
