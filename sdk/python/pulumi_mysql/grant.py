@@ -320,10 +320,8 @@ class _GrantState:
         pulumi.set(self, "user", value)
 
 
+@pulumi.type_token("mysql:index/grant:Grant")
 class Grant(pulumi.CustomResource):
-
-    pulumi_type = "mysql:index/grant:Grant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

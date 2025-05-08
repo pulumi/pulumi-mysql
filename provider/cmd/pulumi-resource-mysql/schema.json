@@ -172,7 +172,10 @@
         "requiredInputs": [
             "endpoint",
             "username"
-        ]
+        ],
+        "methods": {
+            "terraformConfig": "pulumi:providers:mysql/terraformConfig"
+        }
     },
     "resources": {
         "mysql:index/database:Database": {
@@ -638,6 +641,37 @@
                         "willReplaceOnChanges": true
                     }
                 },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "pulumi:providers:mysql/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:mysql"
+                    }
+                },
+                "type": "pulumi:providers:mysql/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
                 "type": "object"
             }
         }
