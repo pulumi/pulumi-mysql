@@ -65,10 +65,8 @@ class _RoleState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("mysql:index/role:Role")
 class Role(pulumi.CustomResource):
-
-    pulumi_type = "mysql:index/role:Role"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
