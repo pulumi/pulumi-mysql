@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -20,26 +19,20 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	AuthenticationPlugin pulumi.StringPtrOutput `pulumi:"authenticationPlugin"`
-	Endpoint             pulumi.StringOutput    `pulumi:"endpoint"`
+	Endpoint             pulumi.StringPtrOutput `pulumi:"endpoint"`
 	Password             pulumi.StringPtrOutput `pulumi:"password"`
 	Proxy                pulumi.StringPtrOutput `pulumi:"proxy"`
 	Tls                  pulumi.StringPtrOutput `pulumi:"tls"`
-	Username             pulumi.StringOutput    `pulumi:"username"`
+	Username             pulumi.StringPtrOutput `pulumi:"username"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.Endpoint == nil {
-		return nil, errors.New("invalid value for required argument 'Endpoint'")
-	}
-	if args.Username == nil {
-		return nil, errors.New("invalid value for required argument 'Username'")
-	}
 	if args.Proxy == nil {
 		if d := internal.GetEnvOrDefault(nil, nil, "ALL_PROXY", "all_proxy"); d != nil {
 			args.Proxy = pulumi.StringPtr(d.(string))
@@ -61,25 +54,25 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	AuthenticationPlugin *string `pulumi:"authenticationPlugin"`
-	Endpoint             string  `pulumi:"endpoint"`
+	Endpoint             *string `pulumi:"endpoint"`
 	MaxConnLifetimeSec   *int    `pulumi:"maxConnLifetimeSec"`
 	MaxOpenConns         *int    `pulumi:"maxOpenConns"`
 	Password             *string `pulumi:"password"`
 	Proxy                *string `pulumi:"proxy"`
 	Tls                  *string `pulumi:"tls"`
-	Username             string  `pulumi:"username"`
+	Username             *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	AuthenticationPlugin pulumi.StringPtrInput
-	Endpoint             pulumi.StringInput
+	Endpoint             pulumi.StringPtrInput
 	MaxConnLifetimeSec   pulumi.IntPtrInput
 	MaxOpenConns         pulumi.IntPtrInput
 	Password             pulumi.StringPtrInput
 	Proxy                pulumi.StringPtrInput
 	Tls                  pulumi.StringPtrInput
-	Username             pulumi.StringInput
+	Username             pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -146,8 +139,8 @@ func (o ProviderOutput) AuthenticationPlugin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthenticationPlugin }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+func (o ProviderOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {
@@ -162,8 +155,8 @@ func (o ProviderOutput) Tls() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Tls }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+func (o ProviderOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 func init() {

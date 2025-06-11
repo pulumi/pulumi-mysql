@@ -20,21 +20,21 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 endpoint: pulumi.Input[builtins.str],
-                 username: pulumi.Input[builtins.str],
                  authentication_plugin: Optional[pulumi.Input[builtins.str]] = None,
+                 endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  max_conn_lifetime_sec: Optional[pulumi.Input[builtins.int]] = None,
                  max_open_conns: Optional[pulumi.Input[builtins.int]] = None,
                  password: Optional[pulumi.Input[builtins.str]] = None,
                  proxy: Optional[pulumi.Input[builtins.str]] = None,
-                 tls: Optional[pulumi.Input[builtins.str]] = None):
+                 tls: Optional[pulumi.Input[builtins.str]] = None,
+                 username: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "username", username)
         if authentication_plugin is not None:
             pulumi.set(__self__, "authentication_plugin", authentication_plugin)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
         if max_conn_lifetime_sec is not None:
             pulumi.set(__self__, "max_conn_lifetime_sec", max_conn_lifetime_sec)
         if max_open_conns is not None:
@@ -49,24 +49,8 @@ class ProviderArgs:
             tls = (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
         if tls is not None:
             pulumi.set(__self__, "tls", tls)
-
-    @property
-    @pulumi.getter
-    def endpoint(self) -> pulumi.Input[builtins.str]:
-        return pulumi.get(self, "endpoint")
-
-    @endpoint.setter
-    def endpoint(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "endpoint", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> pulumi.Input[builtins.str]:
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "username", value)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="authenticationPlugin")
@@ -76,6 +60,15 @@ class ProviderArgs:
     @authentication_plugin.setter
     def authentication_plugin(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "authentication_plugin", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "endpoint", value)
 
     @property
     @pulumi.getter(name="maxConnLifetimeSec")
@@ -122,6 +115,15 @@ class ProviderArgs:
     def tls(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "tls", value)
 
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "username", value)
+
 
 @pulumi.type_token("pulumi:providers:mysql")
 class Provider(pulumi.ProviderResource):
@@ -151,7 +153,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the mysql package. By default, resources use package-wide configuration
@@ -192,8 +194,6 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["authentication_plugin"] = authentication_plugin
-            if endpoint is None and not opts.urn:
-                raise TypeError("Missing required property 'endpoint'")
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["max_conn_lifetime_sec"] = pulumi.Output.from_input(max_conn_lifetime_sec).apply(pulumi.runtime.to_json) if max_conn_lifetime_sec is not None else None
             __props__.__dict__["max_open_conns"] = pulumi.Output.from_input(max_open_conns).apply(pulumi.runtime.to_json) if max_open_conns is not None else None
@@ -204,8 +204,6 @@ class Provider(pulumi.ProviderResource):
             if tls is None:
                 tls = (_utilities.get_env('MYSQL_TLS_CONFIG') or 'false')
             __props__.__dict__["tls"] = tls
-            if username is None and not opts.urn:
-                raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
         super(Provider, __self__).__init__(
             'mysql',
@@ -220,7 +218,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def endpoint(self) -> pulumi.Output[builtins.str]:
+    def endpoint(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "endpoint")
 
     @property
@@ -240,7 +238,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def username(self) -> pulumi.Output[builtins.str]:
+    def username(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "username")
 
     @pulumi.output_type

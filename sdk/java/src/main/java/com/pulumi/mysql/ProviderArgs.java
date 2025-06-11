@@ -6,7 +6,6 @@ package com.pulumi.mysql;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -25,11 +24,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.authenticationPlugin);
     }
 
-    @Import(name="endpoint", required=true)
-    private Output<String> endpoint;
+    @Import(name="endpoint")
+    private @Nullable Output<String> endpoint;
 
-    public Output<String> endpoint() {
-        return this.endpoint;
+    public Optional<Output<String>> endpoint() {
+        return Optional.ofNullable(this.endpoint);
     }
 
     @Import(name="maxConnLifetimeSec", json=true)
@@ -67,11 +66,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tls);
     }
 
-    @Import(name="username", required=true)
-    private Output<String> username;
+    @Import(name="username")
+    private @Nullable Output<String> username;
 
-    public Output<String> username() {
-        return this.username;
+    public Optional<Output<String>> username() {
+        return Optional.ofNullable(this.username);
     }
 
     private ProviderArgs() {}
@@ -114,7 +113,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return authenticationPlugin(Output.of(authenticationPlugin));
         }
 
-        public Builder endpoint(Output<String> endpoint) {
+        public Builder endpoint(@Nullable Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
         }
@@ -168,7 +167,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return tls(Output.of(tls));
         }
 
-        public Builder username(Output<String> username) {
+        public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
@@ -178,14 +177,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            if ($.endpoint == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "endpoint");
-            }
             $.proxy = Codegen.stringProp("proxy").output().arg($.proxy).env("ALL_PROXY", "all_proxy").getNullable();
             $.tls = Codegen.stringProp("tls").output().arg($.tls).env("MYSQL_TLS_CONFIG").def("false").getNullable();
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "username");
-            }
             return $;
         }
     }

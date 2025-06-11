@@ -26,11 +26,11 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     public readonly authenticationPlugin!: pulumi.Output<string | undefined>;
-    public readonly endpoint!: pulumi.Output<string>;
+    public readonly endpoint!: pulumi.Output<string | undefined>;
     public readonly password!: pulumi.Output<string | undefined>;
     public readonly proxy!: pulumi.Output<string | undefined>;
     public readonly tls!: pulumi.Output<string | undefined>;
-    public readonly username!: pulumi.Output<string>;
+    public readonly username!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -39,16 +39,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'endpoint'");
-            }
-            if ((!args || args.username === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'username'");
-            }
             resourceInputs["authenticationPlugin"] = args ? args.authenticationPlugin : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
             resourceInputs["maxConnLifetimeSec"] = pulumi.output(args ? args.maxConnLifetimeSec : undefined).apply(JSON.stringify);
@@ -77,13 +71,13 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     authenticationPlugin?: pulumi.Input<string>;
-    endpoint: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string>;
     maxConnLifetimeSec?: pulumi.Input<number>;
     maxOpenConns?: pulumi.Input<number>;
     password?: pulumi.Input<string>;
     proxy?: pulumi.Input<string>;
     tls?: pulumi.Input<string>;
-    username: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 export namespace Provider {

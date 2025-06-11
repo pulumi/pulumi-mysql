@@ -22,7 +22,7 @@ namespace Pulumi.MySql
         public Output<string?> AuthenticationPlugin { get; private set; } = null!;
 
         [Output("endpoint")]
-        public Output<string> Endpoint { get; private set; } = null!;
+        public Output<string?> Endpoint { get; private set; } = null!;
 
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.MySql
         public Output<string?> Tls { get; private set; } = null!;
 
         [Output("username")]
-        public Output<string> Username { get; private set; } = null!;
+        public Output<string?> Username { get; private set; } = null!;
 
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Pulumi.MySql
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("mysql", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -73,8 +73,8 @@ namespace Pulumi.MySql
         [Input("authenticationPlugin")]
         public Input<string>? AuthenticationPlugin { get; set; }
 
-        [Input("endpoint", required: true)]
-        public Input<string> Endpoint { get; set; } = null!;
+        [Input("endpoint")]
+        public Input<string>? Endpoint { get; set; }
 
         [Input("maxConnLifetimeSec", json: true)]
         public Input<int>? MaxConnLifetimeSec { get; set; }
@@ -91,8 +91,8 @@ namespace Pulumi.MySql
         [Input("tls")]
         public Input<string>? Tls { get; set; }
 
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public ProviderArgs()
         {
