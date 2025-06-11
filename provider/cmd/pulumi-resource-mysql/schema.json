@@ -127,10 +127,6 @@
                 "type": "string"
             }
         },
-        "required": [
-            "endpoint",
-            "username"
-        ],
         "inputProperties": {
             "authenticationPlugin": {
                 "type": "string"
@@ -169,10 +165,6 @@
                 "type": "string"
             }
         },
-        "requiredInputs": [
-            "endpoint",
-            "username"
-        ],
         "methods": {
             "terraformConfig": "pulumi:providers:mysql/terraformConfig"
         }
