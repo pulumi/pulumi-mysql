@@ -6,7 +6,7 @@ toolchain go1.23.8
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.111.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.111.1-0.20250814162642-1f64e24d26d8
 	github.com/terraform-providers/terraform-provider-mysql v0.0.0
 )
 
