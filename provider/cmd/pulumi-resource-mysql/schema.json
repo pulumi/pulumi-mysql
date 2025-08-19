@@ -644,7 +644,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:mysql"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:mysql/terraformConfig",
