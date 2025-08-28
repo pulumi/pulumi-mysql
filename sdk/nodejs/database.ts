@@ -58,7 +58,7 @@ export class Database extends pulumi.CustomResource {
      * a table is created without specifying an explicit character set. Defaults
      * to "utf8".
      */
-    public readonly defaultCharacterSet!: pulumi.Output<string | undefined>;
+    declare public readonly defaultCharacterSet: pulumi.Output<string | undefined>;
     /**
      * The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
@@ -72,13 +72,13 @@ export class Database extends pulumi.CustomResource {
      * configuration and then set the ``defaultCharacterSet`` and
      * ``defaultCollation`` to match.
      */
-    public readonly defaultCollation!: pulumi.Output<string | undefined>;
+    declare public readonly defaultCollation: pulumi.Output<string | undefined>;
     /**
      * The name of the database. This must be unique within
      * a given MySQL server and may or may not be case-sensitive depending on
      * the operating system on which the MySQL server is running.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -93,14 +93,14 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["defaultCharacterSet"] = state ? state.defaultCharacterSet : undefined;
-            resourceInputs["defaultCollation"] = state ? state.defaultCollation : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["defaultCharacterSet"] = state?.defaultCharacterSet;
+            resourceInputs["defaultCollation"] = state?.defaultCollation;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            resourceInputs["defaultCharacterSet"] = args ? args.defaultCharacterSet : undefined;
-            resourceInputs["defaultCollation"] = args ? args.defaultCollation : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["defaultCharacterSet"] = args?.defaultCharacterSet;
+            resourceInputs["defaultCollation"] = args?.defaultCollation;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Database.__pulumiType, name, resourceInputs, opts);

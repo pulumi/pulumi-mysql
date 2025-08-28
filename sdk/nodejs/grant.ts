@@ -100,39 +100,39 @@ export class Grant extends pulumi.CustomResource {
     /**
      * The database to grant privileges on.
      */
-    public readonly database!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
     /**
      * Whether to also give the user privileges to grant the same privileges to other users.
      */
-    public readonly grant!: pulumi.Output<boolean | undefined>;
+    declare public readonly grant: pulumi.Output<boolean | undefined>;
     /**
      * The source host of the user. Defaults to "localhost". Conflicts with `role`.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
      */
-    public readonly privileges!: pulumi.Output<string[] | undefined>;
+    declare public readonly privileges: pulumi.Output<string[] | undefined>;
     /**
      * The role to grant `privileges` to. Conflicts with `user` and `host`.
      */
-    public readonly role!: pulumi.Output<string | undefined>;
+    declare public readonly role: pulumi.Output<string | undefined>;
     /**
      * A list of rols to grant to the user. Conflicts with `privileges`.
      */
-    public readonly roles!: pulumi.Output<string[] | undefined>;
+    declare public readonly roles: pulumi.Output<string[] | undefined>;
     /**
      * Which table to grant `privileges` on. Defaults to `*`, which is all tables.
      */
-    public readonly table!: pulumi.Output<string | undefined>;
+    declare public readonly table: pulumi.Output<string | undefined>;
     /**
      * An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
      */
-    public readonly tlsOption!: pulumi.Output<string | undefined>;
+    declare public readonly tlsOption: pulumi.Output<string | undefined>;
     /**
      * The name of the user. Conflicts with `role`.
      */
-    public readonly user!: pulumi.Output<string | undefined>;
+    declare public readonly user: pulumi.Output<string | undefined>;
 
     /**
      * Create a Grant resource with the given unique name, arguments, and options.
@@ -147,29 +147,29 @@ export class Grant extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GrantState | undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["grant"] = state ? state.grant : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["privileges"] = state ? state.privileges : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["table"] = state ? state.table : undefined;
-            resourceInputs["tlsOption"] = state ? state.tlsOption : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["grant"] = state?.grant;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["privileges"] = state?.privileges;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["table"] = state?.table;
+            resourceInputs["tlsOption"] = state?.tlsOption;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as GrantArgs | undefined;
-            if ((!args || args.database === undefined) && !opts.urn) {
+            if (args?.database === undefined && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["grant"] = args ? args.grant : undefined;
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["privileges"] = args ? args.privileges : undefined;
-            resourceInputs["role"] = args ? args.role : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["table"] = args ? args.table : undefined;
-            resourceInputs["tlsOption"] = args ? args.tlsOption : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["grant"] = args?.grant;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["privileges"] = args?.privileges;
+            resourceInputs["role"] = args?.role;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["table"] = args?.table;
+            resourceInputs["tlsOption"] = args?.tlsOption;
+            resourceInputs["user"] = args?.user;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Grant.__pulumiType, name, resourceInputs, opts);

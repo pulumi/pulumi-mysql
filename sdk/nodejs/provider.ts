@@ -25,12 +25,12 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
-    public readonly authenticationPlugin!: pulumi.Output<string | undefined>;
-    public readonly endpoint!: pulumi.Output<string | undefined>;
-    public readonly password!: pulumi.Output<string | undefined>;
-    public readonly proxy!: pulumi.Output<string | undefined>;
-    public readonly tls!: pulumi.Output<string | undefined>;
-    public readonly username!: pulumi.Output<string | undefined>;
+    declare public readonly authenticationPlugin: pulumi.Output<string | undefined>;
+    declare public readonly endpoint: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public readonly proxy: pulumi.Output<string | undefined>;
+    declare public readonly tls: pulumi.Output<string | undefined>;
+    declare public readonly username: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -43,14 +43,14 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["authenticationPlugin"] = args ? args.authenticationPlugin : undefined;
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["maxConnLifetimeSec"] = pulumi.output(args ? args.maxConnLifetimeSec : undefined).apply(JSON.stringify);
-            resourceInputs["maxOpenConns"] = pulumi.output(args ? args.maxOpenConns : undefined).apply(JSON.stringify);
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["proxy"] = (args ? args.proxy : undefined) ?? utilities.getEnv("ALL_PROXY", "all_proxy");
-            resourceInputs["tls"] = (args ? args.tls : undefined) ?? (utilities.getEnv("MYSQL_TLS_CONFIG") || "false");
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["authenticationPlugin"] = args?.authenticationPlugin;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["maxConnLifetimeSec"] = pulumi.output(args?.maxConnLifetimeSec).apply(JSON.stringify);
+            resourceInputs["maxOpenConns"] = pulumi.output(args?.maxOpenConns).apply(JSON.stringify);
+            resourceInputs["password"] = args?.password;
+            resourceInputs["proxy"] = (args?.proxy) ?? utilities.getEnv("ALL_PROXY", "all_proxy");
+            resourceInputs["tls"] = (args?.tls) ?? (utilities.getEnv("MYSQL_TLS_CONFIG") || "false");
+            resourceInputs["username"] = args?.username;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

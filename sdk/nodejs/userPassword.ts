@@ -59,23 +59,23 @@ export class UserPassword extends pulumi.CustomResource {
     /**
      * The encrypted password, base64 encoded.
      */
-    public /*out*/ readonly encryptedPassword!: pulumi.Output<string>;
+    declare public /*out*/ readonly encryptedPassword: pulumi.Output<string>;
     /**
      * The source host of the user. Defaults to `localhost`.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    declare public readonly host: pulumi.Output<string | undefined>;
     /**
      * The fingerprint of the PGP key used to encrypt the password
      */
-    public /*out*/ readonly keyFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly keyFingerprint: pulumi.Output<string>;
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
      */
-    public readonly pgpKey!: pulumi.Output<string>;
+    declare public readonly pgpKey: pulumi.Output<string>;
     /**
      * The IAM user to associate with this access key.
      */
-    public readonly user!: pulumi.Output<string>;
+    declare public readonly user: pulumi.Output<string>;
 
     /**
      * Create a UserPassword resource with the given unique name, arguments, and options.
@@ -90,22 +90,22 @@ export class UserPassword extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserPasswordState | undefined;
-            resourceInputs["encryptedPassword"] = state ? state.encryptedPassword : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
-            resourceInputs["pgpKey"] = state ? state.pgpKey : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["encryptedPassword"] = state?.encryptedPassword;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["keyFingerprint"] = state?.keyFingerprint;
+            resourceInputs["pgpKey"] = state?.pgpKey;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as UserPasswordArgs | undefined;
-            if ((!args || args.pgpKey === undefined) && !opts.urn) {
+            if (args?.pgpKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pgpKey'");
             }
-            if ((!args || args.user === undefined) && !opts.urn) {
+            if (args?.user === undefined && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            resourceInputs["host"] = args ? args.host : undefined;
-            resourceInputs["pgpKey"] = args ? args.pgpKey : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["host"] = args?.host;
+            resourceInputs["pgpKey"] = args?.pgpKey;
+            resourceInputs["user"] = args?.user;
             resourceInputs["encryptedPassword"] = undefined /*out*/;
             resourceInputs["keyFingerprint"] = undefined /*out*/;
         }
