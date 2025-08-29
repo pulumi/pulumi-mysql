@@ -4,6 +4,7 @@ title: Mysql Provider
 meta_desc: Provides an overview on how to configure the Pulumi Mysql provider.
 layout: package
 ---
+
 ## Installation
 
 The Mysql provider is available as a package in all Pulumi languages:
@@ -13,6 +14,7 @@ The Mysql provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql`](https://github.com/pulumi/pulumi-mysql)
 * .NET: [`Pulumi.Mysql`](https://www.nuget.org/packages/Pulumi.Mysql)
 * Java: [`com.pulumi/mysql`](https://central.sonatype.com/artifact/com.pulumi/mysql)
+
 ## Overview
 
 [MySQL](http://www.mysql.com) is a relational database server. The MySQL
@@ -339,7 +341,7 @@ config:
 package main
 
 import (
-	"github.com/pulumi/pulumi-aws/sdk/v6/go/aws/rds"
+	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/rds"
 	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -351,7 +353,7 @@ func main() {
 			Engine:        pulumi.String("mysql"),
 			EngineVersion: pulumi.String("5.6.17"),
 			InstanceClass: pulumi.String("db.t1.micro"),
-			Name:          pulumi.String("initial_db"),
+			Name:          "initial_db",
 			Username:      pulumi.String("rootuser"),
 			Password:      pulumi.String("rootpasswd"),
 		})
