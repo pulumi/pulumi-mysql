@@ -13,7 +13,7 @@ namespace Pulumi.MySql
     /// The `mysql.UserPassword` resource sets and manages a password for a given
     /// user on a MySQL server.
     /// 
-    /// &gt; **NOTE on MySQL Passwords:** This resource conflicts with the `password`
+    /// &gt; **NOTE on MySQL Passwords:** This resource conflicts with the `Password`
     ///    argument for `mysql.User`. This resource uses PGP encryption to avoid
     ///    storing unencrypted passwords in the provider state.
     /// 
@@ -54,7 +54,7 @@ namespace Pulumi.MySql
         public Output<string> EncryptedPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The source host of the user. Defaults to `localhost`.
+        /// The source host of the user. Defaults to `Localhost`.
         /// </summary>
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.MySql
     public sealed class UserPasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The source host of the user. Defaults to `localhost`.
+        /// The source host of the user. Defaults to `Localhost`.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.MySql
         public Input<string>? EncryptedPassword { get; set; }
 
         /// <summary>
-        /// The source host of the user. Defaults to `localhost`.
+        /// The source host of the user. Defaults to `Localhost`.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
