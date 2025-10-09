@@ -128,31 +128,31 @@ namespace Pulumi.MySql
         public Output<bool?> GrantName { get; private set; } = null!;
 
         /// <summary>
-        /// The source host of the user. Defaults to "localhost". Conflicts with `role`.
+        /// The source host of the user. Defaults to "localhost". Conflicts with `Role`.
         /// </summary>
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
 
         /// <summary>
-        /// A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+        /// A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `Roles`.
         /// </summary>
         [Output("privileges")]
         public Output<ImmutableArray<string>> Privileges { get; private set; } = null!;
 
         /// <summary>
-        /// The role to grant `privileges` to. Conflicts with `user` and `host`.
+        /// The role to grant `Privileges` to. Conflicts with `User` and `Host`.
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// A list of rols to grant to the user. Conflicts with `privileges`.
+        /// A list of rols to grant to the user. Conflicts with `Privileges`.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
-        /// Which table to grant `privileges` on. Defaults to `*`, which is all tables.
+        /// Which table to grant `Privileges` on. Defaults to `*`, which is all tables.
         /// </summary>
         [Output("table")]
         public Output<string?> Table { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.MySql
         public Output<string?> TlsOption { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the user. Conflicts with `role`.
+        /// The name of the user. Conflicts with `Role`.
         /// </summary>
         [Output("user")]
         public Output<string?> User { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.MySql
         public Input<bool>? GrantName { get; set; }
 
         /// <summary>
-        /// The source host of the user. Defaults to "localhost". Conflicts with `role`.
+        /// The source host of the user. Defaults to "localhost". Conflicts with `Role`.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.MySql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+        /// A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `Roles`.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -246,7 +246,7 @@ namespace Pulumi.MySql
         }
 
         /// <summary>
-        /// The role to grant `privileges` to. Conflicts with `user` and `host`.
+        /// The role to grant `Privileges` to. Conflicts with `User` and `Host`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.MySql
         private InputList<string>? _roles;
 
         /// <summary>
-        /// A list of rols to grant to the user. Conflicts with `privileges`.
+        /// A list of rols to grant to the user. Conflicts with `Privileges`.
         /// </summary>
         public InputList<string> Roles
         {
@@ -264,7 +264,7 @@ namespace Pulumi.MySql
         }
 
         /// <summary>
-        /// Which table to grant `privileges` on. Defaults to `*`, which is all tables.
+        /// Which table to grant `Privileges` on. Defaults to `*`, which is all tables.
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.MySql
         public Input<string>? TlsOption { get; set; }
 
         /// <summary>
-        /// The name of the user. Conflicts with `role`.
+        /// The name of the user. Conflicts with `Role`.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
@@ -302,7 +302,7 @@ namespace Pulumi.MySql
         public Input<bool>? GrantName { get; set; }
 
         /// <summary>
-        /// The source host of the user. Defaults to "localhost". Conflicts with `role`.
+        /// The source host of the user. Defaults to "localhost". Conflicts with `Role`.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.MySql
         private InputList<string>? _privileges;
 
         /// <summary>
-        /// A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
+        /// A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `Roles`.
         /// </summary>
         public InputList<string> Privileges
         {
@@ -320,7 +320,7 @@ namespace Pulumi.MySql
         }
 
         /// <summary>
-        /// The role to grant `privileges` to. Conflicts with `user` and `host`.
+        /// The role to grant `Privileges` to. Conflicts with `User` and `Host`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.MySql
         private InputList<string>? _roles;
 
         /// <summary>
-        /// A list of rols to grant to the user. Conflicts with `privileges`.
+        /// A list of rols to grant to the user. Conflicts with `Privileges`.
         /// </summary>
         public InputList<string> Roles
         {
@@ -338,7 +338,7 @@ namespace Pulumi.MySql
         }
 
         /// <summary>
-        /// Which table to grant `privileges` on. Defaults to `*`, which is all tables.
+        /// Which table to grant `Privileges` on. Defaults to `*`, which is all tables.
         /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.MySql
         public Input<string>? TlsOption { get; set; }
 
         /// <summary>
-        /// The name of the user. Conflicts with `role`.
+        /// The name of the user. Conflicts with `Role`.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
