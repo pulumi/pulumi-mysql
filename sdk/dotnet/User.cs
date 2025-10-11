@@ -59,7 +59,7 @@ namespace Pulumi.MySql
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `Password` and `PlaintextPassword`.
         /// </summary>
         [Output("authPlugin")]
         public Output<string?> AuthPlugin { get; private set; } = null!;
@@ -71,13 +71,13 @@ namespace Pulumi.MySql
         public Output<string?> Host { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+        /// Deprecated alias of `PlaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `PlaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `AuthPlugin`.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `AuthPlugin`.
         /// </summary>
         [Output("plaintextPassword")]
         public Output<string?> PlaintextPassword { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.MySql
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `Password` and `PlaintextPassword`.
         /// </summary>
         [Input("authPlugin")]
         public Input<string>? AuthPlugin { get; set; }
@@ -163,9 +163,9 @@ namespace Pulumi.MySql
         private Input<string>? _password;
 
         /// <summary>
-        /// Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+        /// Deprecated alias of `PlaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `PlaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `AuthPlugin`.
         /// </summary>
-        [Obsolete(@"Please use plaintext_password instead")]
+        [Obsolete(@"Please use PlaintextPassword instead")]
         public Input<string>? Password
         {
             get => _password;
@@ -180,7 +180,7 @@ namespace Pulumi.MySql
         private Input<string>? _plaintextPassword;
 
         /// <summary>
-        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `AuthPlugin`.
         /// </summary>
         public Input<string>? PlaintextPassword
         {
@@ -215,7 +215,7 @@ namespace Pulumi.MySql
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+        /// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `Password` and `PlaintextPassword`.
         /// </summary>
         [Input("authPlugin")]
         public Input<string>? AuthPlugin { get; set; }
@@ -230,9 +230,9 @@ namespace Pulumi.MySql
         private Input<string>? _password;
 
         /// <summary>
-        /// Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+        /// Deprecated alias of `PlaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `PlaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `AuthPlugin`.
         /// </summary>
-        [Obsolete(@"Please use plaintext_password instead")]
+        [Obsolete(@"Please use PlaintextPassword instead")]
         public Input<string>? Password
         {
             get => _password;
@@ -247,7 +247,7 @@ namespace Pulumi.MySql
         private Input<string>? _plaintextPassword;
 
         /// <summary>
-        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+        /// The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `AuthPlugin`.
         /// </summary>
         public Input<string>? PlaintextPassword
         {

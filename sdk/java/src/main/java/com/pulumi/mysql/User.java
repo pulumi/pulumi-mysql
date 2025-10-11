@@ -95,14 +95,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="mysql:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
-     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+     * Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
      * 
      */
     @Export(name="authPlugin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authPlugin;
 
     /**
-     * @return Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
+     * @return Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
      * 
      */
     public Output<Optional<String>> authPlugin() {
@@ -123,32 +123,32 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.host);
     }
     /**
-     * Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+     * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      * 
      * @deprecated
-     * Please use plaintext_password instead
+     * Please use plaintextPassword instead
      * 
      */
-    @Deprecated /* Please use plaintext_password instead */
+    @Deprecated /* Please use plaintextPassword instead */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
+     * @return Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+     * The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
      * 
      */
     @Export(name="plaintextPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plaintextPassword;
 
     /**
-     * @return The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
+     * @return The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `authPlugin`.
      * 
      */
     public Output<Optional<String>> plaintextPassword() {
