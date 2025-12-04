@@ -41,6 +41,7 @@ config:
         value: app-user
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as mysql from "@pulumi/mysql";
@@ -48,6 +49,7 @@ import * as mysql from "@pulumi/mysql";
 // Create a Database
 const app = new mysql.Database("app", {name: "my_awesome_app"});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -63,6 +65,7 @@ config:
         value: app-user
 
 ```
+
 ```python
 import pulumi
 import pulumi_mysql as mysql
@@ -70,6 +73,7 @@ import pulumi_mysql as mysql
 # Create a Database
 app = mysql.Database("app", name="my_awesome_app")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -85,6 +89,7 @@ config:
         value: app-user
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -102,6 +107,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -117,6 +123,7 @@ config:
         value: app-user
 
 ```
+
 ```go
 package main
 
@@ -138,6 +145,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -153,6 +161,7 @@ config:
         value: app-user
 
 ```
+
 ```yaml
 resources:
   # Create a Database
@@ -161,6 +170,7 @@ resources:
     properties:
       name: my_awesome_app
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -176,6 +186,7 @@ config:
         value: app-user
 
 ```
+
 ```java
 package generated_program;
 
@@ -205,6 +216,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 
@@ -227,6 +239,7 @@ config:
         value: 'TODO: "${aws_db_instance.default.username}"'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
@@ -245,6 +258,7 @@ const _default = new aws.rds.Instance("default", {
 // by the aws_db_instance resource above.
 const app = new mysql.Database("app", {name: "another_db"});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -260,6 +274,7 @@ config:
         value: 'TODO: "${aws_db_instance.default.username}"'
 
 ```
+
 ```python
 import pulumi
 import pulumi_aws as aws
@@ -277,6 +292,7 @@ default = aws.rds.Instance("default",
 # by the aws_db_instance resource above.
 app = mysql.Database("app", name="another_db")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -292,6 +308,7 @@ config:
         value: 'TODO: "${aws_db_instance.default.username}"'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -322,6 +339,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -337,6 +355,7 @@ config:
         value: 'TODO: "${aws_db_instance.default.username}"'
 
 ```
+
 ```go
 package main
 
@@ -372,6 +391,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -387,6 +407,7 @@ config:
         value: 'TODO: "${aws_db_instance.default.username}"'
 
 ```
+
 ```yaml
 resources:
   # Create a database server
@@ -406,6 +427,7 @@ resources:
     properties:
       name: another_db
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -421,6 +443,7 @@ config:
         value: 'TODO: "${aws_db_instance.default.username}"'
 
 ```
+
 ```java
 package generated_program;
 
@@ -463,6 +486,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## SOCKS5 Proxy Support
