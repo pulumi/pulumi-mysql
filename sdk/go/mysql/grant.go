@@ -15,9 +15,7 @@ import (
 // The “Grant“ resource creates and manages privileges given to
 // a user on a MySQL server.
 //
-// ## Examples
-//
-// ### Granting Privileges to a User
+// ## Granting Privileges to a User
 //
 // ```go
 // package main
@@ -57,7 +55,7 @@ import (
 //
 // ```
 //
-// ### Granting Privileges to a Role
+// ## Granting Privileges to a Role
 //
 // ```go
 // package main
@@ -94,7 +92,7 @@ import (
 //
 // ```
 //
-// ### Adding a Role to a User
+// ## Adding a Role to a User
 //
 // ```go
 // package main

@@ -14,58 +14,6 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * The `mysql.UserPassword` resource sets and manages a password for a given
- * user on a MySQL server.
- * 
- * &gt; **NOTE on MySQL Passwords:** This resource conflicts with the `password`
- *    argument for `mysql.User`. This resource uses PGP encryption to avoid
- *    storing unencrypted passwords in the provider state.
- * 
- * &gt; **NOTE on How Passwords are Created:** This resource **automatically**
- *    generates a **random** password. The password will be a random UUID.
- * 
- * ## Example Usage
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.mysql.User;
- * import com.pulumi.mysql.UserArgs;
- * import com.pulumi.mysql.UserPassword;
- * import com.pulumi.mysql.UserPasswordArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *    public static void main(String[] args) {
- *        Pulumi.run(App::stack);
- *    }
- * 
- *    public static void stack(Context ctx) {
- *        var jdoe = new User("jdoe", UserArgs.builder()
- *            .user("jdoe")
- *            .build());
- * 
- *        var jdoeUserPassword = new UserPassword("jdoeUserPassword", UserPasswordArgs.builder()
- *            .user(jdoe.user())
- *            .pgpKey("keybase:joestump")
- *            .build());
- * 
- *    }
- * }
- * }
- * </pre>
- * 
- */
 @ResourceType(type="mysql:index/userPassword:UserPassword")
 public class UserPassword extends com.pulumi.resources.CustomResource {
     /**

@@ -18,6 +18,12 @@ import javax.annotation.Nullable;
  * The ``mysql.Database`` resource creates and manages a database on a MySQL
  * server.
  * 
+ * &gt; **Caution:** The ``mysql.Database`` resource can completely delete your
+ * database just as easily as it can create it. To avoid costly accidents,
+ * consider setting
+ * [``preventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
+ * on your database resources as an extra safety measure.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -80,37 +86,9 @@ public class Database extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> defaultCharacterSet() {
         return Codegen.optional(this.defaultCharacterSet);
     }
-    /**
-     * The default collation to use when a table
-     * is created without specifying an explicit collation. Defaults to
-     * ``utf8GeneralCi``. Each character set has its own set of collations, so
-     * changing the character set requires also changing the collation.
-     * 
-     * Note that the defaults for character set and collation above do not respect
-     * any defaults set on the MySQL server, so that the configuration can be set
-     * appropriately even though this provider cannot see the server-level defaults. If
-     * you wish to use the server&#39;s defaults you must consult the server&#39;s
-     * configuration and then set the ``defaultCharacterSet`` and
-     * ``defaultCollation`` to match.
-     * 
-     */
     @Export(name="defaultCollation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultCollation;
 
-    /**
-     * @return The default collation to use when a table
-     * is created without specifying an explicit collation. Defaults to
-     * ``utf8GeneralCi``. Each character set has its own set of collations, so
-     * changing the character set requires also changing the collation.
-     * 
-     * Note that the defaults for character set and collation above do not respect
-     * any defaults set on the MySQL server, so that the configuration can be set
-     * appropriately even though this provider cannot see the server-level defaults. If
-     * you wish to use the server&#39;s defaults you must consult the server&#39;s
-     * configuration and then set the ``defaultCharacterSet`` and
-     * ``defaultCollation`` to match.
-     * 
-     */
     public Output<Optional<String>> defaultCollation() {
         return Codegen.optional(this.defaultCollation);
     }

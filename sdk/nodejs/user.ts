@@ -8,9 +8,12 @@ import * as utilities from "./utilities";
  * The ``mysql.User`` resource creates and manages a user on a MySQL
  * server.
  *
- * ## Examples
+ * > **Note:** The password for the user is provided in plain text, and is
+ * obscured by an unsalted hash in the state
+ * [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ * Care is required when using this resource, to avoid disclosing the password.
  *
- * ### Basic Usage
+ * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +26,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Example Usage with an Authentication Plugin
+ * ### With An Authentication Plugin
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

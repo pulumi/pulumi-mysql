@@ -13,9 +13,7 @@ namespace Pulumi.MySql
     /// The ``mysql.Grant`` resource creates and manages privileges given to
     /// a user on a MySQL server.
     /// 
-    /// ## Examples
-    /// 
-    /// ### Granting Privileges to a User
+    /// ## Granting Privileges to a User
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -47,7 +45,7 @@ namespace Pulumi.MySql
     /// });
     /// ```
     /// 
-    /// ### Granting Privileges to a Role
+    /// ## Granting Privileges to a Role
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -76,7 +74,7 @@ namespace Pulumi.MySql
     /// });
     /// ```
     /// 
-    /// ### Adding a Role to a User
+    /// ## Adding a Role to a User
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

@@ -8,9 +8,7 @@ import * as utilities from "./utilities";
  * The ``mysql.Grant`` resource creates and manages privileges given to
  * a user on a MySQL server.
  *
- * ## Examples
- *
- * ### Granting Privileges to a User
+ * ## Granting Privileges to a User
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -32,7 +30,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Granting Privileges to a Role
+ * ## Granting Privileges to a Role
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -49,7 +47,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Adding a Role to a User
+ * ## Adding a Role to a User
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

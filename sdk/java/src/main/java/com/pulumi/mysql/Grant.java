@@ -20,9 +20,7 @@ import javax.annotation.Nullable;
  * The ``mysql.Grant`` resource creates and manages privileges given to
  * a user on a MySQL server.
  * 
- * ## Examples
- * 
- * ### Granting Privileges to a User
+ * ## Granting Privileges to a User
  * 
  * <pre>
  * {@code
@@ -68,7 +66,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Granting Privileges to a Role
+ * ## Granting Privileges to a Role
  * 
  * <pre>
  * {@code
@@ -111,7 +109,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Adding a Role to a User
+ * ## Adding a Role to a User
  * 
  * <pre>
  * {@code
