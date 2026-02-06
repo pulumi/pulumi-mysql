@@ -13,6 +13,12 @@ namespace Pulumi.MySql
     /// The ``mysql.Database`` resource creates and manages a database on a MySQL
     /// server.
     /// 
+    /// &gt; **Caution:** The ``mysql.Database`` resource can completely delete your
+    /// database just as easily as it can create it. To avoid costly accidents,
+    /// consider setting
+    /// [``PreventDestroy``](https://www.terraform.io/docs/configuration/resources.html#prevent_destroy)
+    /// on your database resources as an extra safety measure.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -50,19 +56,6 @@ namespace Pulumi.MySql
         [Output("defaultCharacterSet")]
         public Output<string?> DefaultCharacterSet { get; private set; } = null!;
 
-        /// <summary>
-        /// The default collation to use when a table
-        /// is created without specifying an explicit collation. Defaults to
-        /// ``Utf8GeneralCi``. Each character set has its own set of collations, so
-        /// changing the character set requires also changing the collation.
-        /// 
-        /// Note that the defaults for character set and collation above do not respect
-        /// any defaults set on the MySQL server, so that the configuration can be set
-        /// appropriately even though this provider cannot see the server-level defaults. If
-        /// you wish to use the server's defaults you must consult the server's
-        /// configuration and then set the ``DefaultCharacterSet`` and
-        /// ``DefaultCollation`` to match.
-        /// </summary>
         [Output("defaultCollation")]
         public Output<string?> DefaultCollation { get; private set; } = null!;
 
@@ -128,19 +121,6 @@ namespace Pulumi.MySql
         [Input("defaultCharacterSet")]
         public Input<string>? DefaultCharacterSet { get; set; }
 
-        /// <summary>
-        /// The default collation to use when a table
-        /// is created without specifying an explicit collation. Defaults to
-        /// ``Utf8GeneralCi``. Each character set has its own set of collations, so
-        /// changing the character set requires also changing the collation.
-        /// 
-        /// Note that the defaults for character set and collation above do not respect
-        /// any defaults set on the MySQL server, so that the configuration can be set
-        /// appropriately even though this provider cannot see the server-level defaults. If
-        /// you wish to use the server's defaults you must consult the server's
-        /// configuration and then set the ``DefaultCharacterSet`` and
-        /// ``DefaultCollation`` to match.
-        /// </summary>
         [Input("defaultCollation")]
         public Input<string>? DefaultCollation { get; set; }
 
@@ -168,19 +148,6 @@ namespace Pulumi.MySql
         [Input("defaultCharacterSet")]
         public Input<string>? DefaultCharacterSet { get; set; }
 
-        /// <summary>
-        /// The default collation to use when a table
-        /// is created without specifying an explicit collation. Defaults to
-        /// ``Utf8GeneralCi``. Each character set has its own set of collations, so
-        /// changing the character set requires also changing the collation.
-        /// 
-        /// Note that the defaults for character set and collation above do not respect
-        /// any defaults set on the MySQL server, so that the configuration can be set
-        /// appropriately even though this provider cannot see the server-level defaults. If
-        /// you wish to use the server's defaults you must consult the server's
-        /// configuration and then set the ``DefaultCharacterSet`` and
-        /// ``DefaultCollation`` to match.
-        /// </summary>
         [Input("defaultCollation")]
         public Input<string>? DefaultCollation { get; set; }
 
