@@ -12,50 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `UserPassword` resource sets and manages a password for a given
-// user on a MySQL server.
-//
-// > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
-//
-//	argument for `User`. This resource uses PGP encryption to avoid
-//	storing unencrypted passwords in the provider state.
-//
-// > **NOTE on How Passwords are Created:** This resource **automatically**
-//
-//	generates a **random** password. The password will be a random UUID.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-mysql/sdk/v3/go/mysql"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//	   pulumi.Run(func(ctx *pulumi.Context) error {
-//	       jdoe, err := mysql.NewUser(ctx, "jdoe", &mysql.UserArgs{
-//	           User: pulumi.String("jdoe"),
-//	       })
-//	       if err != nil {
-//	           return err
-//	       }
-//	       _, err = mysql.NewUserPassword(ctx, "jdoe", &mysql.UserPasswordArgs{
-//	           User:   jdoe.User,
-//	           PgpKey: pulumi.String("keybase:joestump"),
-//	       })
-//	       if err != nil {
-//	           return err
-//	       }
-//	       return nil
-//	   })
-//	}
-//
-// ```
 type UserPassword struct {
 	pulumi.CustomResourceState
 
