@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The `mysql.UserPassword` resource sets and manages a password for a given
+ * user on a MySQL server.
+ *
+ * > **NOTE on MySQL Passwords:** This resource conflicts with the `password`
+ *    argument for `mysql.User`. This resource uses PGP encryption to avoid
+ *    storing unencrypted passwords in Terraform state.
+ *
+ * > **NOTE on How Passwords are Created:** This resource **automatically**
+ *    generates a **random** password. The password will be a random UUID.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mysql from "@pulumi/mysql";
+ *
+ * const jdoe = new mysql.User("jdoe", {user: "jdoe"});
+ * const jdoeUserPassword = new mysql.UserPassword("jdoe", {
+ *    user: jdoe.user,
+ *    pgpKey: "keybase:joestump",
+ * });
+ * ```
+ *
+ * You can rotate passwords by running `terraform taint mysql_user_password.jdoe`.
+ * The next time Terraform applies a new password will be generated and the user's
+ * password will be updated accordingly.
+ */
 export class UserPassword extends pulumi.CustomResource {
     /**
      * Get an existing UserPassword resource's state with the given name, ID, and optional extra
