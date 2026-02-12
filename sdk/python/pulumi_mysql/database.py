@@ -27,6 +27,17 @@ class DatabaseArgs:
         :param pulumi.Input[_builtins.str] default_character_set: The default character set to use when
                a table is created without specifying an explicit character set. Defaults
                to "utf8".
+        :param pulumi.Input[_builtins.str] default_collation: The default collation to use when a table
+               is created without specifying an explicit collation. Defaults to
+               ``utf8_general_ci``. Each character set has its own set of collations, so
+               changing the character set requires also changing the collation.
+               
+               Note that the defaults for character set and collation above do not respect
+               any defaults set on the MySQL server, so that the configuration can be set
+               appropriately even though Terraform cannot see the server-level defaults. If
+               you wish to use the server's defaults you must consult the server's
+               configuration and then set the ``default_character_set`` and
+               ``default_collation`` to match.
         :param pulumi.Input[_builtins.str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
@@ -55,6 +66,19 @@ class DatabaseArgs:
     @_builtins.property
     @pulumi.getter(name="defaultCollation")
     def default_collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default collation to use when a table
+        is created without specifying an explicit collation. Defaults to
+        ``utf8_general_ci``. Each character set has its own set of collations, so
+        changing the character set requires also changing the collation.
+
+        Note that the defaults for character set and collation above do not respect
+        any defaults set on the MySQL server, so that the configuration can be set
+        appropriately even though Terraform cannot see the server-level defaults. If
+        you wish to use the server's defaults you must consult the server's
+        configuration and then set the ``default_character_set`` and
+        ``default_collation`` to match.
+        """
         return pulumi.get(self, "default_collation")
 
     @default_collation.setter
@@ -87,6 +111,17 @@ class _DatabaseState:
         :param pulumi.Input[_builtins.str] default_character_set: The default character set to use when
                a table is created without specifying an explicit character set. Defaults
                to "utf8".
+        :param pulumi.Input[_builtins.str] default_collation: The default collation to use when a table
+               is created without specifying an explicit collation. Defaults to
+               ``utf8_general_ci``. Each character set has its own set of collations, so
+               changing the character set requires also changing the collation.
+               
+               Note that the defaults for character set and collation above do not respect
+               any defaults set on the MySQL server, so that the configuration can be set
+               appropriately even though Terraform cannot see the server-level defaults. If
+               you wish to use the server's defaults you must consult the server's
+               configuration and then set the ``default_character_set`` and
+               ``default_collation`` to match.
         :param pulumi.Input[_builtins.str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
@@ -115,6 +150,19 @@ class _DatabaseState:
     @_builtins.property
     @pulumi.getter(name="defaultCollation")
     def default_collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The default collation to use when a table
+        is created without specifying an explicit collation. Defaults to
+        ``utf8_general_ci``. Each character set has its own set of collations, so
+        changing the character set requires also changing the collation.
+
+        Note that the defaults for character set and collation above do not respect
+        any defaults set on the MySQL server, so that the configuration can be set
+        appropriately even though Terraform cannot see the server-level defaults. If
+        you wish to use the server's defaults you must consult the server's
+        configuration and then set the ``default_character_set`` and
+        ``default_collation`` to match.
+        """
         return pulumi.get(self, "default_collation")
 
     @default_collation.setter
@@ -178,6 +226,17 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_character_set: The default character set to use when
                a table is created without specifying an explicit character set. Defaults
                to "utf8".
+        :param pulumi.Input[_builtins.str] default_collation: The default collation to use when a table
+               is created without specifying an explicit collation. Defaults to
+               ``utf8_general_ci``. Each character set has its own set of collations, so
+               changing the character set requires also changing the collation.
+               
+               Note that the defaults for character set and collation above do not respect
+               any defaults set on the MySQL server, so that the configuration can be set
+               appropriately even though Terraform cannot see the server-level defaults. If
+               you wish to use the server's defaults you must consult the server's
+               configuration and then set the ``default_character_set`` and
+               ``default_collation`` to match.
         :param pulumi.Input[_builtins.str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
@@ -268,6 +327,17 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_character_set: The default character set to use when
                a table is created without specifying an explicit character set. Defaults
                to "utf8".
+        :param pulumi.Input[_builtins.str] default_collation: The default collation to use when a table
+               is created without specifying an explicit collation. Defaults to
+               ``utf8_general_ci``. Each character set has its own set of collations, so
+               changing the character set requires also changing the collation.
+               
+               Note that the defaults for character set and collation above do not respect
+               any defaults set on the MySQL server, so that the configuration can be set
+               appropriately even though Terraform cannot see the server-level defaults. If
+               you wish to use the server's defaults you must consult the server's
+               configuration and then set the ``default_character_set`` and
+               ``default_collation`` to match.
         :param pulumi.Input[_builtins.str] name: The name of the database. This must be unique within
                a given MySQL server and may or may not be case-sensitive depending on
                the operating system on which the MySQL server is running.
@@ -294,6 +364,19 @@ class Database(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="defaultCollation")
     def default_collation(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The default collation to use when a table
+        is created without specifying an explicit collation. Defaults to
+        ``utf8_general_ci``. Each character set has its own set of collations, so
+        changing the character set requires also changing the collation.
+
+        Note that the defaults for character set and collation above do not respect
+        any defaults set on the MySQL server, so that the configuration can be set
+        appropriately even though Terraform cannot see the server-level defaults. If
+        you wish to use the server's defaults you must consult the server's
+        configuration and then set the ``default_character_set`` and
+        ``default_collation`` to match.
+        """
         return pulumi.get(self, "default_collation")
 
     @_builtins.property

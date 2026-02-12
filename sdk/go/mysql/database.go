@@ -60,7 +60,18 @@ type Database struct {
 	// a table is created without specifying an explicit character set. Defaults
 	// to "utf8".
 	DefaultCharacterSet pulumi.StringPtrOutput `pulumi:"defaultCharacterSet"`
-	DefaultCollation    pulumi.StringPtrOutput `pulumi:"defaultCollation"`
+	// The default collation to use when a table
+	// is created without specifying an explicit collation. Defaults to
+	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though Terraform cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
+	DefaultCollation pulumi.StringPtrOutput `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
 	// the operating system on which the MySQL server is running.
@@ -101,7 +112,18 @@ type databaseState struct {
 	// a table is created without specifying an explicit character set. Defaults
 	// to "utf8".
 	DefaultCharacterSet *string `pulumi:"defaultCharacterSet"`
-	DefaultCollation    *string `pulumi:"defaultCollation"`
+	// The default collation to use when a table
+	// is created without specifying an explicit collation. Defaults to
+	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though Terraform cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
+	DefaultCollation *string `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
 	// the operating system on which the MySQL server is running.
@@ -113,7 +135,18 @@ type DatabaseState struct {
 	// a table is created without specifying an explicit character set. Defaults
 	// to "utf8".
 	DefaultCharacterSet pulumi.StringPtrInput
-	DefaultCollation    pulumi.StringPtrInput
+	// The default collation to use when a table
+	// is created without specifying an explicit collation. Defaults to
+	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though Terraform cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
+	DefaultCollation pulumi.StringPtrInput
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
 	// the operating system on which the MySQL server is running.
@@ -129,7 +162,18 @@ type databaseArgs struct {
 	// a table is created without specifying an explicit character set. Defaults
 	// to "utf8".
 	DefaultCharacterSet *string `pulumi:"defaultCharacterSet"`
-	DefaultCollation    *string `pulumi:"defaultCollation"`
+	// The default collation to use when a table
+	// is created without specifying an explicit collation. Defaults to
+	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though Terraform cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
+	DefaultCollation *string `pulumi:"defaultCollation"`
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
 	// the operating system on which the MySQL server is running.
@@ -142,7 +186,18 @@ type DatabaseArgs struct {
 	// a table is created without specifying an explicit character set. Defaults
 	// to "utf8".
 	DefaultCharacterSet pulumi.StringPtrInput
-	DefaultCollation    pulumi.StringPtrInput
+	// The default collation to use when a table
+	// is created without specifying an explicit collation. Defaults to
+	// ``utf8GeneralCi``. Each character set has its own set of collations, so
+	// changing the character set requires also changing the collation.
+	//
+	// Note that the defaults for character set and collation above do not respect
+	// any defaults set on the MySQL server, so that the configuration can be set
+	// appropriately even though Terraform cannot see the server-level defaults. If
+	// you wish to use the server's defaults you must consult the server's
+	// configuration and then set the ``defaultCharacterSet`` and
+	// ``defaultCollation`` to match.
+	DefaultCollation pulumi.StringPtrInput
 	// The name of the database. This must be unique within
 	// a given MySQL server and may or may not be case-sensitive depending on
 	// the operating system on which the MySQL server is running.
@@ -243,6 +298,17 @@ func (o DatabaseOutput) DefaultCharacterSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultCharacterSet }).(pulumi.StringPtrOutput)
 }
 
+// The default collation to use when a table
+// is created without specifying an explicit collation. Defaults to
+// “utf8GeneralCi“. Each character set has its own set of collations, so
+// changing the character set requires also changing the collation.
+//
+// Note that the defaults for character set and collation above do not respect
+// any defaults set on the MySQL server, so that the configuration can be set
+// appropriately even though Terraform cannot see the server-level defaults. If
+// you wish to use the server's defaults you must consult the server's
+// configuration and then set the “defaultCharacterSet“ and
+// “defaultCollation“ to match.
 func (o DatabaseOutput) DefaultCollation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.DefaultCollation }).(pulumi.StringPtrOutput)
 }

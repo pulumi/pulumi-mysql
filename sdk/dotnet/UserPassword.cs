@@ -9,6 +9,45 @@ using Pulumi.Serialization;
 
 namespace Pulumi.MySql
 {
+    /// <summary>
+    /// The `mysql.UserPassword` resource sets and manages a password for a given
+    /// user on a MySQL server.
+    /// 
+    /// &gt; **NOTE on MySQL Passwords:** This resource conflicts with the `Password`
+    ///    argument for `mysql.User`. This resource uses PGP encryption to avoid
+    ///    storing unencrypted passwords in Terraform state.
+    /// 
+    /// &gt; **NOTE on How Passwords are Created:** This resource **automatically**
+    ///    generates a **random** password. The password will be a random UUID.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using MySql = Pulumi.MySql;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///    var jdoe = new MySql.User("jdoe", new()
+    ///    {
+    ///        UserName = "jdoe",
+    ///    });
+    /// 
+    ///    var jdoeUserPassword = new MySql.UserPassword("jdoe", new()
+    ///    {
+    ///        User = jdoe.UserName,
+    ///        PgpKey = "keybase:joestump",
+    ///    });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// You can rotate passwords by running `terraform taint mysql_user_password.jdoe`.
+    /// The next time Terraform applies a new password will be generated and the user's
+    /// password will be updated accordingly.
+    /// </summary>
     [MySqlResourceType("mysql:index/userPassword:UserPassword")]
     public partial class UserPassword : global::Pulumi.CustomResource
     {

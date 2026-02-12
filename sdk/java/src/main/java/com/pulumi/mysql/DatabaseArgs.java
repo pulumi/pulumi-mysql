@@ -34,9 +34,37 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.defaultCharacterSet);
     }
 
+    /**
+     * The default collation to use when a table
+     * is created without specifying an explicit collation. Defaults to
+     * ``utf8GeneralCi``. Each character set has its own set of collations, so
+     * changing the character set requires also changing the collation.
+     * 
+     * Note that the defaults for character set and collation above do not respect
+     * any defaults set on the MySQL server, so that the configuration can be set
+     * appropriately even though Terraform cannot see the server-level defaults. If
+     * you wish to use the server&#39;s defaults you must consult the server&#39;s
+     * configuration and then set the ``defaultCharacterSet`` and
+     * ``defaultCollation`` to match.
+     * 
+     */
     @Import(name="defaultCollation")
     private @Nullable Output<String> defaultCollation;
 
+    /**
+     * @return The default collation to use when a table
+     * is created without specifying an explicit collation. Defaults to
+     * ``utf8GeneralCi``. Each character set has its own set of collations, so
+     * changing the character set requires also changing the collation.
+     * 
+     * Note that the defaults for character set and collation above do not respect
+     * any defaults set on the MySQL server, so that the configuration can be set
+     * appropriately even though Terraform cannot see the server-level defaults. If
+     * you wish to use the server&#39;s defaults you must consult the server&#39;s
+     * configuration and then set the ``defaultCharacterSet`` and
+     * ``defaultCollation`` to match.
+     * 
+     */
     public Optional<Output<String>> defaultCollation() {
         return Optional.ofNullable(this.defaultCollation);
     }
@@ -111,11 +139,43 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
             return defaultCharacterSet(Output.of(defaultCharacterSet));
         }
 
+        /**
+         * @param defaultCollation The default collation to use when a table
+         * is created without specifying an explicit collation. Defaults to
+         * ``utf8GeneralCi``. Each character set has its own set of collations, so
+         * changing the character set requires also changing the collation.
+         * 
+         * Note that the defaults for character set and collation above do not respect
+         * any defaults set on the MySQL server, so that the configuration can be set
+         * appropriately even though Terraform cannot see the server-level defaults. If
+         * you wish to use the server&#39;s defaults you must consult the server&#39;s
+         * configuration and then set the ``defaultCharacterSet`` and
+         * ``defaultCollation`` to match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultCollation(@Nullable Output<String> defaultCollation) {
             $.defaultCollation = defaultCollation;
             return this;
         }
 
+        /**
+         * @param defaultCollation The default collation to use when a table
+         * is created without specifying an explicit collation. Defaults to
+         * ``utf8GeneralCi``. Each character set has its own set of collations, so
+         * changing the character set requires also changing the collation.
+         * 
+         * Note that the defaults for character set and collation above do not respect
+         * any defaults set on the MySQL server, so that the configuration can be set
+         * appropriately even though Terraform cannot see the server-level defaults. If
+         * you wish to use the server&#39;s defaults you must consult the server&#39;s
+         * configuration and then set the ``defaultCharacterSet`` and
+         * ``defaultCollation`` to match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultCollation(String defaultCollation) {
             return defaultCollation(Output.of(defaultCollation));
         }
