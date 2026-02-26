@@ -30,6 +30,7 @@ class GrantArgs:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Grant resource.
+
         :param pulumi.Input[_builtins.str] database: The database to grant privileges on.
         :param pulumi.Input[_builtins.bool] grant: Whether to also give the user privileges to grant the same privileges to other users.
         :param pulumi.Input[_builtins.str] host: The source host of the user. Defaults to "localhost". Conflicts with `role`.
@@ -181,6 +182,7 @@ class _GrantState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Grant resources.
+
         :param pulumi.Input[_builtins.str] database: The database to grant privileges on.
         :param pulumi.Input[_builtins.bool] grant: Whether to also give the user privileges to grant the same privileges to other users.
         :param pulumi.Input[_builtins.str] host: The source host of the user. Defaults to "localhost". Conflicts with `role`.
@@ -393,6 +395,7 @@ class Grant(pulumi.CustomResource):
             roles=[developer.name])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database: The database to grant privileges on.
@@ -468,6 +471,7 @@ class Grant(pulumi.CustomResource):
             database="app",
             roles=[developer.name])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param GrantArgs args: The arguments to use to populate this resource's properties.

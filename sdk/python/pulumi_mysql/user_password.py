@@ -24,6 +24,7 @@ class UserPasswordArgs:
                  host: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserPassword resource.
+
         :param pulumi.Input[_builtins.str] pgp_key: Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
         :param pulumi.Input[_builtins.str] user: The IAM user to associate with this access key.
         :param pulumi.Input[_builtins.str] host: The source host of the user. Defaults to `localhost`.
@@ -80,6 +81,7 @@ class _UserPasswordState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserPassword resources.
+
         :param pulumi.Input[_builtins.str] encrypted_password: The encrypted password, base64 encoded.
         :param pulumi.Input[_builtins.str] host: The source host of the user. Defaults to `localhost`.
         :param pulumi.Input[_builtins.str] key_fingerprint: The fingerprint of the PGP key used to encrypt the password
@@ -195,6 +197,7 @@ class UserPassword(pulumi.CustomResource):
         The next time Terraform applies a new password will be generated and the user's
         password will be updated accordingly.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] host: The source host of the user. Defaults to `localhost`.
@@ -233,6 +236,7 @@ class UserPassword(pulumi.CustomResource):
         You can rotate passwords by running `terraform taint mysql_user_password.jdoe`.
         The next time Terraform applies a new password will be generated and the user's
         password will be updated accordingly.
+
 
         :param str resource_name: The name of the resource.
         :param UserPasswordArgs args: The arguments to use to populate this resource's properties.
