@@ -24,6 +24,7 @@ class DatabaseArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
+
         :param pulumi.Input[_builtins.str] default_character_set: The default character set to use when
                a table is created without specifying an explicit character set. Defaults
                to "utf8".
@@ -108,6 +109,7 @@ class _DatabaseState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+
         :param pulumi.Input[_builtins.str] default_character_set: The default character set to use when
                a table is created without specifying an explicit character set. Defaults
                to "utf8".
@@ -221,6 +223,7 @@ class Database(pulumi.CustomResource):
         $ pulumi import mysql:index/database:Database example my-example-database
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] default_character_set: The default character set to use when
@@ -273,6 +276,7 @@ class Database(pulumi.CustomResource):
         ```sh
         $ pulumi import mysql:index/database:Database example my-example-database
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.

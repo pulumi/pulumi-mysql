@@ -27,6 +27,7 @@ class UserArgs:
                  tls_option: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] user: The name of the user.
         :param pulumi.Input[_builtins.str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         :param pulumi.Input[_builtins.str] host: The source host of the user. Defaults to "localhost".
@@ -138,6 +139,7 @@ class _UserState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[_builtins.str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         :param pulumi.Input[_builtins.str] host: The source host of the user. Defaults to "localhost".
         :param pulumi.Input[_builtins.str] password: Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
@@ -285,6 +287,7 @@ class User(pulumi.CustomResource):
             auth_plugin="mysql_no_login")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] auth_plugin: Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
@@ -334,6 +337,7 @@ class User(pulumi.CustomResource):
             host="example.com",
             auth_plugin="mysql_no_login")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
