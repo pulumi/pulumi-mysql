@@ -23,14 +23,14 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jdoe = new MySql.User("jdoe", new()
+    ///     var jdoe = new MySql.Index.User("jdoe", new()
     ///     {
     ///         UserName = "jdoe",
     ///         Host = "example.com",
     ///         PlaintextPassword = "password",
     ///     });
     /// 
-    ///     var jdoeGrant = new MySql.Grant("jdoe", new()
+    ///     var jdoeGrant = new MySql.Index.Grant("jdoe", new()
     ///     {
     ///         User = jdoe.UserName,
     ///         Host = jdoe.Host,
@@ -55,12 +55,12 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var developer = new MySql.Role("developer", new()
+    ///     var developer = new MySql.Index.Role("developer", new()
     ///     {
     ///         Name = "developer",
     ///     });
     /// 
-    ///     var developerGrant = new MySql.Grant("developer", new()
+    ///     var developerGrant = new MySql.Index.Grant("developer", new()
     ///     {
     ///         Role = developer.Name,
     ///         Database = "app",
@@ -84,19 +84,19 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jdoe = new MySql.User("jdoe", new()
+    ///     var jdoe = new MySql.Index.User("jdoe", new()
     ///     {
     ///         UserName = "jdoe",
     ///         Host = "example.com",
     ///         PlaintextPassword = "password",
     ///     });
     /// 
-    ///     var developer = new MySql.Role("developer", new()
+    ///     var developer = new MySql.Index.Role("developer", new()
     ///     {
     ///         Name = "developer",
     ///     });
     /// 
-    ///     var developerGrant = new MySql.Grant("developer", new()
+    ///     var developerGrant = new MySql.Index.Grant("developer", new()
     ///     {
     ///         User = jdoe.UserName,
     ///         Host = jdoe.Host,

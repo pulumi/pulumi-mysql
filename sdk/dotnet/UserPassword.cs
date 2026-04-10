@@ -30,12 +30,12 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///    var jdoe = new MySql.User("jdoe", new()
+    ///    var jdoe = new MySql.Index.User("jdoe", new()
     ///    {
     ///        UserName = "jdoe",
     ///    });
     /// 
-    ///    var jdoeUserPassword = new MySql.UserPassword("jdoe", new()
+    ///    var jdoeUserPassword = new MySql.Index.UserPassword("jdoe", new()
     ///    {
     ///        User = jdoe.UserName,
     ///        PgpKey = "keybase:joestump",
