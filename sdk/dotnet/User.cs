@@ -28,7 +28,7 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var jdoe = new MySql.Index.User("jdoe", new()
+    ///     var jdoe = new MySql.User("jdoe", new()
     ///     {
     ///         UserName = "jdoe",
     ///         Host = "example.com",
@@ -48,7 +48,7 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nologin = new MySql.Index.User("nologin", new()
+    ///     var nologin = new MySql.User("nologin", new()
     ///     {
     ///         UserName = "nologin",
     ///         Host = "example.com",
