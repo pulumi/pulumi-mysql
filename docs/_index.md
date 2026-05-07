@@ -99,7 +99,7 @@ using MySql = Pulumi.MySql;
 return await Deployment.RunAsync(() =>
 {
     // Create a Database
-    var app = new MySql.Index.Database("app", new()
+    var app = new MySql.Database("app", new()
     {
         Name = "my_awesome_app",
     });
@@ -195,8 +195,8 @@ import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.mysql.Database;
 import com.pulumi.mysql.DatabaseArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;
@@ -331,7 +331,7 @@ return await Deployment.RunAsync(() =>
 
     // Create a second database, in addition to the "initial_db" created
     // by the aws_db_instance resource above.
-    var app = new MySql.Index.Database("app", new()
+    var app = new MySql.Database("app", new()
     {
         Name = "another_db",
     });
@@ -454,8 +454,8 @@ import com.pulumi.aws.rds.Instance;
 import com.pulumi.aws.rds.InstanceArgs;
 import com.pulumi.mysql.Database;
 import com.pulumi.mysql.DatabaseArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

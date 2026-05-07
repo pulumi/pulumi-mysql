@@ -25,7 +25,7 @@ namespace Pulumi.MySql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var developer = new MySql.Index.Role("developer", new()
+    ///     var developer = new MySql.Role("developer", new()
     ///     {
     ///         Name = "developer",
     ///     });
