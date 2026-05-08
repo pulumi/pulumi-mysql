@@ -19,9 +19,9 @@ __all__ = ['DatabaseArgs', 'Database']
 @pulumi.input_type
 class DatabaseArgs:
     def __init__(__self__, *,
-                 default_character_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_character_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
 
@@ -52,7 +52,7 @@ class DatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultCharacterSet")
-    def default_character_set(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_character_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default character set to use when
         a table is created without specifying an explicit character set. Defaults
@@ -61,12 +61,12 @@ class DatabaseArgs:
         return pulumi.get(self, "default_character_set")
 
     @default_character_set.setter
-    def default_character_set(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_character_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_character_set", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCollation")
-    def default_collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_collation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default collation to use when a table
         is created without specifying an explicit collation. Defaults to
@@ -83,12 +83,12 @@ class DatabaseArgs:
         return pulumi.get(self, "default_collation")
 
     @default_collation.setter
-    def default_collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_collation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_collation", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database. This must be unique within
         a given MySQL server and may or may not be case-sensitive depending on
@@ -97,16 +97,16 @@ class DatabaseArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _DatabaseState:
     def __init__(__self__, *,
-                 default_character_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_character_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
 
@@ -137,7 +137,7 @@ class _DatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="defaultCharacterSet")
-    def default_character_set(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_character_set(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default character set to use when
         a table is created without specifying an explicit character set. Defaults
@@ -146,12 +146,12 @@ class _DatabaseState:
         return pulumi.get(self, "default_character_set")
 
     @default_character_set.setter
-    def default_character_set(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_character_set(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_character_set", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCollation")
-    def default_collation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_collation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default collation to use when a table
         is created without specifying an explicit collation. Defaults to
@@ -168,12 +168,12 @@ class _DatabaseState:
         return pulumi.get(self, "default_collation")
 
     @default_collation.setter
-    def default_collation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_collation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_collation", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database. This must be unique within
         a given MySQL server and may or may not be case-sensitive depending on
@@ -182,7 +182,7 @@ class _DatabaseState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -192,9 +192,9 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_character_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_character_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``Database`` resource creates and manages a database on a MySQL
@@ -293,9 +293,9 @@ class Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_character_set: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_collation: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_character_set: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_collation: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -318,9 +318,9 @@ class Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_character_set: Optional[pulumi.Input[_builtins.str]] = None,
-            default_collation: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
+            default_character_set: pulumi.Input[Optional[_builtins.str]] = None,
+            default_collation: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

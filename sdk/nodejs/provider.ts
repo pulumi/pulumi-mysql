@@ -70,14 +70,14 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    authenticationPlugin?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    maxConnLifetimeSec?: pulumi.Input<number>;
-    maxOpenConns?: pulumi.Input<number>;
-    password?: pulumi.Input<string>;
-    proxy?: pulumi.Input<string>;
-    tls?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    authenticationPlugin?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    maxConnLifetimeSec?: pulumi.Input<number | undefined>;
+    maxOpenConns?: pulumi.Input<number | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    proxy?: pulumi.Input<string | undefined>;
+    tls?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

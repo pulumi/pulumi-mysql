@@ -181,39 +181,39 @@ export interface GrantState {
     /**
      * The database to grant privileges on.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Whether to also give the user privileges to grant the same privileges to other users.
      */
-    grant?: pulumi.Input<boolean>;
+    grant?: pulumi.Input<boolean | undefined>;
     /**
      * The source host of the user. Defaults to "localhost". Conflicts with `role`.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
      */
-    privileges?: pulumi.Input<pulumi.Input<string>[]>;
+    privileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role to grant `privileges` to. Conflicts with `user` and `host`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * A list of rols to grant to the user. Conflicts with `privileges`.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Which table to grant `privileges` on. Defaults to `*`, which is all tables.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
      */
-    tlsOption?: pulumi.Input<string>;
+    tlsOption?: pulumi.Input<string | undefined>;
     /**
      * The name of the user. Conflicts with `role`.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -227,33 +227,33 @@ export interface GrantArgs {
     /**
      * Whether to also give the user privileges to grant the same privileges to other users.
      */
-    grant?: pulumi.Input<boolean>;
+    grant?: pulumi.Input<boolean | undefined>;
     /**
      * The source host of the user. Defaults to "localhost". Conflicts with `role`.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * A list of privileges to grant to the user. Refer to a list of privileges (such as [here](https://dev.mysql.com/doc/refman/5.5/en/grant.html)) for applicable privileges. Conflicts with `roles`.
      */
-    privileges?: pulumi.Input<pulumi.Input<string>[]>;
+    privileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role to grant `privileges` to. Conflicts with `user` and `host`.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * A list of rols to grant to the user. Conflicts with `privileges`.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Which table to grant `privileges` on. Defaults to `*`, which is all tables.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
      */
-    tlsOption?: pulumi.Input<string>;
+    tlsOption?: pulumi.Input<string | undefined>;
     /**
      * The name of the user. Conflicts with `role`.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }

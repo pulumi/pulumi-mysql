@@ -20,11 +20,11 @@ __all__ = ['UserArgs', 'User']
 class UserArgs:
     def __init__(__self__, *,
                  user: pulumi.Input[_builtins.str],
-                 auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_option: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -66,56 +66,56 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter(name="authPlugin")
-    def auth_plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         """
         return pulumi.get(self, "auth_plugin")
 
     @auth_plugin.setter
-    def auth_plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_plugin", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source host of the user. Defaults to "localhost".
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Please use plaintext_password instead""")
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="plaintextPassword")
-    def plaintext_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plaintext_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         """
         return pulumi.get(self, "plaintext_password")
 
     @plaintext_password.setter
-    def plaintext_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plaintext_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plaintext_password", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsOption")
-    def tls_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
 
@@ -124,19 +124,19 @@ class UserArgs:
         return pulumi.get(self, "tls_option")
 
     @tls_option.setter
-    def tls_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_option", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -167,56 +167,56 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter(name="authPlugin")
-    def auth_plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintext_password`.
         """
         return pulumi.get(self, "auth_plugin")
 
     @auth_plugin.setter
-    def auth_plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_plugin", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source host of the user. Defaults to "localhost".
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Please use plaintext_password instead""")
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deprecated alias of `plaintext_password`, whose value is *stored as plaintext in state*. Prefer to use `plaintext_password` instead, which stores the password as an unsalted hash. Conflicts with `auth_plugin`.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="plaintextPassword")
-    def plaintext_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plaintext_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
         """
         return pulumi.get(self, "plaintext_password")
 
     @plaintext_password.setter
-    def plaintext_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plaintext_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plaintext_password", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsOption")
-    def tls_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
 
@@ -225,19 +225,19 @@ class _UserState:
         return pulumi.get(self, "tls_option")
 
     @tls_option.setter
-    def tls_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_option", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
@@ -247,12 +247,12 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The ``User`` resource creates and manages a user on a MySQL
@@ -354,12 +354,12 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -389,12 +389,12 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            plaintext_password: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_option: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None) -> 'User':
+            auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            plaintext_password: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_option: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
