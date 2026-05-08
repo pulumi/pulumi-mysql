@@ -21,7 +21,7 @@ class UserPasswordArgs:
     def __init__(__self__, *,
                  pgp_key: pulumi.Input[_builtins.str],
                  user: pulumi.Input[_builtins.str],
-                 host: Optional[pulumi.Input[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserPassword resource.
 
@@ -60,25 +60,25 @@ class UserPasswordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source host of the user. Defaults to `localhost`.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
 
 @pulumi.input_type
 class _UserPasswordState:
     def __init__(__self__, *,
-                 encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserPassword resources.
 
@@ -101,62 +101,62 @@ class _UserPasswordState:
 
     @_builtins.property
     @pulumi.getter(name="encryptedPassword")
-    def encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encrypted password, base64 encoded.
         """
         return pulumi.get(self, "encrypted_password")
 
     @encrypted_password.setter
-    def encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source host of the user. Defaults to `localhost`.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="keyFingerprint")
-    def key_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fingerprint of the PGP key used to encrypt the password
         """
         return pulumi.get(self, "key_fingerprint")
 
     @key_fingerprint.setter
-    def key_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="pgpKey")
-    def pgp_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pgp_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
         """
         return pulumi.get(self, "pgp_key")
 
     @pgp_key.setter
-    def pgp_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pgp_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pgp_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IAM user to associate with this access key.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
@@ -166,9 +166,9 @@ class UserPassword(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `UserPassword` resource sets and manages a password for a given
@@ -253,9 +253,9 @@ class UserPassword(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,11 +284,11 @@ class UserPassword(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            key_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            pgp_key: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserPassword':
+            encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            key_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            pgp_key: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserPassword':
         """
         Get an existing UserPassword resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

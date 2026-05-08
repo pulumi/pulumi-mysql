@@ -122,7 +122,7 @@ export interface DatabaseState {
      * a table is created without specifying an explicit character set. Defaults
      * to "utf8".
      */
-    defaultCharacterSet?: pulumi.Input<string>;
+    defaultCharacterSet?: pulumi.Input<string | undefined>;
     /**
      * The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
@@ -136,13 +136,13 @@ export interface DatabaseState {
      * configuration and then set the ``defaultCharacterSet`` and
      * ``defaultCollation`` to match.
      */
-    defaultCollation?: pulumi.Input<string>;
+    defaultCollation?: pulumi.Input<string | undefined>;
     /**
      * The name of the database. This must be unique within
      * a given MySQL server and may or may not be case-sensitive depending on
      * the operating system on which the MySQL server is running.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,7 +154,7 @@ export interface DatabaseArgs {
      * a table is created without specifying an explicit character set. Defaults
      * to "utf8".
      */
-    defaultCharacterSet?: pulumi.Input<string>;
+    defaultCharacterSet?: pulumi.Input<string | undefined>;
     /**
      * The default collation to use when a table
      * is created without specifying an explicit collation. Defaults to
@@ -168,11 +168,11 @@ export interface DatabaseArgs {
      * configuration and then set the ``defaultCharacterSet`` and
      * ``defaultCollation`` to match.
      */
-    defaultCollation?: pulumi.Input<string>;
+    defaultCollation?: pulumi.Input<string | undefined>;
     /**
      * The name of the database. This must be unique within
      * a given MySQL server and may or may not be case-sensitive depending on
      * the operating system on which the MySQL server is running.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -19,14 +19,14 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 authentication_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_conn_lifetime_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_open_conns: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_conn_lifetime_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_open_conns: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
@@ -53,74 +53,74 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="authenticationPlugin")
-    def authentication_plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authentication_plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "authentication_plugin")
 
     @authentication_plugin.setter
-    def authentication_plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authentication_plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_plugin", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnLifetimeSec")
-    def max_conn_lifetime_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_conn_lifetime_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_conn_lifetime_sec")
 
     @max_conn_lifetime_sec.setter
-    def max_conn_lifetime_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_conn_lifetime_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_conn_lifetime_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="maxOpenConns")
-    def max_open_conns(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_open_conns(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_open_conns")
 
     @max_open_conns.setter
-    def max_open_conns(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_open_conns(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_open_conns", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "proxy")
 
     @proxy.setter
-    def proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -130,14 +130,14 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_conn_lifetime_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_open_conns: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 authentication_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_conn_lifetime_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_open_conns: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the mysql package. By default, resources use package-wide configuration
@@ -177,14 +177,14 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_conn_lifetime_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_open_conns: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 authentication_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_conn_lifetime_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_open_conns: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

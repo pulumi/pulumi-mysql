@@ -82,7 +82,7 @@ export interface RoleState {
     /**
      * The name of the role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -92,5 +92,5 @@ export interface RoleArgs {
     /**
      * The name of the role.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
