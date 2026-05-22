@@ -26,7 +26,7 @@ Use the navigation to the left to read about the available resources.
 
 The following is a minimal example:
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -218,13 +218,30 @@ public class App {
 ```
 
 {{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    mysql = {
+      source = "pulumi/mysql"
+    }
+  }
+}
+
+# Create a Database
+resource "mysql_database" "app" {
+  name = "my_awesome_app"
+}
+```
+
+{{% /choosable %}}
 {{< /chooser >}}
 
 This provider can be used in conjunction with other resources that create
 MySQL servers. For example, `awsDbInstance` is able to create MySQL
 servers in Amazon's RDS service.
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -484,6 +501,36 @@ public class App {
             .build());
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    aws = {
+      source = "pulumi/aws"
+    }
+    mysql = {
+      source = "pulumi/mysql"
+    }
+  }
+}
+
+# Create a database server
+resource "aws_rds_instance" "default" {
+  engine         = "mysql"
+  engine_version = "5.6.17"
+  instance_class = "db.t1.micro"
+  name           = "initial_db"
+  username       = "rootuser"
+  password       = "rootpasswd"
+}
+# Create a second database, in addition to the "initial_db" created
+# by the aws_db_instance resource above.
+resource "mysql_database" "app" {
+  name = "another_db"
 }
 ```
 
