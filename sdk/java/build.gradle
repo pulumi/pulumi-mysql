@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-mysql"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing mysql cloud resources."
+                description = $/A Pulumi package for creating and managing mysql cloud resources./$
 
                 url = "https://github.com/pulumi/pulumi-mysql"
 
