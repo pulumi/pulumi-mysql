@@ -220,7 +220,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     mysql = {
       source = "pulumi/mysql"
@@ -230,6 +230,9 @@ pulumi {
 
 # Create a Database
 resource "mysql_database" "app" {
+  lifecycle {
+    create_before_destroy = true
+  }
   name = "my_awesome_app"
 }
 ```
@@ -507,7 +510,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     aws = {
       source = "pulumi/aws"
@@ -520,6 +523,9 @@ pulumi {
 
 # Create a database server
 resource "aws_rds_instance" "default" {
+  lifecycle {
+    create_before_destroy = true
+  }
   engine         = "mysql"
   engine_version = "5.6.17"
   instance_class = "db.t1.micro"
@@ -530,6 +536,9 @@ resource "aws_rds_instance" "default" {
 # Create a second database, in addition to the "initial_db" created
 # by the aws_db_instance resource above.
 resource "mysql_database" "app" {
+  lifecycle {
+    create_before_destroy = true
+  }
   name = "another_db"
 }
 ```
