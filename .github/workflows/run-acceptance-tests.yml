@@ -202,6 +202,9 @@ jobs:
       run: |
         set -x
         which pulumi pulumi-converter-terraform || true
+        ls -la ~/.local/share/mise/installs/vfox-pulumi-pulumi-pulumi-converter-terraform/ ~/.local/share/mise/installs/vfox-pulumi-pulumi-pulumi-converter-terraform/*/ || true
+        cat ~/.local/share/mise/installs/vfox-pulumi-pulumi-pulumi-converter-terraform/.mise.backend.toml || true
+        (cd /tmp && MISE_VERBOSE=1 MISE_LOG_LEVEL=trace timeout 5 pulumi-converter-terraform 2>&1 | tail -60) || true
         ls -la "$PULUMI_HOME" "$PULUMI_HOME/plugins" || true
         mkdir -p /tmp/dbg && cd /tmp/dbg
         printf 'resource "mysql_database" "app" {\n  name = "x"\n}\n' > main.tf
