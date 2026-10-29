@@ -100,6 +100,9 @@ jobs:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
         version: 2026.10.21
+        # Keep real tool paths ahead of mise shims so subprocesses started outside the
+        # repo (e.g. `pulumi convert` invoking pulumi-converter-terraform) resolve tools.
+        add_shims_to_path: false
         github_token: ${{ steps.app-auth.outputs.token }}
         cache_save: false
     - name: Install project dependencies
@@ -172,6 +175,9 @@ jobs:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
         version: 2026.10.21
+        # Keep real tool paths ahead of mise shims so subprocesses started outside the
+        # repo (e.g. `pulumi convert` invoking pulumi-converter-terraform) resolve tools.
+        add_shims_to_path: false
         github_token: ${{ steps.app-auth.outputs.token }}
         cache_save: false
     - name: Install project dependencies
@@ -197,18 +203,6 @@ jobs:
         PROVIDER_VERSION: ${{ needs.prerequisites.outputs.version }}
     - name: Build registry docs
       run: make build_registry_docs
-    - name: DEBUG convert
-      if: always()
-      run: |
-        set -x
-        which pulumi pulumi-converter-terraform || true
-        ls -la ~/.local/share/mise/installs/vfox-pulumi-pulumi-pulumi-converter-terraform/ ~/.local/share/mise/installs/vfox-pulumi-pulumi-pulumi-converter-terraform/*/ || true
-        cat ~/.local/share/mise/installs/vfox-pulumi-pulumi-pulumi-converter-terraform/.mise.backend.toml || true
-        (cd /tmp && MISE_VERBOSE=1 MISE_LOG_LEVEL=trace timeout 5 pulumi-converter-terraform 2>&1 | tail -60) || true
-        ls -la "$PULUMI_HOME" "$PULUMI_HOME/plugins" || true
-        mkdir -p /tmp/dbg && cd /tmp/dbg
-        printf 'resource "mysql_database" "app" {\n  name = "x"\n}\n' > main.tf
-        pulumi convert --from terraform --language pcl --generate-only --out /tmp/dbg/out --logtostderr -v=5 2>&1 | tail -150 || true
     - name: Check worktree clean
       id: worktreeClean
       uses: pulumi/git-status-check-action@0d90c81496aa8d6a31d9c6a0d6297feea2f54057 # v2.0.0
