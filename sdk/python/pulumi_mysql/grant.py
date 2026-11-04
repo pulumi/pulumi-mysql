@@ -568,6 +568,30 @@ class Grant(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return Grant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            grant: pulumi.Input[Optional[_builtins.bool]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            privileges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            table: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_option: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["database"] = database
+        __props__["grant"] = grant
+        __props__["host"] = host
+        __props__["privileges"] = privileges
+        __props__["role"] = role
+        __props__["roles"] = roles
+        __props__["table"] = table
+        __props__["tlsOption"] = tls_option
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'mysql:index/grant:Grant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def database(self) -> pulumi.Output[_builtins.str]:

@@ -157,6 +157,12 @@ func (DatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseState)(nil)).Elem()
 }
 
+// DatabaseExists checks whether an existing Database resource with the given ID exists.
+func DatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("mysql:index/database:Database", id, state, "", opts...)
+}
+
 type databaseArgs struct {
 	// The default character set to use when
 	// a table is created without specifying an explicit character set. Defaults
