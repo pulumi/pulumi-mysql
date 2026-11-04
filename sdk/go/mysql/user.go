@@ -181,6 +181,12 @@ func (UserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userState)(nil)).Elem()
 }
 
+// UserExists checks whether an existing User resource with the given ID exists.
+func UserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("mysql:index/user:User", id, state, "", opts...)
+}
+
 type userArgs struct {
 	// Use an [authentication plugin][ref-auth-plugins] to authenticate the user instead of using password authentication.  Description of the fields allowed in the block below. Conflicts with `password` and `plaintextPassword`.
 	AuthPlugin *string `pulumi:"authPlugin"`

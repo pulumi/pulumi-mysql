@@ -237,6 +237,12 @@ func (GrantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*grantState)(nil)).Elem()
 }
 
+// GrantExists checks whether an existing Grant resource with the given ID exists.
+func GrantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GrantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("mysql:index/grant:Grant", id, state, "", opts...)
+}
+
 type grantArgs struct {
 	// The database to grant privileges on.
 	Database string `pulumi:"database"`

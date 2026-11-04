@@ -140,6 +140,12 @@ func (UserPasswordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPasswordState)(nil)).Elem()
 }
 
+// UserPasswordExists checks whether an existing UserPassword resource with the given ID exists.
+func UserPasswordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserPasswordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("mysql:index/userPassword:UserPassword", id, state, "", opts...)
+}
+
 type userPasswordArgs struct {
 	// The source host of the user. Defaults to `localhost`.
 	Host *string `pulumi:"host"`

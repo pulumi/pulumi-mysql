@@ -128,11 +128,10 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      * 
-     * @deprecated
-     * Please use plaintextPassword instead
+     * @deprecated Please use plaintextPassword instead
      * 
      */
-    @Deprecated /* Please use plaintextPassword instead */
+    @Deprecated
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 

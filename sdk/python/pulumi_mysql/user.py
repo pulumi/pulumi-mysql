@@ -423,6 +423,24 @@ class User(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            plaintext_password: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_option: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authPlugin"] = auth_plugin
+        __props__["host"] = host
+        __props__["password"] = password
+        __props__["plaintextPassword"] = plaintext_password
+        __props__["tlsOption"] = tls_option
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'mysql:index/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authPlugin")
     def auth_plugin(self) -> pulumi.Output[Optional[_builtins.str]]:

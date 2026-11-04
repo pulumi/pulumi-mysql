@@ -48,22 +48,20 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     /**
      * Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      * 
-     * @deprecated
-     * Please use plaintextPassword instead
+     * @deprecated Please use plaintextPassword instead
      * 
      */
-    @Deprecated /* Please use plaintextPassword instead */
+    @Deprecated
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
      * @return Deprecated alias of `plaintextPassword`, whose value is *stored as plaintext in state*. Prefer to use `plaintextPassword` instead, which stores the password as an unsalted hash. Conflicts with `authPlugin`.
      * 
-     * @deprecated
-     * Please use plaintextPassword instead
+     * @deprecated Please use plaintextPassword instead
      * 
      */
-    @Deprecated /* Please use plaintextPassword instead */
+    @Deprecated
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
@@ -193,11 +191,10 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use plaintextPassword instead
+         * @deprecated Please use plaintextPassword instead
          * 
          */
-        @Deprecated /* Please use plaintextPassword instead */
+        @Deprecated
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
@@ -208,11 +205,10 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Please use plaintextPassword instead
+         * @deprecated Please use plaintextPassword instead
          * 
          */
-        @Deprecated /* Please use plaintextPassword instead */
+        @Deprecated
         public Builder password(String password) {
             return password(Output.of(password));
         }
